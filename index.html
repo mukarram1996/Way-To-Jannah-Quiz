@@ -341,7 +341,7 @@ async function adminSignup(){
  if(email!=="waytosoul4jannah@gmail.com"){msg.innerText="Is admin signup ke liye authorized email use karein.";return;}
  if(password.length<10){msg.innerText="Kam se kam 10 characters ka strong password rakhein.";return;}
  msg.innerText="Account create ho raha hai...";
- const {data,error}=await sb.auth.signUp({email,password});
+ const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:location.origin}});
  if(error){msg.innerText=error.message;return;}
  msg.innerText=data.session?"Account ready. Admin panel khol rahe hain...":"Signup request sent. Email inbox/spam mein confirmation link check karein; confirm hone ke baad login karein.";
  if(data.session) await loadAdminPanel();
