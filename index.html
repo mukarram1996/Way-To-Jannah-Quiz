@@ -18,19 +18,21 @@ h1{text-align:center;color:#0B3D2E;font-size:26px;line-height:1.1}
 .box{background:white;border:1.5px solid #E5D68A;border-radius:16px;padding:14px;margin:10px 0}
 .box h3{color:#0B3D2E;font-size:16px;margin-bottom:8px}
 .btn{width:100%;padding:14px;border:none;border-radius:12px;background:#0B3D2E;color:#F5D76E;font-size:16px;font-weight:800;cursor:pointer;margin-top:6px}
-.btnRed{background:#FF0000;color:white}.btnGold{background:linear-gradient(90deg,#FFD700,#FFA500);color:#3a2800}
+.btnRed{background:#FF0000;color:white}.btnGold{background:linear-gradient(90deg,#FFD700,#FFA500);color:#3a2800}.btnBlue{background:#2563EB;color:white}.btnGreen{background:#0B7A55;color:white}
 input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-radius:12px;margin-bottom:10px;font-size:15px}
 .qbox{background:#0B3D2E;color:white;padding:16px;border-radius:16px;margin-bottom:12px}
 .qbox h2{font-size:18px;margin-top:6px}
 .opt{width:100%;text-align:left;background:white;border:1.5px solid #E5D68A;padding:13px;border-radius:12px;margin-bottom:9px;font-size:15px;font-weight:600;cursor:pointer}
 .opt.correct{background:#0B7A55;color:white}.opt.wrong{background:#B42318;color:white}
-.tabs{display:flex;gap:6px;margin:12px 0}.tabs button{flex:1;padding:11px;border:none;border-radius:10px;font-weight:800;cursor:pointer;background:#EADFAE}.tabs button.active{background:#0B3D2E;color:#F5D76E}
+.tabs{display:flex;gap:6px;margin:12px 0;flex-wrap:wrap}.tabs button{flex:1;padding:11px;border:none;border-radius:10px;font-weight:800;cursor:pointer;background:#EADFAE;min-width:70px}.tabs button.active{background:#0B3D2E;color:#F5D76E}
 .small{font-size:12px;color:#888;text-align:center;margin-top:8px}
 .stepTitle{display:flex;gap:10px;align-items:center;margin:14px 0 6px}
 .stepNum{width:38px;height:38px;background:#0B3D2E;color:#F5D76E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0}
 .stepTitle b{font-size:16px;color:#0B3D2E}
 .winnerBanner{background:linear-gradient(90deg,#0B3D2E,#145A42);color:#F5D76E;padding:12px;border-radius:12px;text-align:center;margin:10px 0;font-size:14px}
 .upiBox{background:#E6F0FF;border:2px dashed #2563EB;padding:10px;border-radius:12px;margin-bottom:10px}
+.practiceBox{background:linear-gradient(90deg,#2563EB,#1E40AF);color:white;padding:14px;border-radius:14px;text-align:center;margin:10px 0}
+.weekCard{background:#FFFBEA;border:2px solid #C9A227;border-radius:12px;padding:10px;margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -38,7 +40,6 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 <h1>WAY TO JANNAH<br>QUIZ GAME 🏆</h1>
 <p class="sub">Video Dekho • Quiz Khelo • Prize Jeeto</p>
 
-<!-- 3 WINNERS PRIZE - WAPAS ADD KAR DIYA -->
 <div class="prize" id="prizeBox">
 <b>🏆 IS WEEK KE 3 WINNERS 🏆</b>
 <div class="prize-row"><span>🥇 1st Winner</span><b id="pz1">₹1000 CASH</b></div>
@@ -47,11 +48,19 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 <span style="font-size:13px" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Last Date: Sunday 9 PM</span>
 </div>
 
+<!-- DAILY PRACTICE - ROZ KHELO -->
+<div class="practiceBox">
+<b>🎯 DAILY PRACTICE - FREE ME ROZ KHELO</b><br>
+<span style="font-size:12px">Prize wale game se pehle yahan practice karo. Iska score Leaderboard me nahi jayega!</span>
+<button class="btn" style="background:white;color:#2563EB;margin-top:8px" onclick="startPractice()">🎯 AAJ KI PRACTICE SHURU KARO - FREE</button>
+<p style="font-size:11px;margin-top:6px">✅ Unlimited Baar Khelo • ✅ Naye Sawal Roz • ✅ Koi Details Nahi Chahiye</p>
+</div>
+
 <div style="background:#E6FFE6;border:1.5px solid #0B7A55;padding:10px;border-radius:12px;text-align:center;font-size:13px">✅ <b>100% REAL HAI!</b> Neeche Winners + Proof Dekho • Sabka Data Firebase Me Save Hota Hai</div>
 <div id="lastWinnerBanner" class="winnerBanner" style="display:none"></div>
 <div class="stepTitle"><div class="stepNum">1</div><b>VIDEO DEKHO</b></div>
 <a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="text-decoration:none"><button class="btn btnRed">▶️ VIDEO DEKHO + SUBSCRIBE KARO</button></a>
-<div class="stepTitle"><div class="stepNum">2</div><b>APNI DETAILS BHARO <span style="font-weight:400;font-size:12px;color:#666">(Ek baar hi, fir yaad rahega)</span></b></div>
+<div class="stepTitle"><div class="stepNum">2</div><b>APNI DETAILS BHARO - PRIZE WALE GAME KE LIYE <span style="font-weight:400;font-size:12px;color:#666">(Ek baar hi, fir yaad rahega)</span></b></div>
 <div id="startArea">
 <input id="playerName" placeholder="1. Poora Naam *">
 <input id="playerCity" placeholder="2. City / Gaon *">
@@ -64,12 +73,12 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 <input id="playerUpi" placeholder="UPI ID Paste Karo - Jaise 98765@okhdfcbank / name@paytm" style="margin-top:8px;margin-bottom:2px">
 <p style="font-size:11px;color:#666">Google Pay / PhonePe / Paytm se copy karke yahan paste karo. Cash isi pe aayega!</p>
 </div>
-<button class="btn" onclick="startGame()">▶️ QUIZ SHURU KARO</button>
+<button class="btn" onclick="startGame()">▶️ PRIZE WALA QUIZ SHURU KARO</button>
 <p class="small">🔒 Number + Address + Pincode + UPI ID sirf Admin ko dikhega, sabko nahi.</p>
 </div>
 <div id="savedArea" style="display:none;background:#E6FFE6;border:1.5px solid #0B7A55;padding:12px;border-radius:12px;margin-bottom:10px;text-align:center">
 <b>👋 Welcome Back, <span id="savedName"></span>!</b><br><small id="savedDetails"></small><br>
-<button class="btn" onclick="startGameSaved()" style="margin-top:8px">▶️ QUIZ SHURU KARO</button>
+<button class="btn" onclick="startGameSaved()" style="margin-top:8px">▶️ PRIZE WALA QUIZ SHURU KARO</button>
 <button onclick="editProfile()" style="background:none;border:none;color:#0B3D2E;text-decoration:underline;font-size:12px;cursor:pointer;margin-top:6px">✏️ Details Badalni Hai?</button>
 </div>
 <div id="quizArea" style="display:none">
@@ -80,15 +89,26 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 <button class="btn" id="nextBtn" onclick="nextQ()">AAGE →</button>
 </div>
 <div class="stepTitle"><div class="stepNum">3</div><b>JEETNE KE BAAD KYA KARNA HAI?</b></div>
-<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz khatam hote hi tumhara naam <b>Leaderboard</b> me aa jayega.<br>2. <b>CLAIM</b> wale tab me jaake apna Address + Pincode + UPI confirm karo.<br>3. Prize milne ke baad <b>PROOF</b> me apni photo dalo.<br>4. <b>TOP 3</b> me aao = ₹300 se ₹1000 tak Jeeto!</p></div>
-<div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 LEADERBOARD</button><button id="tabWinners" onclick="showTab('winners')">👑 WINNERS</button><button id="tabProof" onclick="showTab('proof')">📸 PROOF</button><button id="tabClaim" onclick="showTab('claim')">🎁 CLAIM</button></div>
+<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz khatam hote hi tumhara naam <b>Leaderboard</b> me aa jayega.<br>2. <b>CLAIM</b> wale tab me jaake apna Address + Pincode + UPI confirm karo.<br>3. Prize milne ke baad <b>PROOF</b> me apni photo dalo.<br>4. <b>TOP 3</b> me aao = ₹300 se ₹1000 tak Jeeto!<br>5. Roz <b>DAILY PRACTICE</b> khelo, Prize wale me jeetna aasan hoga!</p></div>
+<div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 LEADERBOARD</button><button id="tabWinners" onclick="showTab('winners')">👑 WINNERS</button><button id="tabWeekly" onclick="showTab('weekly')">📅 WEEKLY</button><button id="tabPractice" onclick="showTab('practice')">🎯 PRACTICE</button><button id="tabProof" onclick="showTab('proof')">📸 PROOF</button><button id="tabClaim" onclick="showTab('claim')">🎁 CLAIM</button></div>
 <div id="tabPlayDiv">
 <div class="box"><h3>🏆 IS WEEK TOP PLAYERS - <span id="leaderWeek">Week 4</span> - TOP 3 = WINNER</h3><div id="publicBoard">Loading...</div><p class="small">Yahan sirf Naam + City dikhega. Number/Address/Pincode/UPI Private hai.<br>🥇 No.1 = ₹1000 | 🥈 No.2 = ₹500 | 🥉 No.3 = ₹300</p></div>
-<div class="box"><h3>📊 TUMHARI PROGRESS</h3><p style="font-size:14px">🔥 Streak: <b>1 Day</b> • Level: <b id="levelText">Beginner</b><br>Best Score: <b id="bestText">0/5</b></p></div>
+<div class="box"><h3>📊 TUMHARI PROGRESS</h3><p style="font-size:14px">🔥 Streak: <b id="streakText">1 Day</b> • Level: <b id="levelText">Beginner</b><br>Best Score: <b id="bestText">0/5</b><br>Practice Kheli: <b id="practiceCount">0 Baar</b></p></div>
 </div>
 <div id="tabWinnersDiv" style="display:none">
 <div class="box"><h3>👑 ALL WINNERS HISTORY - Sab Purane + Naye</h3><p style="font-size:12px;color:#666;margin-bottom:8px">Ye list kabhi delete nahi hogi. Har week ke TOP 3 Winners yahan AUTOMATIC aa jayenge.</p><div id="winnersWall"></div></div>
 <div class="box"><h3>📊 TOTAL PRIZE</h3><p style="font-size:14px">💰 Total Prize Diya: <b id="totalPrize">₹0</b><br>👑 Total Winners: <b id="totalWinners">0</b><br>🎮 Total Players: <b id="totalPlayers">0</b></p></div>
+</div>
+<!-- WEEKLY WINNERS - HAR WEEK ALAG -->
+<div id="tabWeeklyDiv" style="display:none">
+<div class="box"><h3>📅 WEEKLY WINNERS - Har Week Ke Top 3</h3><p style="font-size:12px;color:#666;margin-bottom:8px">Har week khatam hone par us week ke 3 Winners yahan aa jate hain. Purane weeks bhi yahin milenge.</p><div id="weeklyWall"></div></div>
+</div>
+<!-- DAILY PRACTICE TAB -->
+<div id="tabPracticeDiv" style="display:none">
+<div class="box"><h3>🎯 DAILY PRACTICE - Roz Khelo, Jeetna Seekho</h3><p style="font-size:13px;line-height:1.6">• Roz naye sawal, roz nayi practice<br>• Iska score Leaderboard / Prize me nahi jayega<br>• Unlimited baar khelo, koi Details nahi chahiye<br>• Practice karoge to Prize wala game aasan lagega</p>
+<button class="btn btnBlue" onclick="startPractice()">🎯 AAJ KI PRACTICE KHEL0 - FREE</button>
+<p style="font-size:13px;margin-top:10px">🏅 Aaj Practice Ki: <b id="todayPractice">0 Baar</b><br>🔥 Total Practice: <b id="totalPractice2">0 Baar</b></p></div>
+<div class="box"><h3>📚 PRACTICE KE SAWAL - Roz Badalte Hain</h3><p style="font-size:12px;color:#666">Aaj ke 5 Practice Sawal - Quran, Seerat, Namaz, General sab mix hain.</p></div>
 </div>
 <div id="tabProofDiv" style="display:none"><div class="box"><h3>📸 PRIZE PROOF - Winners Ne Khud Dala</h3><div id="proofGrid"></div><p id="proofCount" style="font-size:12px;color:green;margin-top:8px"></p></div></div>
 <div id="tabClaimDiv" style="display:none">
@@ -110,7 +130,7 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 </div>
 </div>
 <div style="text-align:center;margin-top:10px"><button onclick="openAdmin()" style="background:none;border:none;color:#aaa;font-size:12px;text-decoration:underline;cursor:pointer">🔒 ADMIN - Winners + Address + UPI Dekho</button></div>
-<p class="small">Way To Jannah • Har Week Naya Video • Har Week 3 Winners<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#FF0000;font-weight:800">▶️ Hamara YouTube Channel</a></p>
+<p class="small">Way To Jannah • Har Week Naya Video • Har Week 3 Winners • Roz Daily Practice<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#FF0000;font-weight:800">▶️ Hamara YouTube Channel</a></p>
 </div>
 <script>
 const firebaseConfig = {
@@ -125,7 +145,6 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-// 3 WINNERS PRIZE - FIXED
 let PRIZES=[1000,500,300];
 let CURRENT_WEEK={weekNo:4, videoTitle:"Jannat Ke 8 Darwaze", prize1:1000, prize2:500, prize3:300, lastDate:"Sunday 9 PM"};
 let ALL_WINNERS=[], ALL_HISTORY=[], ALL_CLAIMS=[], ALL_PROOFS=[];
@@ -136,10 +155,23 @@ let WEEKLY_QUESTIONS=[
 {q:"Laylatul Qadr kis mahine me hai?",o:["Muharram","Ramzan","Shawwal","Rajab"],a:1},
 {q:"Sabse lambi Surah kaunsi?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
 ];
-let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="",upiId="",startTime=0,tempProofImg="";
+// DAILY PRACTICE KE SAWAL - ALAG HAIN, ROZ MIX HONGE
+let PRACTICE_QUESTIONS=[
+{q:"Quran me kul kitni Surah hain?",o:["110","114","116","120"],a:1},
+{q:"Pehli Wahi kahan nazil hui?",o:["Ghaar-e-Hira","Masjid-e-Nabawi","Ghaar-e-Saur","Badr"],a:0},
+{q:"Namaz me kul kitne Farz hain?",o:["3","4","5","6"],a:2},
+{q:"Roza kis mahine me farz hai?",o:["Shawwal","Ramadan","Zil-Hajj","Muharram"],a:1},
+{q:"Jannat ke kitne darwaze hain?",o:["7","8","10","5"],a:1},
+{q:"Hazrat Muhammad (SAW) ki paidaish kahan hui?",o:["Madina","Makkah","Taif","Jerusalem"],a:1},
+{q:"Quran ka sabse lamba Surah kaunsa hai?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
+{q:"Kalma Tayyaba me kitne lafz hain?",o:["5","6","7","8"],a:2},
+{q:"Hazrat Adam (AS) ko kis cheez se banaya gaya?",o:["Noor se","Mitti se","Aag se","Pani se"],a:1},
+{q:"Sabse pehli Surah jo mukammal nazil hui?",o:["Surah Fatiha","Surah Baqarah","Surah Yaseen","Surah Ikhlas"],a:0},
+];
+let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="",upiId="",startTime=0,tempProofImg="",isPractice=false;
 db.ref('jannah_week').on('value',snap=>{ if(snap.val()){CURRENT_WEEK=snap.val(); if(CURRENT_WEEK.prize1){PRIZES=[CURRENT_WEEK.prize1,CURRENT_WEEK.prize2,CURRENT_WEEK.prize3];} updateWeekUI(); renderBoard();} });
 db.ref('jannah_winners').on('value',snap=>{ ALL_WINNERS=[]; snap.forEach(c=>{let v=c.val(); v._key=c.key; ALL_WINNERS.push(v);}); ALL_WINNERS.sort((a,b)=>b.score-a.score||a.time-b.time); renderBoard(); });
-db.ref('jannah_history').on('value',snap=>{ ALL_HISTORY=[]; snap.forEach(c=>{let v=c.val(); v._key=c.key; ALL_HISTORY.push(v);}); updateWeekUI(); renderWinners(); });
+db.ref('jannah_history').on('value',snap=>{ ALL_HISTORY=[]; snap.forEach(c=>{let v=c.val(); v._key=c.key; ALL_HISTORY.push(v);}); updateWeekUI(); renderWinners(); renderWeeklyWinners(); });
 db.ref('jannah_claims').on('value',snap=>{ ALL_CLAIMS=[]; snap.forEach(c=>{let v=c.val(); v._key=c.key; ALL_CLAIMS.push(v);}); });
 db.ref('jannah_proofs').on('value',snap=>{ ALL_PROOFS=[]; snap.forEach(c=>{let v=c.val(); v._key=c.key; ALL_PROOFS.push(v);}); renderProof(); });
 db.ref('jannah_history').once('value',snap=>{ if(!snap.exists()){
@@ -152,10 +184,19 @@ function updateWeekUI(){
  let el=document.getElementById("leaderWeek"); if(el) el.innerText=`Week ${CURRENT_WEEK.weekNo}`;
  if(ALL_HISTORY.length>0){
    let last3=ALL_HISTORY.slice(-3);
-   let last=last3[0];
    document.getElementById("lastWinnerBanner").style.display="block";
    document.getElementById("lastWinnerBanner").innerHTML=`👑 <b>PICHHLE WEEK KE 3 WINNERS:</b><br>🥇 ${last3[0]?last3[0].name+" - ₹"+last3[0].prize:""} | 🥈 ${last3[1]?last3[1].name+" - ₹"+last3[1].prize:""} | 🥉 ${last3[2]?last3[2].name+" - ₹"+last3[2].prize:""}<br>Ab tumhari baari hai! TOP 3 me aao!`;
  }
+ updatePracticeStats();
+}
+function updatePracticeStats(){
+  let total=parseInt(localStorage.getItem("jannah_practice_total")||"0");
+  let todayKey="jannah_practice_"+new Date().toDateString();
+  let today=parseInt(localStorage.getItem(todayKey)||"0");
+  let pc=document.getElementById("practiceCount"); if(pc) pc.innerText=total+" Baar";
+  let tp=document.getElementById("todayPractice"); if(tp) tp.innerText=today+" Baar";
+  let tp2=document.getElementById("totalPractice2"); if(tp2) tp2.innerText=total+" Baar";
+  let st=document.getElementById("streakText"); if(st) st.innerText=(total>0?total+" Day":"1 Day");
 }
 function loadProfile(){
  let s=JSON.parse(localStorage.getItem("jannah_profile")||"null");
@@ -181,15 +222,30 @@ function editProfile(){
 }
 function saveProfile(){localStorage.setItem("jannah_profile",JSON.stringify({name:player,city:city,phone:phone,address:address,pincode:pincode,prizeChoice:prizeChoice,upiId:upiId}));}
 function showTab(t){
- ['play','winners','proof','claim'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display=x==t?'block':'none');
- ['Play','Winners','Proof','Claim'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active",x.toLowerCase()==t));
- if(t=='winners')renderWinners();if(t=='proof')renderProof();
+ ['play','winners','weekly','practice','proof','claim'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display=x==t?'block':'none');
+ ['Play','Winners','Weekly','Practice','Proof','Claim'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active",x.toLowerCase()==t));
+ if(t=='winners')renderWinners();if(t=='weekly')renderWeeklyWinners();if(t=='proof')renderProof();if(t=='practice')updatePracticeStats();
+}
+// DAILY PRACTICE - BINA DETAILS, BINA LEADERBOARD
+function startPractice(){
+  isPractice=true;
+  // Roz alag sawal - Shuffle karke 5 lo
+  let shuffled=[...PRACTICE_QUESTIONS].sort(()=>Math.random()-0.5);
+  quiz=shuffled.slice(0,5);idx=0;score=0;startTime=Date.now();
+  document.getElementById("startArea").style.display="none";
+  let sa=document.getElementById("savedArea"); if(sa) sa.style.display="none";
+  document.getElementById("quizArea").style.display="block";
+  // Practice me timer 20s hi rahega, lekin upar Practice likha aayega
+  document.getElementById("qnum").innerText="🎯 PRACTICE MODE";
+  load();
 }
 function startGameSaved(){
+ isPractice=false;
  quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
  document.getElementById("startArea").style.display="none";document.getElementById("savedArea").style.display="none";document.getElementById("quizArea").style.display="block";load();
 }
 function startGame(){
+ isPractice=false;
  player=document.getElementById("playerName").value.trim();city=document.getElementById("playerCity").value.trim();phone=document.getElementById("playerPhone").value.trim();address=document.getElementById("playerAddress").value.trim();pincode=document.getElementById("playerPincode").value.trim();prizeChoice=document.getElementById("playerPrizeChoice").value;upiId=document.getElementById("playerUpi").value.trim();
  if(!player){alert("Pehle Naam likho!");return;}
  if(!city){alert("City / Gaon likho!");return;}
@@ -203,7 +259,7 @@ function startGame(){
 }
 function load(){
  clearInterval(timer);time=20;
- document.getElementById("qnum").innerText=`QUESTION ${idx+1} / ${quiz.length} • ${player}`;
+ document.getElementById("qnum").innerText=(isPractice?`🎯 PRACTICE - QUESTION ${idx+1} / ${quiz.length}`:`QUESTION ${idx+1} / ${quiz.length} • ${player}`);
  document.getElementById("question").innerText=quiz[idx].q;
  document.getElementById("progress").style.width=((idx+1)/quiz.length*100)+"%";
  let box=document.getElementById("options");box.innerHTML="";
@@ -220,11 +276,21 @@ function saveWinner(totalTime){
  db.ref('jannah_winners').push({name:player,city:city||"-",phone:phone||"-",address:address||"-",pincode:pincode||"-",prizeChoice:prizeChoice||"-",upiId:upiId||"-",score:score,total:quiz.length,time:totalTime,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
  let best=document.getElementById("bestText"); if(best) best.innerText=`${score}/${quiz.length}`;
 }
-function getPrizeForRank(rank){ if(rank==1) return PRIZES[0]; if(rank==2) return PRIZES[1]; if(rank==3) return PRIZES[2]; return 0; }
 function nextQ(){
  idx++;
  if(idx>=quiz.length){
   let totalTime=Math.floor((Date.now()-startTime)/1000);
+  if(isPractice){
+    // Practice ka score kahin save nahi hoga - sirf local count badhega
+    let total=parseInt(localStorage.getItem("jannah_practice_total")||"0")+1;
+    localStorage.setItem("jannah_practice_total", total);
+    let todayKey="jannah_practice_"+new Date().toDateString();
+    let today=parseInt(localStorage.getItem(todayKey)||"0")+1;
+    localStorage.setItem(todayKey, today);
+    updatePracticeStats();
+    document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎯</div><h1>Practice Khatam!</h1><p style="margin:10px 0">Tumhara Practice Score</p><h1 style="font-size:60px;color:#2563EB">${score} / ${quiz.length}</h1><p style="background:#E6F0FF;padding:12px;border-radius:12px;margin:10px 0">✅ Shabaash! Practice ho gayi.<br>Ye score Leaderboard me nahi gaya, sirf practice ke liye tha.<br>Ab Prize wala game khelo, TOP 3 me aao!</p><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#2563EB;color:white;border-radius:10px;font-weight:800;width:100%;margin-top:8px">🎯 FIR SE PRACTICE KARO</button><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:8px">🏆 AB PRIZE WALA KHELO</button></div>`;
+    return;
+  }
   saveWinner(totalTime);
   document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎉</div><h1>Masha Allah ${player}!</h1><p style="margin:10px 0">Tumhara Score</p><h1 style="font-size:60px;color:#C9A227">${score} / ${quiz.length}</h1><p style="background:#E6FFE6;padding:12px;border-radius:12px;margin:10px 0">✅ Ho Gaya!<br>Tumhari Details Firebase Me Save Ho Gayi.<br>TOP 3 me aaye to Prize milega:<br>🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}<br>Agar tum jeete to Admin tumko Call karega.</p><p style="font-size:13px">Prize Choice: <b>${prizeChoice}</b><br>Pincode: <b>${pincode}</b><br>UPI ID: <b>${upiId||'-'}</b></p><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="color:#FF0000;font-weight:800">▶️ CHANNEL SUBSCRIBE KARO</a><br><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:12px">🔁 DOBARA KHELO</button></div>`;
   return;
@@ -246,6 +312,24 @@ function renderWinners(){
    let medal=w.rank==1?'🥇':w.rank==2?'🥈':w.rank==3?'🥉':'👑';
    return `<div style="display:flex;gap:10px;background:#FFFBEA;border:1px solid #E5D68A;border-radius:12px;padding:10px;margin-bottom:8px;align-items:center"><div style="width:45px;height:45px;background:${w.rank==1?'#FFD700':'#0B3D2E'};color:${w.rank==1?'#000':'white'};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800">${w.name.charAt(0)}</div><div><b>${medal} ${w.name} - ${w.city}</b><br><span style="color:#0B7A55;font-weight:700">Jeeta: ₹${w.prize} ✅</span><br><small>${w.week} • ${w.date||''}</small></div></div>`;
  }).join("");
+}
+// WEEKLY WINNERS - HAR WEEK ALAG-ALAG GROUP ME
+function renderWeeklyWinners(){
+  let hist=ALL_HISTORY;
+  let wall=document.getElementById("weeklyWall");
+  if(!wall) return;
+  if(hist.length==0){wall.innerHTML=`<p>Abhi koi Weekly Winner nahi. Tum pehle bano!</p>`;return;}
+  // Week ke hisaab se group karo
+  let groups={};
+  hist.forEach(h=>{ if(!groups[h.week]) groups[h.week]=[]; groups[h.week].push(h); });
+  let weeks=Object.keys(groups).reverse();
+  wall.innerHTML=weeks.map(week=>{
+    let list=groups[week].sort((a,b)=>(a.rank||99)-(b.rank||99));
+    return `<div class="weekCard"><h3 style="color:#0B3D2E;text-align:center">📅 ${week}</h3>`+list.map(w=>{
+      let medal=w.rank==1?'🥇 1st':w.rank==2?'🥈 2nd':w.rank==3?'🥉 3rd':'👑';
+      return `<div style="display:flex;justify-content:space-between;background:white;padding:8px;border-radius:8px;margin:5px 0;border:1px solid #E5D68A"><span><b>${medal} ${w.name}</b><br><small>${w.city} • ${w.date||''}</small></span><b style="color:#0B7A55">₹${w.prize} ✅</b></div>`;
+    }).join("")+`</div>`;
+  }).join("");
 }
 function renderProof(){
  let proofs=ALL_PROOFS;
@@ -324,12 +408,20 @@ function openAdmin(){
  let c=ALL_CLAIMS;
  let wRows=w.map((x,i)=>`<tr><td style="padding:8px;border:1px solid #ddd">${i+1} ${i==0?'👑':''}</td><td style="padding:8px;border:1px solid #ddd"><b>${x.name}</b><br>📞 ${x.phone}<br>📍 ${x.address}<br>📮 Pin: ${x.pincode}<br>💳 UPI: ${x.upiId||x.upi||'-'}<br>🎁 ${x.prizeChoice}<br>🏆 Prize: ${i<3?'₹'+PRIZES[i]:'-'}</td><td style="padding:8px;border:1px solid #ddd">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #ddd">${x.time}s<br><button onclick="adminDeletePlayer('${x._key}')" style="background:#B42318;color:white;border:none;padding:4px 8px;border-radius:6px;font-size:11px;cursor:pointer;margin-top:4px">Delete</button></td></tr>`).join("")||`<tr><td colspan="4">Is week koi nahi khela</td></tr>`;
  let cRows=c.map((x,i)=>`<tr><td style="padding:8px;border:1px solid #ddd">${i+1}</td><td style="padding:8px;border:1px solid #ddd"><b>${x.name}</b><br>📞 ${x.phone}<br>📍 ${x.address}<br>📮 Pin: ${x.pincode}<br>💳 UPI: ${x.upi||'-'}</td><td style="padding:8px;border:1px solid #ddd">${x.method}</td><td style="padding:8px;border:1px solid #ddd">${x.upi||'-'}</td></tr>`).join("")||`<tr><td colspan="4">Koi claim nahi</td></tr>`;
+ // Weekly winners ka summary Admin me bhi
+ let weeklySummary="";
+ let groups={};
+ ALL_HISTORY.forEach(h=>{ if(!groups[h.week]) groups[h.week]=[]; groups[h.week].push(h); });
+ Object.keys(groups).reverse().forEach(week=>{
+   weeklySummary+=`<div style="background:white;padding:8px;border-radius:8px;margin:5px 0;font-size:12px"><b>${week}</b><br>`+groups[week].map(h=>`${h.rank==1?'🥇':h.rank==2?'🥈':'🥉'} ${h.name} - ₹${h.prize} - ${h.city}`).join("<br>")+`</div>`;
+ });
  document.getElementById("mainCard").innerHTML=`<h1>🔒 ADMIN PANEL - Week ${CURRENT_WEEK.weekNo} - FIREBASE LIVE 🔥</h1><p style="text-align:center">Is Week Players: ${w.length} | Claims: ${c.length} | Sabke Phone Se Data Aa Raha Hai</p>
  <div style="background:#FFF3CD;border:2px solid #C9A227;padding:14px;border-radius:12px;margin:12px 0"><h3 style="color:#0B3D2E;text-align:center">🏆 3 WINNERS PRIZE BADLO</h3>
  <input id="newPz1" placeholder="1st Prize - Jaise 1000" type="number" value="${PRIZES[0]}">
  <input id="newPz2" placeholder="2nd Prize - Jaise 500" type="number" value="${PRIZES[1]}">
  <input id="newPz3" placeholder="3rd Prize - Jaise 300" type="number" value="${PRIZES[2]}">
  <button onclick="updatePrizeInAdmin()" style="padding:12px;border:none;background:#C9A227;border-radius:10px;font-weight:800;width:100%;cursor:pointer">💾 PRIZE UPDATE KARO</button></div>
+ <div style="background:#E6F0FF;border:2px solid #2563EB;padding:14px;border-radius:12px;margin:12px 0"><h3 style="color:#0B3D2E;text-align:center">📅 WEEKLY WINNERS - Har Week Ke Top 3</h3>${weeklySummary||"Abhi koi weekly winner nahi"}</div>
  <div style="background:#E6FFE6;border:2px solid #0B7A55;padding:14px;border-radius:12px;margin:12px 0"><h3 style="color:#0B3D2E;text-align:center">➕ NAYA DATA ADD KARO - EASILY</h3><p style="font-size:12px;text-align:center;color:#666">Kisi ka bhi data yahan se add karo, Sabko Leaderboard me dikhega</p>
  <input id="aName" placeholder="Naam *">
  <input id="aCity" placeholder="City / Gaon *">
@@ -340,14 +432,14 @@ function openAdmin(){
  <input id="aScore" placeholder="Score - Jaise 5" type="number">
  <select id="aPrizeChoice"><option value="Cash - UPI">Cash - UPI</option><option value="Gift - Courier">Gift - Courier</option><option value="Recharge">Recharge</option></select>
  <button onclick="adminAddData()" style="padding:12px;border:none;background:#0B7A55;color:white;border-radius:10px;font-weight:800;width:100%;cursor:pointer">✅ DATA ADD KARO</button></div>
- <div style="background:#FFD700;padding:14px;border-radius:12px;text-align:center;margin:12px 0"><b>🏆 WEEK ${CURRENT_WEEK.weekNo} KE 3 WINNERS GHOSHIT KARO</b><br><small>🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}<br>TOP 3 khud Winners History me aa jayenge, Naya Week shuru ho jayega</small><br><button onclick="declareWinnerAndNextWeek()" style="padding:12px 18px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;margin-top:8px;width:100%">👑 3 WINNERS GHOSHIT KARO + NAYA WEEK SHURU KARO</button></div><h3 style="margin-top:12px">🏆 IS WEEK LEADERBOARD - Sabke Phone Ka Data - TOP 3 = Winner</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">Rank</th><th style="background:#0B3D2E;color:white;padding:8px">Naam + Number + Address + Pincode + UPI</th><th style="background:#0B3D2E;color:white;padding:8px">Score</th><th style="background:#0B3D2E;color:white;padding:8px">Time</th></tr>${wRows}</table><h3 style="margin-top:12px">🎁 CLAIMS - Inko Gift Bhejna Hai</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">#</th><th style="background:#0B3D2E;color:white;padding:8px">Naam + Address + Pincode + UPI</th><th style="background:#0B3D2E;color:white;padding:8px">Method</th><th style="background:#0B3D2E;color:white;padding:8px">UPI</th></tr>${cRows}</table><button onclick="copyWinners()" style="padding:10px;border:none;background:#0B3D2E;color:white;border-radius:8px;font-weight:800;margin-top:10px">📋 Copy Winners + Address + Pincode + UPI</button> <button onclick="location.reload()" style="padding:10px;border:none;background:#C9A227;border-radius:8px;font-weight:800">⬅ Back</button>`;
+ <div style="background:#FFD700;padding:14px;border-radius:12px;text-align:center;margin:12px 0"><b>🏆 WEEK ${CURRENT_WEEK.weekNo} KE 3 WINNERS GHOSHIT KARO</b><br><small>🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}<br>TOP 3 khud Winners History + Weekly Winners me aa jayenge, Naya Week shuru ho jayega</small><br><button onclick="declareWinnerAndNextWeek()" style="padding:12px 18px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;margin-top:8px;width:100%">👑 3 WINNERS GHOSHIT KARO + NAYA WEEK SHURU KARO</button></div><h3 style="margin-top:12px">🏆 IS WEEK LEADERBOARD - Sabke Phone Ka Data - TOP 3 = Winner</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">Rank</th><th style="background:#0B3D2E;color:white;padding:8px">Naam + Number + Address + Pincode + UPI</th><th style="background:#0B3D2E;color:white;padding:8px">Score</th><th style="background:#0B3D2E;color:white;padding:8px">Time</th></tr>${wRows}</table><h3 style="margin-top:12px">🎁 CLAIMS - Inko Gift Bhejna Hai</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">#</th><th style="background:#0B3D2E;color:white;padding:8px">Naam + Address + Pincode + UPI</th><th style="background:#0B3D2E;color:white;padding:8px">Method</th><th style="background:#0B3D2E;color:white;padding:8px">UPI</th></tr>${cRows}</table><button onclick="copyWinners()" style="padding:10px;border:none;background:#0B3D2E;color:white;border-radius:8px;font-weight:800;margin-top:10px">📋 Copy Winners + Address + Pincode + UPI</button> <button onclick="location.reload()" style="padding:10px;border:none;background:#C9A227;border-radius:8px;font-weight:800">⬅ Back</button>`;
 }
 function copyWinners(){
  let w=ALL_WINNERS.filter(x=>x.week==CURRENT_WEEK.weekNo);
  let txt=w.map((x,i)=>`${i+1}. ${x.name} - Phone: ${x.phone} - Address: ${x.address} - Pincode: ${x.pincode} - UPI: ${x.upiId||x.upi||'-'} - Choice: ${x.prizeChoice} - ${x.score}/${x.total} - Prize: ${i<3?'₹'+PRIZES[i]:'-'}`).join("\n\n");
  navigator.clipboard.writeText(txt);alert("Copy Ho Gaya! UPI + Prize ke saath!");
 }
-updateWeekUI();loadProfile();renderBoard();renderWinners();renderProof();
+updateWeekUI();loadProfile();renderBoard();renderWinners();renderWeeklyWinners();renderProof();
 </script>
 </body>
 </html>
