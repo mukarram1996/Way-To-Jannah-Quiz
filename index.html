@@ -90,7 +90,7 @@ input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3p
 <div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">📊 MY SCORES</button><button id="tabWinners" onclick="showTab('winners')">ℹ️ ABOUT</button></div>
 
 <div id="tabPlayDiv">
-<div class="box"><h3>🏆 IS WEEK TOP PLAYERS - <span id="leaderWeek">Week 4</span></h3><div id="publicBoard"></div><p class="small">Yahan sirf Naam + City dikhega. Number/Address/Pincode Private hai.<br>No.1 wala hi Winner banega!</p></div>
+<div class="box"><h3>📊 YOUR PRACTICE SCORES</h3><div id="publicBoard"></div><p class="small">Scores are stored only in this browser and are not a global leaderboard.</p></div>
 <div class="box"><h3>📊 TUMHARI PROGRESS</h3><p style="font-size:14px">🔥 Streak: <b>1 Day</b> • Level: <b id="levelText">Beginner</b><br>Best Score: <b id="bestText">0/5</b></p></div>
 </div>
 
@@ -143,7 +143,7 @@ let WEEKLY_QUESTIONS=[
 let DEFAULT_HISTORY=[];
 // Remove earlier placeholder winner records; they were demo data, not verified winners.
 let oldHistory=JSON.parse(localStorage.getItem("jannah_history")||"[]");
-oldHistory=oldHistory.filter(x=>!["Ahmed","Fatima","Bilal"].includes(x.name));
+oldHistory=oldHistory.filter(x=>!(x.name==="Ahmed"&&x.city==="Bellary"&&x.prize===500&&x.week==="Week 1 - Jannat Ke Darwaze")&&!(x.name==="Fatima"&&x.city==="Hyderabad"&&x.prize===500&&x.week==="Week 2 - Ramzan Quiz")&&!(x.name==="Bilal"&&x.city==="Bangalore"&&x.prize===300&&x.week==="Week 3 - Quran Quiz"));
 localStorage.setItem("jannah_history",JSON.stringify(oldHistory));
 
 let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="Practice",startTime=0,tempProofImg="";
@@ -179,9 +179,9 @@ function editProfile(){
 }
 function saveProfile(){localStorage.setItem("jannah_profile",JSON.stringify({name:player,city:city}));}
 function showTab(t){
- ['play','winners','proof','claim'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display=x==t?'block':'none');
- ['Play','Winners','Proof','Claim'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active",x.toLowerCase()==t));
- if(t=='winners')renderWinners();if(t=='proof')renderProof();
+ ['play','winners'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display=x===t?'block':'none');
+ ['Play','Winners'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active",x.toLowerCase()===t));
+ if(t==='winners')renderWinners();
 }
 function startGameSaved(){
  quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
