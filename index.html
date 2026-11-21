@@ -153,14 +153,13 @@ let WEEKLY_QUESTIONS=[
 {q:"Sabse lambi Surah kaunsi?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
 ];
 // Purane Winners - Pehli baar ke liye, fir AUTOMATIC judte jayenge
-let DEFAULT_HISTORY=[
-{name:"Ahmed",city:"Bellary",prize:500,week:"Week 1 - Jannat Ke Darwaze",date:"10 Nov 2026"},
-{name:"Fatima",city:"Hyderabad",prize:500,week:"Week 2 - Ramzan Quiz",date:"17 Nov 2026"},
-{name:"Bilal",city:"Bangalore",prize:300,week:"Week 3 - Quran Quiz",date:"24 Nov 2026"},
-];
+let DEFAULT_HISTORY=[]; // No unverified sample winners; actual winners are added through the admin flow.
 if(!localStorage.getItem("jannah_history")){ localStorage.setItem("jannah_history", JSON.stringify(DEFAULT_HISTORY)); }
 
-\nfunction esc(value){return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}\n\nlet quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="",startTime=0,tempProofImg="";
+
+function esc(value){return String(value??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+
+let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="",startTime=0,tempProofImg="";
 
 function updateWeekUI(){
  document.getElementById("prizeBox").innerHTML=`<b>🏆 WEEK ${CURRENT_WEEK.weekNo} KA PRIZE: ₹${CURRENT_WEEK.prize} CASH / GIFT</b><br><span style="font-size:13px">Video: ${CURRENT_WEEK.videoTitle} • Last Date: ${CURRENT_WEEK.lastDate}</span>`;
@@ -210,9 +209,9 @@ function startGame(){
  player=document.getElementById("playerName").value.trim();city=document.getElementById("playerCity").value.trim();phone=document.getElementById("playerPhone").value.trim();address=document.getElementById("playerAddress").value.trim();pincode=document.getElementById("playerPincode").value.trim();prizeChoice=document.getElementById("playerPrizeChoice").value;
  if(!player){alert("Pehle Naam likho!");return;}
  if(!city){alert("City / Gaon likho!");return;}
- phone=phone.replace(/[\\s()-]/g,""); if(phone.startsWith("+91")) phone=phone.slice(3); else if(phone.startsWith("91")&&phone.length===12) phone=phone.slice(2); if(!/^\\d{10}$/.test(phone)){alert("Sahi 10 digit mobile number likho!");return;}
+ phone=phone.replace(/[\s()-]/g,""); if(phone.startsWith("+91")) phone=phone.slice(3); else if(phone.startsWith("91")&&phone.length===12) phone=phone.slice(2); if(!/^\d{10}$/.test(phone)){alert("Sahi 10 digit mobile number likho!");return;}
  if(!address||address.length<10){alert("Poora Address likho, Gift kahan bhejenge?");return;}
- if(!/^\\d{6}$/.test(pincode)){alert("Sahi 6 digit numeric Pincode likho! Jaise 583101");return;}
+ if(!/^\d{6}$/.test(pincode)){alert("Sahi 6 digit numeric Pincode likho! Jaise 583101");return;}
  saveProfile();
  quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
  document.getElementById("startArea").style.display="none";document.getElementById("quizArea").style.display="block";load();
@@ -272,7 +271,7 @@ function renderProof(){
 function submitClaim(){
  let n=document.getElementById("claimName").value.trim(),ph=document.getElementById("claimPhone").value.trim(),addr=document.getElementById("claimAddress").value.trim(),pin=document.getElementById("claimPincode").value.trim(),upi=document.getElementById("claimUpi").value.trim(),meth=document.getElementById("claimMethod").value;
  if(!n||!ph||!addr){alert("Naam + Number + Address bharo!");return;}
- if(!/^\\d{6}$/.test(pin)){alert("Sahi 6 digit numeric Pincode likho!");return;}
+ if(!/^\d{6}$/.test(pin)){alert("Sahi 6 digit numeric Pincode likho!");return;}
  let c=JSON.parse(localStorage.getItem("jannah_claims")||"[]");
  c.push({name:n,phone:ph,address:addr,pincode:pin,method:meth,upi:upi,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
  localStorage.setItem("jannah_claims",JSON.stringify(c));
