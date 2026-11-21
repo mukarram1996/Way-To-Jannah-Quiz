@@ -28,7 +28,7 @@ input,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-radius:12
 .badge{display:inline-block;background:#0B3D2E;color:#F5D76E;padding:3px 10px;border-radius:99px;font-size:11px;margin:2px}
 table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}th,td{border:1px solid #ddd;padding:8px;text-align:left}th{background:#0B3D2E;color:#F5D76E}tr:nth-child(2){background:#FFF3B0}
 .section{background:white;border:1.5px solid #E5D68A;border-radius:16px;padding:14px;margin:14px 0}.section h3{color:#0B3D2E;font-size:17px;margin-bottom:8px}
-.winnerCard{display:flex;gap:10px;background:#FFFBEA;border:1px solid #E5D68A;border-radius:12px;padding:10px;margin-bottom:8px;align-items:center}.winnerCard img{width:60px;height:60px;object-fit:cover;border-radius:50%;border:2px solid #C9A227}
+.winnerCard{display:flex;gap:10px;background:#FFFBEA;border:1px solid #E5D68A;border-radius:12px;padding:10px;margin-bottom:8px;align-items:center}
 .proofGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.proofGrid img{width:100%;height:120px;object-fit:cover;border-radius:12px;border:2px solid #C9A227}
 .smallBtn{padding:8px 12px;border:none;border-radius:8px;font-weight:800;cursor:pointer;margin:4px 2px}
 .tabs{display:flex;gap:6px;margin:12px 0}.tabs button{flex:1;padding:10px;border:none;border-radius:10px;font-weight:800;cursor:pointer;background:#EADFAE}.tabs button.active{background:#0B3D2E;color:#F5D76E}
@@ -43,7 +43,7 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}th,td{b
 <p class="sub">Video Dekho • Quiz Khelo • Prize Jeeto 🏆</p>
 <div class="prize" id="prizeBox"><b>🏆 THIS WEEK PRIZE: ₹500 CASH</b><span id="weekVideo">Video: "Jannat Ke 8 Darwaze" • Last Date: Sunday 9 PM</span></div>
 <div class="trust">✅ <b>100% REAL HAI!</b> Neeche Purane Winners + Proof Dekho<br>Har Week Naya Video • Har Week Naya Winner</div>
-<div class="channel"><a class="yt" href="https://www.youtube.com/@waytojannah" target="_blank">▶️ SUBSCRIBE CHANNEL</a><a class="yt" href="https://www.youtube.com/@waytojannah" target="_blank" style="background:#0B3D2E">📺 LATEST VIDEO</a></div>
+<div class="channel"><a class="yt" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank">▶️ SUBSCRIBE CHANNEL</a><a class="yt" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="background:#0B3D2E">📺 LATEST VIDEO</a></div>
 <div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🎮 PLAY</button><button id="tabWinners" onclick="showTab('winners')">🏆 ALL WINNERS</button><button id="tabProof" onclick="showTab('proof')">📸 PROOF</button><button id="tabClaim" onclick="showTab('claim')">🎁 CLAIM</button></div>
 
 <div id="tabPlayDiv">
@@ -68,21 +68,17 @@ table{width:100%;border-collapse:collapse;font-size:13px;margin-top:10px}th,td{b
 </div>
 
 <div style="text-align:center;margin-top:10px"><button onclick="openAdmin()" style="background:none;border:none;color:#888;font-size:12px;cursor:pointer;text-decoration:underline">🔒 ADMIN - Winners + Claims Dekho</button></div>
-<div class="footer">Made with ❤️ for Ummah • Way To Jannah<br>Har Week Naya Video • Har Week Naya Quiz • Har Week Naya Winner</div>
+<div class="footer">Made with ❤️ for Ummah • Way To Jannah<br>Har Week Naya Video • Har Week Naya Quiz • Har Week Naya Winner<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#FF0000;font-weight:800">▶️ Hamara YouTube Channel</a></div>
 </div>
 
 <script>
-// ==========================================================
-// ⭐⭐⭐ TUMKO HAR WEEK SIRF YAHAN BADALNA HAI ⭐⭐⭐
-// ==========================================================
 let CURRENT_WEEK = {
   weekNo: 4,
   videoTitle: "Jannat Ke 8 Darwaze",
   prize: "₹500 CASH",
   lastDate: "Sunday 9 PM",
-  videoLink: "https://www.youtube.com/@waytojannah"
+  videoLink: "https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA"
 };
-// HAR WEEK KE QUESTIONS YAHAN DALO - Video dekh ke
 let WEEKLY_QUESTIONS = [
 {q:"Jannat ke kitne darwaze hain?",o:["7","8","10","12"],a:1},
 {q:"Sabse pehle Jannat me kaun dakhil honge?",o:["Hazrat Adam (A.S)","Hazrat Muhammad (S.A.W)","Hazrat Ibrahim (A.S)","Hazrat Musa (A.S)"],a:1},
@@ -90,18 +86,11 @@ let WEEKLY_QUESTIONS = [
 {q:"Laylatul Qadr kis mahine me hai?",o:["Muharram","Ramzan","Shawwal","Rajab"],a:1},
 {q:"Sabse lambi Surah kaunsi?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
 ];
-// ==========================================================
-// ⭐ PURANE WINNERS - YE KABHI DELETE MAT KARNA ⭐
-// Naya winner jeetega to ye list me khud add ho jayega
-// Lekin purane wale hamesha rahenge taaki naye log dekh sakein
-// ==========================================================
 let WINNERS_HISTORY = [
 {name:"Ahmed", city:"Bellary", prize:500, week:"Week 1 - Jannat Ke Darwaze", date:"10 Nov 2026", proofImg:""},
 {name:"Fatima", city:"Hyderabad", prize:500, week:"Week 2 - Ramzan Quiz", date:"17 Nov 2026", proofImg:""},
 {name:"Bilal", city:"Bangalore", prize:300, week:"Week 3 - Quran Quiz", date:"24 Nov 2026", proofImg:""},
 ];
-// ==========================================================
-
 let mode='weekly';
 let quizPractice=[
 {q:"Quran me kitni Surah hain?",o:["110","114","116","120"],a:1},
@@ -116,11 +105,8 @@ let quizPractice=[
 {q:"Wuzu me kitne Farz hain?",o:["3","4","5","6"],a:1},
 ];
 let quiz=[], idx=0, score=0, time=20, timer, player="", city="", phone="", startTime=0, tempProofImg="";
-// Week info auto update
 document.getElementById("prizeBox").innerHTML=`<b>🏆 WEEK ${CURRENT_WEEK.weekNo} PRIZE: ${CURRENT_WEEK.prize}</b><span>Video: "${CURRENT_WEEK.videoTitle}" • Last Date: ${CURRENT_WEEK.lastDate}</span>`;
-document.getElementById("weekVideo").innerText=`Video: "${CURRENT_WEEK.videoTitle}" • Last Date: ${CURRENT_WEEK.lastDate}`;
 document.getElementById("weeklyDesc").innerText=`${CURRENT_WEEK.videoTitle} • Prize wala`;
-
 function showTab(t){
  ['play','winners','proof','claim'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display = x==t?'block':'none');
  ['Play','Winners','Proof','Claim'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active", x.toLowerCase()==t));
@@ -155,7 +141,6 @@ function saveWinner(totalTime){
  winners.push({name:player, city:city||"-", phone:phone||"-", score:score, total:quiz.length, mode:mode, time:totalTime, week:CURRENT_WEEK.weekNo, date:new Date().toLocaleString("en-IN")});
  winners.sort((a,b)=> b.score - a.score || a.time - b.time);
  localStorage.setItem("jannah_winners", JSON.stringify(winners));
- // History me bhi add - agar top 1 hai to
  if(winners[0].name==player && score>=4){
    let hist=JSON.parse(localStorage.getItem("jannah_history")||JSON.stringify(WINNERS_HISTORY));
    hist.unshift({name:player, city:city, prize:parseInt(CURRENT_WEEK.prize.replace(/[^0-9]/g,""))||500, week:`Week ${CURRENT_WEEK.weekNo} - ${CURRENT_WEEK.videoTitle}`, date:new Date().toLocaleDateString("en-IN"), proofImg:""});
@@ -168,17 +153,16 @@ function nextQ(){
   let totalTime=Math.floor((Date.now()-startTime)/1000);
   if(mode=='weekly') saveWinner(totalTime);
   let level = score>=9?"Mufti 🏆":score>=7?"Alim ⭐":score>=4?"Student 📚":"Beginner";
-  document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎉</div><h1>Masha Allah ${player}!</h1><p style="margin:10px 0">Week ${CURRENT_WEEK.weekNo} - Tumhara Score</p><h1 style="font-size:60px;color:#C9A227">${score} / ${quiz.length}</h1><p><b>Level: ${level} • Time: ${totalTime}s</b></p><p style="margin:10px 0;background:#E6FFE6;padding:10px;border-radius:10px">✅ Tumhara Naam + Score <b>AUTO SAVE</b> Ho Gaya!<br>Leaderboard + Winners History me dikhega!</p><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:10px">🔁 DOBARA KHELO + LEADERBOARD DEKHO</button></div>`;
+  document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎉</div><h1>Masha Allah ${player}!</h1><p style="margin:10px 0">Week ${CURRENT_WEEK.weekNo} - Tumhara Score</p><h1 style="font-size:60px;color:#C9A227">${score} / ${quiz.length}</h1><p><b>Level: ${level} • Time: ${totalTime}s</b></p><p style="margin:10px 0;background:#E6FFE6;padding:10px;border-radius:10px">✅ Tumhara Naam + Score <b>AUTO SAVE</b> Ho Gaya!<br>Leaderboard + Winners History me dikhega!</p><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="display:block;margin:10px 0;color:#FF0000;font-weight:800">▶️ CHANNEL SUBSCRIBE KARO</a><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:10px">🔁 DOBARA KHELO</button></div>`;
   return;
  }
  load();
 }
 function renderBoard(){
  let winners=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
- // Sirf is week wale dikhao
  winners=winners.filter(w=>w.week==CURRENT_WEEK.weekNo);
  if(winners.length==0){document.getElementById("publicBoard").innerHTML=`<p style='font-size:13px'>Abhi Week ${CURRENT_WEEK.weekNo} me koi nahi khela. Tum pehle Winner bano! 🏆</p>`;return;}
- document.getElementById("publicBoard").innerHTML=`<table><tr><th>Rank</th><th>Naam</th><th>Score</th><th>Time</th></tr>`+winners.slice(0,5).map((w,i)=>`<tr><td>${i+1} ${i==0?'👑':''}</td><td><b>${w.name}</b><br><small>${w.city}</small></td><td>${w.score}/${w.total}</td><td>${w.time}s</td></tr>`).join("")+"</table><p style='font-size:11px;margin-top:6px'>Week ${CURRENT_WEEK.weekNo} - ${CURRENT_WEEK.videoTitle}</p>";
+ document.getElementById("publicBoard").innerHTML=`<table><tr><th>Rank</th><th>Naam</th><th>Score</th><th>Time</th></tr>`+winners.slice(0,5).map((w,i)=>`<tr><td>${i+1} ${i==0?'👑':''}</td><td><b>${w.name}</b><br><small>${w.city}</small></td><td>${w.score}/${w.total}</td><td>${w.time}s</td></tr>`).join("")+"</table>";
 }
 function renderWinners(){
  let hist=JSON.parse(localStorage.getItem("jannah_history")||JSON.stringify(WINNERS_HISTORY));
@@ -224,7 +208,7 @@ function openAdmin(){
  let proofs=JSON.parse(localStorage.getItem("jannah_proofs")||"[]");
  let wRows=winners.map((w,i)=>`<tr><td>${i+1} ${i==0?'👑':''}</td><td><b>${w.name}</b><br><small>${w.city} • ${w.phone}</small></td><td>${w.score}/${w.total}</td><td>${w.time}s</td><td>Week ${w.week} • ${w.date}</td></tr>`).join("")||`<tr><td colspan="5">Koi nahi</td></tr>`;
  let cRows=claims.map((c,i)=>`<tr><td>${i+1}</td><td><b>${c.name}</b><br>${c.phone}</td><td>${c.method}</td><td>${c.upi}</td><td>Week ${c.week} • ${c.date}</td></tr>`).join("")||`<tr><td colspan="5">Koi claim nahi</td></tr>`;
- document.getElementById("mainCard").innerHTML=`<h1>🔒 ADMIN PANEL - Week ${CURRENT_WEEK.weekNo}</h1><p style="text-align:center">Total Players: ${winners.length} | Claims: ${claims.length} | Proofs: ${proofs.length}</p><h3 style="margin-top:14px">🏆 THIS WEEK WINNERS - No.1 = Winner</h3><div style="overflow-x:auto"><table><tr><th>Rank</th><th>Naam + Phone</th><th>Score</th><th>Time</th><th>Week</th></tr>${wRows}</table></div><h3 style="margin-top:14px">🎁 CLAIMS - Inko Prize Bhejna Hai</h3><div style="overflow-x:auto"><table><tr><th>#</th><th>Naam + Phone</th><th>Method</th><th>UPI Details</th><th>Week</th></tr>${cRows}</table></div><h3 style="margin-top:14px">📸 PROOFS</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${proofs.map(pr=>`<img src="${pr.img}" style="width:100%;height:100px;object-fit:cover;border-radius:10px">`).join("")||"Koi proof nahi"}</div><div style="background:#FFFBEA;padding:12px;border-radius:12px;margin-top:14px;font-size:13px"><b>🔄 NEXT WEEK UPDATE KAISE KARNA HAI?</b><br>1. Code me upar <b>CURRENT_WEEK</b> me Week No, Video Title, Prize badlo<br>2. <b>WEEKLY_QUESTIONS</b> me naye video ke 5 questions dalo<br>3. <b>WINNERS_HISTORY</b> me is week ke winner ka naam add karo<br>4. Commit karo - Purane winners rahenge, naya game shuru!</div><button class="smallBtn" style="background:#0B3D2E;color:white" onclick="copyWinners()">📋 Copy Winners</button><button class="smallBtn" style="background:#C9A227" onclick="location.reload()">⬅ Back</button><p style="font-size:11px;color:red;margin-top:8px">⚠️ Clear All mat dabana, warna history delete ho jayegi. Sirf naya week update karo.</p>`;
+ document.getElementById("mainCard").innerHTML=`<h1>🔒 ADMIN PANEL - Week ${CURRENT_WEEK.weekNo}</h1><p style="text-align:center">Total Players: ${winners.length} | Claims: ${claims.length} | Proofs: ${proofs.length}</p><h3 style="margin-top:14px">🏆 THIS WEEK WINNERS - No.1 = Winner</h3><div style="overflow-x:auto"><table><tr><th>Rank</th><th>Naam + Phone</th><th>Score</th><th>Time</th><th>Week</th></tr>${wRows}</table></div><h3 style="margin-top:14px">🎁 CLAIMS - Inko Prize Bhejna Hai</h3><div style="overflow-x:auto"><table><tr><th>#</th><th>Naam + Phone</th><th>Method</th><th>UPI Details</th><th>Week</th></tr>${cRows}</table></div><h3 style="margin-top:14px">📸 PROOFS</h3><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">${proofs.map(pr=>`<img src="${pr.img}" style="width:100%;height:100px;object-fit:cover;border-radius:10px">`).join("")||"Koi proof nahi"}</div><button class="smallBtn" style="background:#0B3D2E;color:white" onclick="copyWinners()">📋 Copy Winners</button><button class="smallBtn" style="background:#C9A227" onclick="location.reload()">⬅ Back</button>`;
 }
 function copyWinners(){
  let winners=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
