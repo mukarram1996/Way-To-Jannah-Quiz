@@ -1,98 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Way To Jannah Quiz - WayToSoulForJannah</title>
 <style>
-*{box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{margin:0;background:#0f3d2e;color:#fff;min-height:100vh;display:flex;justify-content:center;padding:15px}
-.card{width:100%;max-width:480px;background:#fff;color:#222;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.3)}
-.header{background:linear-gradient(135deg,#0f7a4d,#c9a227);padding:20px;text-align:center;color:#fff}
-.header h1{margin:0;font-size:24px;line-height:1.2}
-.header p{margin:5px 0 0;font-size:13px;opacity:.9}
-.body{padding:20px}
-#qnum{font-weight:700;color:#0f7a4d}
-#question{font-size:19px;font-weight:700;margin:12px 0 16px;line-height:1.4}
-.opt{width:100%;padding:13px;margin:7px 0;border:2px solid #eee;border-radius:12px;background:#f8f8f8;font-size:16px;text-align:left;cursor:pointer}
-.opt:hover{border-color:#0f7a4d}
-.opt.correct{background:#d4edda!important;border-color:green}
-.opt.wrong{background:#f8d7da!important;border-color:red}
-.top{display:flex;justify-content:space-between;font-weight:700}
-#timer{color:#d32f2f}
-.btn{width:100%;padding:14px;background:#0f7a4d;color:#fff;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer;margin-top:10px}
-.sub{background:#FF0000}
-.footer{text-align:center;font-size:12px;color:#888;padding:0 20px 18px}
-.progress{height:8px;background:#eee;border-radius:10px;overflow:hidden;margin:10px 0}
-#bar{height:100%;background:#c9a227;width:0%;transition:.3s}
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+  body{
+    background: linear-gradient(135deg,#06231C 0%,#0B3D2E 45%,#0A2A20 100%);
+    min-height:100vh;display:flex;justify-content:center;align-items:center;padding:15px;
+  }
+  .card{
+    background: linear-gradient(180deg,#FFFBEB 0%,#FFF6D6 100%);
+    width:100%;max-width:480px;border-radius:22px;
+    padding:26px 22px 22px;text-align:center;
+    border:2px solid #C9A227;
+    box-shadow:0 20px 50px rgba(0,0,0,0.5), 0 0 0 5px rgba(201,162,39,0.15);
+    position:relative;overflow:hidden;
+  }
+  .card::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:6px;
+    background:linear-gradient(90deg,#C9A227,#F5D76E,#C9A227);
+  }
+  .top{font-size:11px;letter-spacing:3px;color:#8A6D00;font-weight:800}
+  h1{font-size:26px;color:#0B3D2E;margin:8px 0 2px;line-height:1.2}
+  .sub{font-size:13px;color:#6B5B00;margin-bottom:16px}
+  .bar{height:8px;background:#EADFAE;border-radius:99px;overflow:hidden;margin:10px 0 18px}
+  .fill{height:100%;width:10%;background:linear-gradient(90deg,#0B3D2E,#C9A227);border-radius:99px;transition:0.4s}
+  .qbox{
+    background:#0B3D2E;color:white;padding:18px 16px;border-radius:16px;
+    text-align:left;margin-bottom:16px;
+    box-shadow:0 8px 20px rgba(11,61,46,0.3);
+    border:1px solid #C9A227;
+  }
+  .qbox small{color:#F5D76E;letter-spacing:1px;font-weight:700}
+  .qbox h2{font-size:19px;line-height:1.4;margin-top:6px}
+  .timer{font-size:13px;font-weight:800;color:#0B3D2E;background:#F5D76E;display:inline-block;padding:5px 12px;border-radius:99px;margin-bottom:12px}
+  .opt{
+    width:100%;text-align:left;background:white;border:1.5px solid #E5D68A;
+    padding:13px 14px;border-radius:12px;margin-bottom:10px;
+    font-size:15px;font-weight:600;color:#1A1A1A;cursor:pointer;
+  }
+  .opt:hover{border-color:#C9A227;background:#FFFBEA}
+  .opt.correct{background:#0B7A55;color:white;border-color:#0B7A55}
+  .opt.wrong{background:#B42318;color:white;border-color:#B42318}
+  #nextBtn{
+    width:100%;padding:14px;border:none;border-radius:12px;
+    background:linear-gradient(90deg,#0B3D2E,#145A42);
+    color:#F5D76E;font-size:16px;font-weight:800;letter-spacing:1px;cursor:pointer;
+    box-shadow:0 8px 18px rgba(11,61,46,0.35);margin-top:6px;
+  }
+  #nextBtn:disabled{opacity:0.5}
+  .footer{font-size:11px;color:#8A6D00;margin-top:14px}
 </style>
-</head>
-<body>
-<div class="card">
-<div class="header">
-<h1>🌙 WAY TO JANNAH<br>QUIZ GAME</h1>
-<p>Har Sahi Jawab, Jannah Ki Taraf Ek Qadam | @WayToSoulForJannah</p>
-</div>
-<div class="body" id="game">
-<div class="top"><span id="qnum">Q 1 / 10</span><span>Score: <span id="score">0</span></span><span>⏱ <span id="timer">30</span>s</span></div>
-<div class="progress"><div id="bar"></div></div>
-<div id="question"></div>
-<div id="options"></div>
-<button class="btn" id="next" style="display:none" onclick="nextQ()">Next Question ➡️</button>
-</div>
-<div class="footer">Made with ❤️ by WayToSoulForJannah • Apne sawal add karne ke liye code me QUESTIONS badlo</div>
-</div>
-
-<script>
-// YAHAN APNE SAWAL BADAL SAKTE HO - bas question, options, answer badlo
-const QUESTIONS = [
-{q:"Sabse pehli Surah kaunsi nazil hui?",o:["Surah Fatiha","Surah Alaq","Surah Baqarah","Surah Yaseen"],a:1},
-{q:"Quran Majeed me total kitni Surah hain?",o:["110","114","116","120"],a:1},
-{q:"Hamare Nabi ﷺ ka naam kya hai?",o:["Hazrat Isa (A.S)","Hazrat Musa (A.S)","Hazrat Muhammad ﷺ","Hazrat Ibrahim (A.S)"],a:2},
-{q:"Din me kitni Farz Namaz hain?",o:["3","4","5","6"],a:2},
-{q:"Roza kis mahine me rakha jata hai?",o:["Muharram","Shaban","Ramzan","Shawwal"],a:2},
-{q:"Kaaba kahan hai?",o:["Madina","Jerusalem","Makkah","Baghdad"],a:2},
-{q:"Wuzu me sabse pehle kya dhote hain?",o:["Paer","Chehra","Haath","Sar"],a:2},
-{q:"Jannah me sabse badi nemat kya hogi?",o:["Mehal","Allah ka Deedar","Hoor","Doodh ki neher"],a:1},
-{q:"Sabse pehle Wahi lekar kaun Farishta aaya?",o:["Hazrat Mikail","Hazrat Jibrail (A.S)","Hazrat Israfil","Hazrat Izrail"],a:1},
-{q:"Bismillah me Allah ke kitne naam hain?",o:["1","2","3","99"],a:1},
-{q:"Quran ki sabse lambi Surah kaunsi hai?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
-{q:"Namaz me pehle kya padhte hain?",o:["Surah Ikhlas","Sana","Attahiyat","Durood"],a:1},
-{q:"Hazrat Abu Bakr (R.A) ka laqab kya tha?",o:["Farooq","Siddiq","Ghani","Ali"],a:1},
-{q:"Azaan sabse pehle kisne di?",o:["Hazrat Ali","Hazrat Bilal (R.A)","Hazrat Umar","Hazrat Usman"],a:1},
-{q:"Jannat ke kitne darwaze hain?",o:["7","8","10","5"],a:1},
-{q:"Dozakh ke kitne darwaze hain?",o:["5","6","7","8"],a:2},
-{q:"Surah Fatiha me kitni Ayat hain?",o:["5","6","7","8"],a:2},
-{q:"Tahajjud Namaz kab padhi jati hai?",o:["Subah","Dophar","Raat ko sone ke baad","Maghrib ke baad"],a:2},
-{q:"Sabse choti Surah kaunsi hai?",o:["Surah Ikhlas","Surah Kausar","Surah Nas","Surah Falaq"],a:1},
-{q:"Kalma Tayyaba me kitne lafz hain?",o:["5","6","7","8"],a:2}
-];
-let idx=0, score=0, timer, time=30, selected=false;
-const quiz = QUESTIONS.slice(0,10);
-function loadQ(){
-  selected=false; time=30; document.getElementById('timer').innerText=time;
-  clearInterval(timer);
-  timer=setInterval(()=>{time--; document.getElementById('timer').innerText=time; if(time<=0){clearInterval(timer); showAns(-1)}},1000);
-  document.getElementById('qnum').innerText=`Q ${idx+1} / ${quiz.length}`;
-  document.getElementById('question').innerText=quiz[idx].q;
-  document.getElementById('bar').style.width=((idx)/quiz.length*100)+'%';
-  let html=''; quiz[idx].o.forEach((op,i)=>{ html+=`<button class="opt" onclick="showAns(${i},this)">${String.fromCharCode(65+i)}. ${op}</button>`});
-  document.getElementById('options').innerHTML=html;
-  document.getElementById('next').style.display='none';
-}
-function showAns(i,el){
-  if(selected) return; selected=true; clearInterval(timer);
-  let btns=document.querySelectorAll('.opt');
-  btns.forEach((b,j)=>{ if(j===quiz[idx].a) b.classList.add('correct'); if(j===i && i!==quiz[idx].a) b.classList.add('wrong'); b.disabled=true; });
-  if(i===quiz[idx].a){ score+=10; document.getElementById('score').innerText=score; }
-  document.getElementById('next').style.display='block';
-}
-function nextQ(){ idx++; if(idx>=quiz.length){ finish(); } else loadQ(); }
-function finish(){
-  document.getElementById('game').innerHTML=`<div style="text-align:center;padding:10px"><h2 style="color:#0f7a4d">Masha Allah! 🎉</h2><p style="font-size:20px">Aapka Score: <b>${score} / 100</b></p><p>${score>=70?"Aap Jannah ke raste pe hain! Subhan Allah!":score>=40?"Bohat Achha! Aur mehnat karein.":"Koi baat nahi, seekhna hi jeet hai!"}</p><button class="btn" onclick="location.reload()">Phir Se Khelo 🔄</button><a href="https://youtube.com/@WayToSoulForJannah" target="_blank"><button class="btn sub">📺 WayToSoulForJannah Subscribe Karo</button></a><button class="btn" style="background:#25D366" onclick="share()">📲 WhatsApp Pe Share Karo</button></div>`;
-}
-function share(){ let t=`Maine Way To Jannah Quiz me ${score}/100 score kiya! Tum bhi khelo: `+location.href; window.open('https://wa.me/?text='+encodeURIComponent(t)); }
-loadQ();
-</script>
-</body>
-</html>
