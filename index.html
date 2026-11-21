@@ -27,6 +27,22 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 .stepNum{width:38px;height:38px;background:#0B3D2E;color:#F5D76E;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;flex-shrink:0}
 .stepTitle b{font-size:16px;color:#0B3D2E}
 .winnerBanner{background:linear-gradient(90deg,#0B3D2E,#145A42);color:#F5D76E;padding:12px;border-radius:12px;text-align:center;margin:10px 0;font-size:14px}
+
+/* Premium responsive polish */
+:root{color-scheme:light}
+body{background:radial-gradient(ellipse at top,#174b3b 0%,#071d18 58%,#04120f 100%);min-height:100vh;padding:clamp(12px,3vw,28px)}
+.card{max-width:760px;padding:clamp(18px,3vw,32px);box-shadow:0 24px 70px rgba(0,0,0,.38);border:1px solid rgba(235,194,76,.8)}
+h1{letter-spacing:.4px}
+.box{box-shadow:0 5px 18px rgba(11,61,46,.06)}
+.btn,.opt,.tabs button{transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
+.btn:hover,.opt:hover,.tabs button:hover{filter:brightness(1.04);transform:translateY(-1px)}
+.btn:focus-visible,.opt:focus-visible,.tabs button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #D6A928;outline-offset:2px}
+input,textarea,select{background:#fffdf5;color:#17352b}
+input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3px rgba(201,162,39,.15)}
+.opt:disabled{cursor:default;opacity:1}
+@media(min-width:680px){.tabs{gap:10px}.tabs button{padding:13px 10px}.stepTitle{margin-top:20px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+
 </style>
 </head>
 <body>
@@ -34,7 +50,7 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 <h1>WAY TO JANNAH<br>QUIZ GAME 🏆</h1>
 <p class="sub">Video Dekho • Quiz Khelo • Prize Jeeto</p>
 <div class="prize" id="prizeBox"><b>🏆 IS WEEK KA PRIZE: ₹500 CASH / GIFT</b><br><span style="font-size:13px" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Last Date: Sunday 9 PM</span></div>
-<div style="background:#E6FFE6;border:1.5px solid #0B7A55;padding:10px;border-radius:12px;text-align:center;font-size:13px">✅ <b>100% REAL HAI!</b> Neeche Winners + Proof Dekho</div>
+<div style="background:#FFF4D6;border:1.5px solid #C9A227;padding:12px;border-radius:12px;text-align:center;font-size:13px;color:#5b4210">ℹ️ <b>DEMO VERSION</b><br>Is version mein quiz aur records sirf isi browser mein save hote hain. Abhi global leaderboard, real prize verification, ya admin ko online claim delivery active nahi hai. Real contest launch se pehle secure backend zaroori hai.</div>
 
 <!-- AUTOMATIC LAST WEEK WINNER - Sabko Dikhega -->
 <div id="lastWinnerBanner" class="winnerBanner" style="display:none"></div>
@@ -53,7 +69,7 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 <input id="playerPincode" placeholder="5. Pincode - Jaise 583101 *" inputmode="numeric" maxlength="6">
 <select id="playerPrizeChoice"><option value="Cash - UPI">6. Prize Kya Chahiye? - Cash (UPI)</option><option value="Gift - Courier">6. Prize Kya Chahiye? - Gift (Courier)</option><option value="Recharge">6. Prize Kya Chahiye? - Mobile Recharge</option></select>
 <button class="btn" onclick="startGame()">▶️ QUIZ SHURU KARO</button>
-<p class="small">🔒 Number + Address + Pincode sirf Admin ko dikhega, sabko nahi.</p>
+<p class="small">Privacy note: Is demo mein details isi device/browser ke local storage mein save hoti hain. Ye secure admin-only storage nahi hai; real personal details enter na karein.</p>
 </div>
 
 <div id="savedArea" style="display:none;background:#E6FFE6;border:1.5px solid #0B7A55;padding:12px;border-radius:12px;margin-bottom:10px;text-align:center">
@@ -72,7 +88,7 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 
 <!-- STEP 3 -->
 <div class="stepTitle"><div class="stepNum">3</div><b>JEETNE KE BAAD KYA KARNA HAI?</b></div>
-<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz khatam hote hi tumhara naam <b>Leaderboard</b> me aa jayega.<br>2. <b>CLAIM</b> wale tab me jaake apna Address + Pincode confirm karo.<br>3. Prize milne ke baad <b>PROOF</b> me apni photo dalo.</p></div>
+<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz result is browser ke demo leaderboard mein dikhega.<br>2. CLAIM aur PROOF tabs abhi local demo hain; submissions admin ko online nahi bhejte.<br>3. Real prizes tabhi announce karein jab secure backend aur verification ready ho.</p></div>
 
 <!-- TABS -->
 <div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 LEADERBOARD</button><button id="tabWinners" onclick="showTab('winners')">👑 WINNERS</button><button id="tabProof" onclick="showTab('proof')">📸 PROOF</button><button id="tabClaim" onclick="showTab('claim')">🎁 CLAIM</button></div>
@@ -249,7 +265,7 @@ function submitClaim(){
  let c=JSON.parse(localStorage.getItem("jannah_claims")||"[]");
  c.push({name:n,phone:ph,address:addr,pincode:pin,method:meth,upi:upi,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
  localStorage.setItem("jannah_claims",JSON.stringify(c));
- document.getElementById("claimMsg").innerText="✅ Ho Gaya! Admin ko tumhara Address + Pincode mil gaya.";
+ document.getElementById("claimMsg").innerText="Demo mein claim isi browser par save hua hai. Admin ko online send nahi hua.";
 }
 function previewProof(e){
  let f=e.target.files[0];if(!f)return;
@@ -262,7 +278,7 @@ function uploadProof(){
  let p=JSON.parse(localStorage.getItem("jannah_proofs")||"[]");
  p.unshift({name:n,prize:pr||"₹500",img:tempProofImg,date:new Date().toLocaleString("en-IN")});
  localStorage.setItem("jannah_proofs",JSON.stringify(p));
- document.getElementById("proofMsg").innerText="✅ Masha Allah! Proof sabko dikhne laga!";
+ document.getElementById("proofMsg").innerText="Demo proof isi browser mein save hua hai; public par upload nahi hua.";
  renderProof();
 }
 
