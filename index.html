@@ -3,54 +3,82 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Way To Jannah - Islamic Quiz</title>
+<title>Way To Jannah - Quiz Jeeto Prize Jeeto</title>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:linear-gradient(135deg,#0f5132,#1a8a4a,#ffd700);min-height:100vh;color:white;padding:15px}
-.card{max-width:500px;margin:20px auto;background:rgba(0,0,0,.75);border-radius:20px;padding:25px;border:2px solid #ffd700;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-h1{font-size:32px;color:#ffd700} h1 span{font-size:16px;color:white;display:block}
-p{margin:10px 0;opacity:.9}
-input{width:100%;padding:14px;border-radius:12px;border:none;margin:12px 0;font-size:16px;text-align:center}
-button{width:100%;padding:14px;border:none;border-radius:12px;background:#ffd700;color:#0f5132;font-weight:800;font-size:17px;cursor:pointer;margin-top:8px}
-button:active{transform:scale(.98)}
+body{background:linear-gradient(135deg,#0f5132,#1a8a4a,#ffd700);min-height:100vh;color:white;padding:12px}
+.card{max-width:540px;margin:15px auto;background:rgba(0,0,0,.85);border-radius:22px;padding:22px;border:2px solid #ffd700;text-align:center}
+h1{font-size:30px;color:#ffd700} h1 span{font-size:15px;color:white;display:block}
+.prize-box{background:linear-gradient(90deg,#ffd700,#fff3a0);color:#000;border-radius:15px;padding:14px;margin:14px 0;text-align:left}
+.prize-box h3{text-align:center;font-size:19px}
+.prize-row{display:flex;justify-content:space-between;padding:9px;background:white;border-radius:10px;margin:5px 0;font-weight:800;font-size:15px}
+.live{background:red;color:white;padding:4px 10px;border-radius:20px;font-size:12px;font-weight:800}
+input{width:100%;padding:14px;border-radius:12px;border:none;margin:10px 0;font-size:16px;text-align:center}
+button{width:100%;padding:15px;border:none;border-radius:12px;background:#ffd700;color:#0f5132;font-weight:900;font-size:18px;cursor:pointer}
+.yt-btn{display:block;padding:13px;border-radius:12px;margin:6px 0;font-weight:800;text-decoration:none;font-size:15px}
+.like-btn{background:#ff0000;color:white}
+.sub-btn{background:#fff;color:#ff0000}
+.done-btn{background:#22c55e;color:white;cursor:pointer}
 .opt{background:white;color:#222;padding:14px;border-radius:12px;margin:8px 0;cursor:pointer;text-align:left;font-weight:600}
-.opt:hover{background:#fff3b0}
 .correct{background:#22c55e!important;color:white!important}
 .wrong{background:#ef4444!important;color:white!important}
 #quiz,#result{display:none}
-.badge{background:#ffd700;color:#000;padding:5px 12px;border-radius:20px;font-weight:800;display:inline-block;margin:5px}
-table{width:100%;margin-top:12px;border-collapse:collapse;font-size:14px}
-td,th{padding:8px;border-bottom:1px solid #444;text-align:left}
-th{color:#ffd700}
+.badge{background:#ffd700;color:#000;padding:5px 12px;border-radius:20px;font-weight:800}
+table{width:100%;margin-top:10px;border-collapse:collapse;font-size:14px}
+td,th{padding:8px;border-bottom:1px solid #444;text-align:left} th{color:#ffd700}
 .progress{height:8px;background:#333;border-radius:10px;overflow:hidden;margin:10px 0}
-#bar{height:100%;background:#ffd700;width:0%;transition:.3s}
+#bar{height:100%;background:#ffd700;width:0%}
+.winner{background:#ffd700;color:#000;padding:15px;border-radius:15px;margin:12px 0;font-weight:900;font-size:17px}
+.rule{background:#1a1a1a;border:1px dashed #ffd700;padding:10px;border-radius:10px;font-size:12px;margin-top:10px;line-height:1.5}
+.check-box{background:#222;padding:12px;border-radius:12px;margin:10px 0;text-align:left;font-size:14px}
+.lock{color:#ffd700;font-weight:800;font-size:13px}
 </style>
 </head>
 <body>
 <div class="card" id="start">
-<h1>🕌 WAY TO JANNAH<span>Islamic Quiz Game</span></h1>
-<p>10 Sawal • Har sahi jawab = 10 Points • Top 10 Leaderboard Live!</p>
-<input id="pname" placeholder="Apna Naam Likho... e.g. Ahmed">
-<button onclick="startGame()">▶️ GAME SHURU KARO</button>
-<h3 style="margin-top:20px;color:#ffd700">🏆 LIVE LEADERBOARD</h3>
+<div><span class="live">● LIVE</span> <span style="font-size:13px">Contest ON - 2 Videos = 3 Winners</span></div>
+<h1>🕌 WAY TO JANNAH<span>Quiz Jeeto - Prize Jeeto! 🏆</span></h1>
+<div class="prize-box">
+<h3>🎁 IS HAFTHE KE 3 WINNERS 🎁</h3>
+<div class="prize-row"><span>🥇 1st Winner</span><b>₹1000 CASH</b></div>
+<div class="prize-row"><span>🥈 2nd Winner</span><b>₹500 CASH</b></div>
+<div class="prize-row"><span>🥉 3rd Winner</span><b>₹300 CASH</b></div>
+</div>
+
+<!-- 🔴 LIKE SUBSCRIBE MUST STEP -->
+<div style="background:#ff0000;color:white;padding:10px;border-radius:12px;font-weight:900">⚠️ PRIZE KE LIYE LIKE + SUBSCRIBE MUST HAI!</div>
+<a class="yt-btn like-btn" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" onclick="markLike()">👍 1. VIDEO KO LIKE KARO</a>
+<a class="yt-btn sub-btn" href="https://youtube.com/@YOUR_CHANNEL?sub_confirmation=1" target="_blank" onclick="markSub()">🔔 2. CHANNEL KO SUBSCRIBE KARO</a>
+<div class="check-box">
+<label><input type="checkbox" id="agree" style="width:18px;height:18px;vertical-align:middle"> ✅ Maine Video ko LIKE + Channel ko SUBSCRIBE kar diya hai</label>
+<div id="lockMsg" class="lock">🔒 Pehle upar wale 2 button dabao + tick karo, tabhi game khulega</div>
+</div>
+
+<input id="pname" placeholder="Apna Naam Likho...">
+<button onclick="startGame()">▶️ GAME SHURU KARO - TOP 3 ME AAO</button>
+<div class="rule">📜 <b>Rule:</b> Bina Like + Subscribe ke Prize nahi milega! 2 Videos (10 Min) ke baad Top 3 Winners ko Prize milega. Channel Monetize hone ke baad Prize aur badhega! InshaAllah!</div>
+<h3 style="margin-top:15px;color:#ffd700">🏆 TOP 3 LEADERBOARD</h3>
 <div id="board">Loading...</div>
 </div>
 
 <div class="card" id="quiz">
 <div style="display:flex;justify-content:space-between"><span id="qno"></span><span class="badge" id="score">Score: 0</span></div>
 <div class="progress"><div id="bar"></div></div>
-<h2 id="qtext" style="margin:15px 0;font-size:21px;line-height:1.4"></h2>
+<div style="background:#ffd700;color:#000;padding:6px;border-radius:8px;font-weight:800;font-size:13px;margin-top:8px">🎯 Target: TOP 3 me aao = ₹300 se ₹1000 tak Jeeto!</div>
+<h2 id="qtext" style="margin:15px 0;font-size:21px"></h2>
 <div id="opts"></div>
 </div>
 
 <div class="card" id="result">
 <h1>🎉 MashaAllah!</h1>
-<h2 id="final" style="color:#ffd700;margin:15px 0"></h2>
+<h2 id="final" style="color:#ffd700;margin:12px 0"></h2>
+<div id="prizeWin"></div>
 <p id="msg"></p>
+<p style="font-size:13px">⚠️ Prize lene ke liye Like + Subscribe ka Screenshot bhejna MUST hai! 📸</p>
 <button onclick="location.reload()">🔁 DOBARA KHELO</button>
-<h3 style="margin-top:15px;color:#ffd700">🏆 LEADERBOARD</h3>
+<h3 style="margin-top:15px;color:#ffd700">🏆 TOP 3</h3>
 <div id="board2"></div>
 </div>
 
@@ -67,12 +95,15 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
-
+let liked=false, subbed=false;
+function markLike(){liked=true;checkLock();}
+function markSub(){subbed=true;checkLock();}
+function checkLock(){if(liked&&subbed){document.getElementById('lockMsg').innerHTML="✅ Good! Ab tick karo aur Game Shuru karo!";document.getElementById('lockMsg').style.color="#22c55e";}}
 const questions=[
 {q:"Quran me kul kitni Surah hain?",o:["110","114","116","120"],a:1},
 {q:"Pehli Wahi kahan nazil hui?",o:["Ghaar-e-Hira","Masjid-e-Nabawi","Ghaar-e-Saur","Badr"],a:0},
 {q:"Sabse pehli Surah jo mukammal nazil hui?",o:["Surah Fatiha","Surah Baqarah","Surah Yaseen","Surah Ikhlas"],a:0},
-{q:"Hazrat Muhammad (SAW) ka paidaish kahan hui?",o:["Madina","Makkah","Taif","Jerusalem"],a:1},
+{q:"Hazrat Muhammad (SAW) ki paidaish kahan hui?",o:["Madina","Makkah","Taif","Jerusalem"],a:1},
 {q:"Namaz me kul kitne Farz hain?",o:["3","4","5","6"],a:2},
 {q:"Roza kis mahine me farz hai?",o:["Shawwal","Ramadan","Zil-Hajj","Muharram"],a:1},
 {q:"Quran ka sabse lamba Surah kaunsa hai?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
@@ -82,44 +113,16 @@ const questions=[
 ];
 let idx=0,score=0,name="";
 function startGame(){
+  if(!liked||!subbed){alert("Pehle LIKE + SUBSCRIBE button dabao!");return;}
+  if(!document.getElementById('agree').checked){alert("Pehle Tick karo - Maine Like + Subscribe kar diya!");return;}
   name=document.getElementById('pname').value.trim()||"Player";
-  document.getElementById('start').style.display='none';
-  document.getElementById('quiz').style.display='block';
-  showQ();
+  document.getElementById('start').style.display='none';document.getElementById('quiz').style.display='block';showQ();
 }
-function showQ(){
-  if(idx>=questions.length){finish();return;}
-  let qq=questions[idx];
-  document.getElementById('qno').innerText=`Q ${idx+1}/10`;
-  document.getElementById('qtext').innerText=qq.q;
-  document.getElementById('bar').style.width=(idx*10)+"%";
-  document.getElementById('opts').innerHTML=qq.o.map((op,i)=>`<div class="opt" onclick="check(${i},this)">${String.fromCharCode(65+i)}. ${op}</div>`).join('');
-}
-function check(i,el){
-  let qq=questions[idx];
-  let all=document.querySelectorAll('.opt');
-  all.forEach(o=>o.style.pointerEvents='none');
-  if(i===qq.a){el.classList.add('correct');score+=10;}
-  else{el.classList.add('wrong');all[qq.a].classList.add('correct');}
-  document.getElementById('score').innerText="Score: "+score;
-  setTimeout(()=>{idx++;showQ();},900);
-}
-function finish(){
-  document.getElementById('quiz').style.display='none';
-  document.getElementById('result').style.display='block';
-  document.getElementById('final').innerText=`${name} - Score: ${score}/100`;
-  document.getElementById('msg').innerText= score>=80?"SubhanAllah! Tum Jannah ke raaste pe ho! 🤲":score>=50?"MashaAllah! Aur mehnat karo, Jannah qareeb hai!":"Koi baat nahi, seekhna hi Jannah ka raasta hai! Phir koshish karo!";
-  db.ref('leaderboard').push({name:name,score:score,time:Date.now()});
-}
-function loadBoard(){
-  db.ref('leaderboard').orderByChild('score').limitToLast(10).on('value',snap=>{
-    let arr=[];snap.forEach(c=>arr.push(c.val()));arr.reverse();
-    let html=`<table><tr><th>#</th><th>Naam</th><th>Score</th></tr>`+arr.map((r,i)=>`<tr><td>${i+1}</td><td>${r.name}</td><td><b>${r.score}</b></td></tr>`).join('')+`</table>`;
-    if(arr.length===0) html="Abhi koi score nahi. Pehle tum khelo!";
-    document.getElementById('board').innerHTML=html;
-    document.getElementById('board2').innerHTML=html;
-  });
-}
+function showQ(){if(idx>=questions.length){finish();return;}let qq=questions[idx];document.getElementById('qno').innerText=`Q ${idx+1}/10`;document.getElementById('qtext').innerText=qq.q;document.getElementById('bar').style.width=(idx*10)+"%";document.getElementById('opts').innerHTML=qq.o.map((op,i)=>`<div class="opt" onclick="check(${i},this)">${String.fromCharCode(65+i)}. ${op}</div>`).join('');}
+function check(i,el){let qq=questions[idx];let all=document.querySelectorAll('.opt');all.forEach(o=>o.style.pointerEvents='none');if(i===qq.a){el.classList.add('correct');score+=10;}else{el.classList.add('wrong');all[qq.a].classList.add('correct');}document.getElementById('score').innerText="Score: "+score;setTimeout(()=>{idx++;showQ();},900);}
+function getPrize(s){if(s===100)return "🏆 TOP 3 ME PAKKA! Tum ₹1000 tak jeet sakte ho!";if(s>=80)return "🥈 Bahut Achha! Top 3 me aane ke chance hain!";if(s>=60)return "🥉 Top 3 ke liye thodi aur mehnat karo!";return "Dobara Khelo - Top 3 me aao!";}
+function finish(){document.getElementById('quiz').style.display='none';document.getElementById('result').style.display='block';document.getElementById('final').innerText=`${name} - Score: ${score}/100`;document.getElementById('prizeWin').innerHTML=`<div class="winner">${getPrize(score)}</div>`;document.getElementById('msg').innerText="2 Videos ke baad YouTube pe Top 3 Winners ka naam aayega!";db.ref('leaderboard').push({name:name,score:score,liked:true,subscribed:true,time:Date.now()});}
+function loadBoard(){db.ref('leaderboard').orderByChild('score').limitToLast(3).on('value',snap=>{let arr=[];snap.forEach(c=>arr.push(c.val()));arr.reverse();let prizes=["₹1000","₹500","₹300"];let html=`<table><tr><th>Rank</th><th>Naam</th><th>Score</th><th>Prize</th></tr>`+arr.map((r,i)=>`<tr><td>${i+1}</td><td>${r.name}</td><td><b>${r.score}</b></td><td>${prizes[i]||''}</td></tr>`).join('')+`</table>`;if(arr.length===0)html="Abhi koi winner nahi. Pehle tum khelo!";document.getElementById('board').innerHTML=html;document.getElementById('board2').innerHTML=html;});}
 loadBoard();
 </script>
 </body>
