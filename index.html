@@ -61,7 +61,7 @@ table{display:block;max-width:100%;overflow-x:auto;white-space:normal}
 <h1>WAY TO JANNAH<br>QUIZ GAME 🏆</h1>
 <p class="sub">Video Dekho • Quiz Khelo • Prize Jeeto</p>
 <div class="prize" id="prizeBox"><b>🏆 IS WEEK KA PRIZE: ₹500 CASH / GIFT</b><br><span style="font-size:13px" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Last Date: Sunday 9 PM</span></div>
-<div style="background:#FFF4D6;border:1.5px solid #C9A227;padding:10px;border-radius:12px;text-align:center;font-size:13px">ℹ️ <b>Transparency:</b> Is version mein entries, claims aur proof isi browser mein save hote hain; online admin ko automatically nahi milte.</div>
+<div style="background:#FFF4D6;border:1.5px solid #C9A227;padding:10px;border-radius:12px;text-align:center;font-size:13px">🔒 <b>Privacy:</b> Quiz results aur prize claims secure online database mein save hote hain. Personal details sirf authorized admin dekh sakta hai.</div>
 
 <!-- AUTOMATIC LAST WEEK WINNER - Sabko Dikhega -->
 <div id="lastWinnerBanner" class="winnerBanner" style="display:none"></div>
@@ -80,7 +80,7 @@ table{display:block;max-width:100%;overflow-x:auto;white-space:normal}
 <input id="playerPincode" placeholder="5. Pincode - Jaise 583101 *" inputmode="numeric" maxlength="6">
 <select id="playerPrizeChoice"><option value="Cash - UPI">6. Prize Kya Chahiye? - Cash (UPI)</option><option value="Gift - Courier">6. Prize Kya Chahiye? - Gift (Courier)</option><option value="Recharge">6. Prize Kya Chahiye? - Mobile Recharge</option></select>
 <button class="btn" onclick="startGame()">▶️ QUIZ SHURU KARO</button>
-<p class="small">🔒 Privacy note: Aapki details is device/browser ke Local Storage mein save hoti hain. Ye online admin ko send nahi hoti. Shared/public device par personal details enter na karein.</p>
+<p class="small">🔒 Privacy note: Aapki details prize verification ke liye secure database mein bheji jayengi. Sirf authorized admin unhe dekh sakta hai. Shared/public device par details save na karein.</p>
 </div>
 
 <div id="savedArea" style="display:none;background:#E6FFE6;border:1.5px solid #0B7A55;padding:12px;border-radius:12px;margin-bottom:10px;text-align:center">
@@ -99,13 +99,13 @@ table{display:block;max-width:100%;overflow-x:auto;white-space:normal}
 
 <!-- STEP 3 -->
 <div class="stepTitle"><div class="stepNum">3</div><b>JEETNE KE BAAD KYA KARNA HAI?</b></div>
-<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz result aur leaderboard isi browser mein save hote hain.<br>2. <b>CLAIM</b> details bhi isi device par save hoti hain; admin ko online notification nahi milta.<br>3. <b>PROOF</b> photo isi browser mein save hoti hai; public upload nahi hota.</p></div>
+<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz results online leaderboard mein save honge.<br>2. <b>CLAIM</b> details secure admin panel mein pahunchengi.<br>3. <b>PROOF</b> photo private storage mein upload hogi aur admin review karega.</p></div>
 
 <!-- TABS -->
 <div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 LEADERBOARD</button><button id="tabWinners" onclick="showTab('winners')">👑 WINNERS</button><button id="tabProof" onclick="showTab('proof')">📸 PROOF</button><button id="tabClaim" onclick="showTab('claim')">🎁 CLAIM</button></div>
 
 <div id="tabPlayDiv">
-<div class="box"><h3>🏆 IS WEEK TOP PLAYERS - <span id="leaderWeek">Week 4</span></h3><div id="publicBoard"></div><p class="small">Ye leaderboard isi browser ka local data dikhata hai, global leaderboard nahi. Is device par saved naam/city yahan dikhte hain.</p></div>
+<div class="box"><h3>🏆 IS WEEK TOP PLAYERS - <span id="leaderWeek">Week 4</span></h3><div id="publicBoard"></div><p class="small">Online leaderboard: sabhi players ke results yahan dikh sakte hain.</p></div>
 <div class="box"><h3>📊 TUMHARI PROGRESS</h3><p style="font-size:14px">🔥 Streak: <b>1 Day</b> • Level: <b id="levelText">Beginner</b><br>Best Score: <b id="bestText">0/5</b></p></div>
 </div>
 
@@ -139,7 +139,11 @@ table{display:block;max-width:100%;overflow-x:auto;white-space:normal}
 <p class="small">Way To Jannah • Quiz aur local leaderboard demo<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#FF0000;font-weight:800">▶️ Hamara YouTube Channel</a></p>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script>
+const SB_URL="https://afkdnaaiwsqknnjxvokx.supabase.co";
+const SB_KEY="sb_publishable_djHEyJFkLKMD4muVwJasFw_Eb20GoCT";
+const sb=window.supabase.createClient(SB_URL,SB_KEY);
 // ⭐ AUTOMATIC WEEK SYSTEM - Tumko kuch haath se nahi karna
 let WEEK_DATA = JSON.parse(localStorage.getItem("jannah_week")||"null");
 if(!WEEK_DATA){ WEEK_DATA={weekNo:4, videoTitle:"Jannat Ke 8 Darwaze", prize:500, lastDate:"Sunday 9 PM"}; localStorage.setItem("jannah_week", JSON.stringify(WEEK_DATA)); }
@@ -231,25 +235,30 @@ function check(btn,i){
  if(i===quiz[idx].a){btn.classList.add("correct");score++;}else{btn.classList.add("wrong");btns[quiz[idx].a].classList.add("correct");}
  document.getElementById("nextBtn").disabled=false;
 }
-function saveWinner(totalTime){
+async function saveWinner(totalTime){
+ const entry={player_name:player,city:city||"-",phone:phone||"-",address:address||"-",pincode:pincode||"-",prize_choice:prizeChoice||"-",score:score,total:quiz.length,duration_seconds:totalTime,week_no:CURRENT_WEEK.weekNo};
+ const {error}=await sb.from("quiz_entries").insert(entry);
+ if(error){console.error(error);alert("Quiz result online save nahi hua. Internet check karke admin se contact karein.");}
+ const {error:boardError}=await sb.from("public_leaderboard").insert({player_name:player,city:city||"-",score:score,total:quiz.length,duration_seconds:totalTime,week_no:CURRENT_WEEK.weekNo});
+ if(boardError) console.error(boardError);
  let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
  w.push({name:player,city:city||"-",phone:phone||"-",address:address||"-",pincode:pincode||"-",prizeChoice:prizeChoice||"-",score:score,total:quiz.length,time:totalTime,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
- w.sort((a,b)=>b.score-a.score||a.time-b.time);
  localStorage.setItem("jannah_winners",JSON.stringify(w));
  let best=document.getElementById("bestText"); if(best) best.innerText=`${score}/${quiz.length}`;
 }
-function nextQ(){
+async function nextQ(){
  idx++;
  if(idx>=quiz.length){
   let totalTime=Math.floor((Date.now()-startTime)/1000);
-  saveWinner(totalTime);
+  await saveWinner(totalTime);
   document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎉</div><h1>Masha Allah ${esc(player)}!</h1><p style="margin:10px 0">Tumhara Score</p><h1 style="font-size:60px;color:#C9A227">${score} / ${quiz.length}</h1><p style="background:#FFF4D6;padding:12px;border-radius:12px;margin:10px 0">✅ Quiz result is browser mein save hua.<br>Ye entry online admin ko nahi bheji gayi; winner contact/verification is version mein available nahi hai.</p><p style="font-size:13px">Prize Choice: <b>${esc(prizeChoice)}</b><br>Pincode: <b>${esc(pincode)}</b></p><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="color:#FF0000;font-weight:800">▶️ CHANNEL SUBSCRIBE KARO</a><br><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:12px">🔁 DOBARA KHELO</button></div>`;
   return;
  }
  load();
 }
-function renderBoard(){
- let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]").filter(x=>x.week==CURRENT_WEEK.weekNo);
+async function renderBoard(){
+ const {data:online,error}=await sb.from("public_leaderboard").select("*").eq("week_no",CURRENT_WEEK.weekNo).order("score",{ascending:false}).order("duration_seconds",{ascending:true}).limit(5);
+ let w=error?JSON.parse(localStorage.getItem("jannah_winners")||"[]").filter(x=>x.week==CURRENT_WEEK.weekNo):online.map(x=>({name:x.player_name,city:x.city,score:x.score,total:x.total,time:x.duration_seconds}));
  if(w.length==0){document.getElementById("publicBoard").innerHTML=`<p style="font-size:13px">Abhi Week ${CURRENT_WEEK.weekNo} me koi nahi khela. Tum pehle bano! 🏆</p>`;return;}
  document.getElementById("publicBoard").innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Rank</th><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Naam</th><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Score</th><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Time</th></tr>`+w.slice(0,5).map((x,i)=>`<tr><td style="padding:8px;border:1px solid #ddd">${i+1} ${i==0?'👑':''}</td><td style="padding:8px;border:1px solid #ddd"><b>${esc(x.name)}</b><br><small>${esc(x.city)}</small></td><td style="padding:8px;border:1px solid #ddd">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #ddd">${x.time}s</td></tr>`).join("")+"</table>";
 }
@@ -268,28 +277,31 @@ function renderProof(){
  document.getElementById("proofGrid").innerHTML=proofs.map(p=>`<div style="margin-bottom:10px"><img src="${esc(p.img)}" style="width:100%;height:130px;object-fit:cover;border-radius:12px;border:2px solid #C9A227"><p style="font-size:12px;font-weight:700">👑 ${esc(p.name)} - ${esc(p.prize)} ✅</p></div>`).join("");
  document.getElementById("proofCount").innerText=`✅ ${proofs.length} Winners ne Proof Dala Hai`;
 }
-function submitClaim(){
+async function submitClaim(){
  let n=document.getElementById("claimName").value.trim(),ph=document.getElementById("claimPhone").value.trim(),addr=document.getElementById("claimAddress").value.trim(),pin=document.getElementById("claimPincode").value.trim(),upi=document.getElementById("claimUpi").value.trim(),meth=document.getElementById("claimMethod").value;
  if(!n||!ph||!addr){alert("Naam + Number + Address bharo!");return;}
  if(!/^\d{6}$/.test(pin)){alert("Sahi 6 digit numeric Pincode likho!");return;}
- let c=JSON.parse(localStorage.getItem("jannah_claims")||"[]");
- c.push({name:n,phone:ph,address:addr,pincode:pin,method:meth,upi:upi,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
- localStorage.setItem("jannah_claims",JSON.stringify(c));
- document.getElementById("claimMsg").innerText="✅ Claim is browser mein save ho gaya. Admin ko online notify nahi kiya gaya.";
+ const {error}=await sb.from("prize_claims").insert({player_name:n,phone:ph,address:addr,pincode:pin,method:meth,upi:upi||null,week_no:CURRENT_WEEK.weekNo});
+ if(error){console.error(error);document.getElementById("claimMsg").innerText="Claim submit nahi hua. Internet check karke dobara try karein.";return;}
+ document.getElementById("claimMsg").innerText="✅ Claim online submit ho gaya. Admin review karega.";
 }
 function previewProof(e){
  let f=e.target.files[0];if(!f)return;
  let r=new FileReader();r.onload=(ev)=>{tempProofImg=ev.target.result;let img=document.getElementById("proofPreview");img.src=tempProofImg;img.style.display="block";};r.readAsDataURL(f);
 }
-function uploadProof(){
+async function uploadProof(){
  let n=document.getElementById("proofName").value.trim(),pr=document.getElementById("proofPrize").value.trim();
  if(!tempProofImg){alert("Pehle Photo chuno!");return;}
  if(!n){alert("Naam likho!");return;}
- let p=JSON.parse(localStorage.getItem("jannah_proofs")||"[]");
- p.unshift({name:n,prize:pr||"₹500",img:tempProofImg,date:new Date().toLocaleString("en-IN")});
- localStorage.setItem("jannah_proofs",JSON.stringify(p));
- document.getElementById("proofMsg").innerText="✅ Proof isi browser mein save hua. Ye public website par upload nahi hua.";
- renderProof();
+ const file=document.getElementById("proofFile").files[0];
+ if(!file||!["image/jpeg","image/png","image/webp"].includes(file.type)||file.size>1048576){alert("JPG, PNG ya WEBP image chunein (maximum 1 MB).");return;}
+ const safeName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+ const path=Date.now()+"-"+Math.random().toString(36).slice(2)+"-"+safeName;
+ const {error:uploadError}=await sb.storage.from("prize-proofs").upload(path,file,{contentType:file.type,upsert:false});
+ if(uploadError){console.error(uploadError);document.getElementById("proofMsg").innerText="Photo upload nahi hui. Dobara try karein.";return;}
+ const {error}=await sb.from("prize_proofs").insert({player_name:n,prize_description:pr||"Prize received",image_path:path});
+ if(error){console.error(error);document.getElementById("proofMsg").innerText="Proof record save nahi hua. Admin se contact karein.";return;}
+ document.getElementById("proofMsg").innerText="✅ Proof private storage mein upload ho gaya. Admin review karega.";
 }
 
 // ⭐⭐ AUTOMATIC WINNER - Sunday ko ye dabao, sab khud ho jayega ⭐⭐
@@ -313,19 +325,96 @@ function declareWinnerAndNextWeek(){
 }
 
 function openAdmin(){
- let p=prompt("Admin Password:");if(p!=="jannah123"){alert("Galat Password!");return;}
- let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
- let c=JSON.parse(localStorage.getItem("jannah_claims")||"[]");
- let wRows=w.filter(x=>x.week==CURRENT_WEEK.weekNo).map((x,i)=>`<tr><td style="padding:8px;border:1px solid #ddd">${i+1} ${i==0?'👑':''}</td><td style="padding:8px;border:1px solid #ddd"><b>${esc(x.name)}</b><br>📞 ${esc(x.phone)}<br>📍 ${esc(x.address)}<br>📮 Pin: ${esc(x.pincode)}<br>🎁 ${esc(x.prizeChoice)}</td><td style="padding:8px;border:1px solid #ddd">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #ddd">${x.time}s</td></tr>`).join("")||`<tr><td colspan="4">Is week koi nahi khela</td></tr>`;
- let cRows=c.map((x,i)=>`<tr><td style="padding:8px;border:1px solid #ddd">${i+1}</td><td style="padding:8px;border:1px solid #ddd"><b>${esc(x.name)}</b><br>📞 ${esc(x.phone)}<br>📍 ${esc(x.address)}<br>📮 Pin: ${esc(x.pincode)}</td><td style="padding:8px;border:1px solid #ddd">${esc(x.method)}</td><td style="padding:8px;border:1px solid #ddd">${esc(x.upi)}</td></tr>`).join("")||`<tr><td colspan="4">Koi claim nahi</td></tr>`;
- document.getElementById("mainCard").innerHTML=`<h1>🔒 ADMIN PANEL - Week ${CURRENT_WEEK.weekNo}</h1><p style="background:#FFF4D6;padding:10px;border-radius:10px;margin:10px 0;font-size:12px">Local-only admin panel: data isi browser mein hai. Password source code mein visible hai; isko secure online admin na samjhein.</p><p style="text-align:center">Is Week Players: ${w.filter(x=>x.week==CURRENT_WEEK.weekNo).length} | Claims: ${c.length}</p><div style="background:#FFD700;padding:14px;border-radius:12px;text-align:center;margin:12px 0"><b>🏆 WEEK ${CURRENT_WEEK.weekNo} KA WINNER GHOSHIT KARO</b><br><small>No.1 wala khud Winner ban jayega, History me aa jayega, Naya Week shuru ho jayega</small><br><button onclick="declareWinnerAndNextWeek()" style="padding:12px 18px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;margin-top:8px;width:100%">👑 WINNER GHOSHIT KARO + NAYA WEEK SHURU KARO</button></div><h3 style="margin-top:12px">🏆 IS WEEK LEADERBOARD - No.1 = Winner</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">Rank</th><th style="background:#0B3D2E;color:white;padding:8px">Naam + Number + Address + Pincode</th><th style="background:#0B3D2E;color:white;padding:8px">Score</th><th style="background:#0B3D2E;color:white;padding:8px">Time</th></tr>${wRows}</table><h3 style="margin-top:12px">🎁 CLAIMS - Inko Gift Bhejna Hai</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">#</th><th style="background:#0B3D2E;color:white;padding:8px">Naam + Address + Pincode</th><th style="background:#0B3D2E;color:white;padding:8px">Method</th><th style="background:#0B3D2E;color:white;padding:8px">UPI</th></tr>${cRows}</table><button onclick="copyWinners()" style="padding:10px;border:none;background:#0B3D2E;color:white;border-radius:8px;font-weight:800;margin-top:10px">📋 Copy Winners + Address + Pincode</button> <button onclick="location.reload()" style="padding:10px;border:none;background:#C9A227;border-radius:8px;font-weight:800">⬅ Back</button>`;
+ document.getElementById("mainCard").innerHTML=`<h1>🔐 SECURE ADMIN LOGIN</h1>
+ <p class="sub">Authorized admin only • Way To Jannah</p>
+ <div class="box"><input id="adminEmail" type="email" autocomplete="username" placeholder="Admin email" value="waytosoul4jannah@gmail.com">
+ <input id="adminPassword" type="password" autocomplete="current-password" placeholder="Password (khud set karein)">
+ <button class="btn" onclick="adminLogin()">LOGIN</button>
+ <button class="btn btnGold" onclick="adminSignup()">FIRST TIME? CREATE ADMIN ACCOUNT</button>
+ <button class="btn" onclick="adminReset()">FORGOT PASSWORD</button>
+ <p id="adminAuthMsg" class="small">Is email se signup karein. Supabase email confirmation bhej sakta hai; inbox/spam check karein.</p></div>
+ <button class="btn" onclick="location.reload()">⬅ BACK TO QUIZ</button>`;
 }
+async function adminSignup(){
+ const email=document.getElementById("adminEmail").value.trim().toLowerCase(),password=document.getElementById("adminPassword").value;
+ const msg=document.getElementById("adminAuthMsg");
+ if(email!=="waytosoul4jannah@gmail.com"){msg.innerText="Is admin signup ke liye authorized email use karein.";return;}
+ if(password.length<10){msg.innerText="Kam se kam 10 characters ka strong password rakhein.";return;}
+ msg.innerText="Account create ho raha hai...";
+ const {data,error}=await sb.auth.signUp({email,password});
+ if(error){msg.innerText=error.message;return;}
+ msg.innerText=data.session?"Account ready. Admin panel khol rahe hain...":"Signup request sent. Email inbox/spam mein confirmation link check karein; confirm hone ke baad login karein.";
+ if(data.session) await loadAdminPanel();
+}
+async function adminLogin(){
+ const email=document.getElementById("adminEmail").value.trim().toLowerCase(),password=document.getElementById("adminPassword").value;
+ const msg=document.getElementById("adminAuthMsg");msg.innerText="Login ho raha hai...";
+ const {error}=await sb.auth.signInWithPassword({email,password});
+ if(error){msg.innerText=error.message;return;}
+ await loadAdminPanel();
+}
+async function adminReset(){
+ const email=document.getElementById("adminEmail").value.trim().toLowerCase();
+ const msg=document.getElementById("adminAuthMsg");
+ if(email!=="waytosoul4jannah@gmail.com"){msg.innerText="Authorized admin email enter karein.";return;}
+ const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:location.origin});
+ msg.innerText=error?error.message:"Password reset email bhej diya. Inbox/spam check karein.";
+}
+async function loadAdminPanel(){
+ const {data:{user}}=await sb.auth.getUser();
+ if(!user||user.email.toLowerCase()!=="waytosoul4jannah@gmail.com"){await sb.auth.signOut();alert("Admin access denied.");return;}
+ const {data:admins,error:adminErr}=await sb.from("admin_users").select("user_id").eq("user_id",user.id).limit(1);
+ if(adminErr||!admins||!admins.length){alert("Admin allowlist verification pending. Email confirm karke dobara login karein.");return;}
+ document.getElementById("mainCard").innerHTML=`<h1>🔐 ADMIN DASHBOARD</h1><p class="sub">${esc(user.email)} • Secure session</p>
+ <div class="tabs"><button class="active" onclick="adminTab('players')">PLAYERS</button><button onclick="adminTab('claims')">CLAIMS</button><button onclick="adminTab('proofs')">PROOFS</button><button onclick="adminTab('winners')">WINNERS</button></div>
+ <div id="adminContent" class="box">Loading...</div><button class="btn" onclick="adminLogout()">LOGOUT</button>`;
+ await adminTab("players");
+}
+async function adminTab(which){
+ const el=document.getElementById("adminContent");el.innerHTML="Loading...";
+ if(which==="players"){
+  const {data,error}=await sb.from("quiz_entries").select("*").order("created_at",{ascending:false}).limit(500);
+  if(error){el.innerText=error.message;return;}
+  el.innerHTML="<h3>ALL QUIZ ENTRIES</h3>"+(data.length?data.map((x,i)=>`<div style="padding:10px;border-bottom:1px solid #ddd"><b>${i+1}. ${esc(x.player_name)}</b> — ${x.score}/${x.total}<br>📞 ${esc(x.phone)}<br>📍 ${esc(x.address)}, ${esc(x.city)} - ${esc(x.pincode)}<br>🎁 ${esc(x.prize_choice)} • Week ${x.week_no}<br><small>${new Date(x.created_at).toLocaleString()}</small></div>`).join(""):"No entries yet.");
+ }else if(which==="claims"){
+  const {data,error}=await sb.from("prize_claims").select("*").order("created_at",{ascending:false}).limit(300);
+  if(error){el.innerText=error.message;return;}
+  el.innerHTML="<h3>PRIZE CLAIMS</h3>"+(data.length?data.map(x=>`<div style="padding:10px;border-bottom:1px solid #ddd"><b>${esc(x.player_name)}</b> • ${esc(x.status)}<br>📞 ${esc(x.phone)}<br>📍 ${esc(x.address)}, ${esc(x.pincode)}<br>🎁 ${esc(x.method)} • UPI: ${esc(x.upi||"-")}<br><select id="claim-${x.id}"><option value="pending" ${x.status==="pending"?"selected":""}>Pending</option><option value="approved" ${x.status==="approved"?"selected":""}>Approved</option><option value="rejected" ${x.status==="rejected"?"selected":""}>Rejected</option><option value="fulfilled" ${x.status==="fulfilled"?"selected":""}>Fulfilled</option></select><button class="btn" onclick="updateClaim('${x.id}')">SAVE STATUS</button></div>`).join(""):"No claims yet.");
+ }else if(which==="proofs"){
+  const {data,error}=await sb.from("prize_proofs").select("*").order("created_at",{ascending:false}).limit(200);
+  if(error){el.innerText=error.message;return;}
+  let html="<h3>PRIZE PROOFS</h3>";
+  for(const x of data){const {data:img}=await sb.storage.from("prize-proofs").createSignedUrl(x.image_path,300);html+=`<div style="padding:10px;border-bottom:1px solid #ddd"><b>${esc(x.player_name)}</b> • ${esc(x.prize_description)}<br>${img?.signedUrl?`<img src="${img.signedUrl}" style="width:100%;max-width:320px;border-radius:10px;margin:8px 0">`:"Image unavailable"}<br><small>Status: ${esc(x.status)}</small></div>`;}
+  el.innerHTML=html+(data.length?"":"No proofs yet.");
+ }else{
+  const {data,error}=await sb.from("public_winners").select("*").order("awarded_at",{ascending:false}).limit(200);
+  if(error){el.innerText=error.message;return;}
+  el.innerHTML="<h3>VERIFIED WINNER HISTORY</h3>"+(data.length?data.map(x=>`<div style="padding:8px;border-bottom:1px solid #ddd">👑 <b>${esc(x.player_name)}</b> • ${esc(x.city)} • ₹${x.prize} • ${esc(x.week_label)}</div>`).join(""):"No verified winners added yet.")+`<hr style="margin:12px 0"><h3>DECLARE WINNER FROM ENTRIES</h3><input id="winnerWeek" type="number" value="${CURRENT_WEEK.weekNo}" placeholder="Week number"><input id="winnerPrize" type="number" value="${CURRENT_WEEK.prize}" placeholder="Prize amount"><button class="btn btnGold" onclick="declareOnlineWinner()">DECLARE TOP PLAYER</button>`;
+ }
+}
+async function updateClaim(id){
+ const status=document.getElementById("claim-"+id).value;
+ const {error}=await sb.from("prize_claims").update({status}).eq("id",id);
+ if(error){alert(error.message);return;}await adminTab("claims");
+}
+async function declareOnlineWinner(){
+ const week=Number(document.getElementById("winnerWeek").value),prize=Number(document.getElementById("winnerPrize").value);
+ if(!Number.isInteger(week)||!Number.isFinite(prize)||prize<0){alert("Valid week aur prize enter karein.");return;}
+ const {data,error}=await sb.from("quiz_entries").select("player_name,city,score,duration_seconds").eq("week_no",week).order("score",{ascending:false}).order("duration_seconds",{ascending:true}).limit(1);
+ if(error||!data?.length){alert(error?.message||"Is week koi player nahi.");return;}
+ const w=data[0];
+ const {error:insertError}=await sb.from("public_winners").insert({player_name:w.player_name,city:w.city,prize,week_label:"Week "+week});
+ if(insertError){alert(insertError.message);return;}
+ alert("Winner published to winner history.");await adminTab("winners");
+}
+async function adminLogout(){await sb.auth.signOut();location.reload();}
 function copyWinners(){
  let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]").filter(x=>x.week==CURRENT_WEEK.weekNo);
  let txt=w.map((x,i)=>`${i+1}. ${x.name} - Phone: ${x.phone} - Address: ${x.address} - Pincode: ${x.pincode} - Choice: ${x.prizeChoice} - ${x.score}/${x.total}`).join("\n\n");
  navigator.clipboard.writeText(txt);alert("Copy Ho Gaya!");
 }
 updateWeekUI();loadProfile();renderBoard();renderWinners();renderProof();
+sb.auth.getSession().then(({data})=>{if(data.session) loadAdminPanel();});
 </script>
 </body>
 </html>
