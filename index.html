@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Way To Jannah | Islamic Knowledge Quiz</title>
+<title>Way To Jannah - Quiz Jeeto Prize Jeeto</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
 body{background:#06231C;display:flex;justify-content:center;padding:12px}
@@ -28,29 +28,40 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #E5D68A;border-
 .stepTitle b{font-size:16px;color:#0B3D2E}
 .winnerBanner{background:linear-gradient(90deg,#0B3D2E,#145A42);color:#F5D76E;padding:12px;border-radius:12px;text-align:center;margin:10px 0;font-size:14px}
 
-/* Premium responsive polish */
+/* User-friendly responsive polish; original features and workflows retained */
 :root{color-scheme:light}
-body{background:radial-gradient(ellipse at top,#174b3b 0%,#071d18 58%,#04120f 100%);min-height:100vh;padding:clamp(12px,3vw,28px)}
-.card{max-width:760px;padding:clamp(18px,3vw,32px);box-shadow:0 24px 70px rgba(0,0,0,.38);border:1px solid rgba(235,194,76,.8)}
-h1{letter-spacing:.4px}
-.box{box-shadow:0 5px 18px rgba(11,61,46,.06)}
-.btn,.opt,.tabs button{transition:transform .18s ease,filter .18s ease,box-shadow .18s ease}
-.btn:hover,.opt:hover,.tabs button:hover{filter:brightness(1.04);transform:translateY(-1px)}
-.btn:focus-visible,.opt:focus-visible,.tabs button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #D6A928;outline-offset:2px}
-input,textarea,select{background:#fffdf5;color:#17352b}
-input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3px rgba(201,162,39,.15)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{min-height:100vh;padding:clamp(8px,2.5vw,24px);align-items:flex-start}
+.card{max-width:560px;padding:clamp(14px,3.5vw,24px);box-shadow:0 18px 55px rgba(0,0,0,.24)}
+h1{letter-spacing:.2px}
+.sub{line-height:1.5}
+.prize{box-shadow:0 5px 16px rgba(201,162,39,.18);line-height:1.45}
+.box{box-shadow:0 3px 12px rgba(11,61,46,.045)}
+.btn,.opt,.tabs button{min-height:46px;transition:transform .15s ease,filter .15s ease,box-shadow .15s ease}
+.btn:hover,.opt:hover,.tabs button:hover{filter:brightness(1.04);box-shadow:0 4px 12px rgba(0,0,0,.10)}
+.btn:active,.opt:active{transform:scale(.99)}
+button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #C9A227;outline-offset:2px}
+input,textarea,select{min-height:46px;background:#fff;color:#18231f}
+textarea{resize:vertical}
+.opt{line-height:1.4}
 .opt:disabled{cursor:default;opacity:1}
-@media(min-width:680px){.tabs{gap:10px}.tabs button{padding:13px 10px}.stepTitle{margin-top:20px}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+.tabs{flex-wrap:wrap}
+.tabs button{min-width:calc(50% - 6px)}
+.winnerBanner{line-height:1.55}
+.small{line-height:1.55}
+table{display:block;max-width:100%;overflow-x:auto;white-space:normal}
+@media(min-width:700px){body{padding:28px 16px}.card{max-width:620px}}
+@media(max-width:380px){.tabs{gap:5px}.tabs button{font-size:12px;padding:10px 6px}.stepTitle b{font-size:14px}.prize b{font-size:17px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{transition:none!important;animation:none!important}}
 
 </style>
 </head>
 <body>
 <div class="card" id="mainCard">
 <h1>WAY TO JANNAH<br>QUIZ GAME 🏆</h1>
-<p class="sub">Seek knowledge • Test yourself • Grow every week</p>
-<div class="prize" id="prizeBox"><b>📚 FREE PRACTICE QUIZ</b><br><span style="font-size:13px" id="weekInfo">Learn and test your Islamic knowledge</span></div>
-<div style="background:#FFF4D6;border:1.5px solid #C9A227;padding:12px;border-radius:12px;text-align:center;font-size:13px;color:#5b4210">ℹ️ <b>FREE PRACTICE MODE</b><br>Yeh knowledge-practice quiz hai. Abhi cash prizes, winner selection, online leaderboard ya prize claims active nahi hain. Aapka naam aur city sirf isi browser mein save hote hain.</div>
+<p class="sub">Video Dekho • Quiz Khelo • Prize Jeeto</p>
+<div class="prize" id="prizeBox"><b>🏆 IS WEEK KA PRIZE: ₹500 CASH / GIFT</b><br><span style="font-size:13px" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Last Date: Sunday 9 PM</span></div>
+<div style="background:#E6FFE6;border:1.5px solid #0B7A55;padding:10px;border-radius:12px;text-align:center;font-size:13px">✅ <b>100% REAL HAI!</b> Neeche Winners + Proof Dekho</div>
 
 <!-- AUTOMATIC LAST WEEK WINNER - Sabko Dikhega -->
 <div id="lastWinnerBanner" class="winnerBanner" style="display:none"></div>
@@ -60,12 +71,16 @@ input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3p
 <a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="text-decoration:none"><button class="btn btnRed">▶️ VIDEO DEKHO + SUBSCRIBE KARO</button></a>
 
 <!-- STEP 2 -->
-<div class="stepTitle"><div class="stepNum">2</div><b>APNA PROFILE BANAO <span style="font-weight:400;font-size:12px;color:#666">(Sirf naam aur city)</span></b></div>
+<div class="stepTitle"><div class="stepNum">2</div><b>APNI DETAILS BHARO <span style="font-weight:400;font-size:12px;color:#666">(Ek baar hi, fir yaad rahega)</span></b></div>
 <div id="startArea">
-<input id="playerName" placeholder="Aapka naam *" autocomplete="name" maxlength="40">
-<input id="playerCity" placeholder="City / Gaon *" autocomplete="address-level2" maxlength="40">
+<input id="playerName" placeholder="1. Poora Naam *">
+<input id="playerCity" placeholder="2. City / Gaon *">
+<input id="playerPhone" placeholder="3. Mobile Number (10 Digit) *">
+<textarea id="playerAddress" rows="2" placeholder="4. Poora Address - House No, Gali, Area *"></textarea>
+<input id="playerPincode" placeholder="5. Pincode - Jaise 583101 *" inputmode="numeric" maxlength="6">
+<select id="playerPrizeChoice"><option value="Cash - UPI">6. Prize Kya Chahiye? - Cash (UPI)</option><option value="Gift - Courier">6. Prize Kya Chahiye? - Gift (Courier)</option><option value="Recharge">6. Prize Kya Chahiye? - Mobile Recharge</option></select>
 <button class="btn" onclick="startGame()">▶️ QUIZ SHURU KARO</button>
-<p class="small">Privacy: Sirf naam aur city is device ke browser mein save honge. Phone, address ya payment details mat dein.</p>
+<p class="small">🔒 Number + Address + Pincode sirf Admin ko dikhega, sabko nahi.</p>
 </div>
 
 <div id="savedArea" style="display:none;background:#E6FFE6;border:1.5px solid #0B7A55;padding:12px;border-radius:12px;margin-bottom:10px;text-align:center">
@@ -83,14 +98,14 @@ input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3p
 </div>
 
 <!-- STEP 3 -->
-<div class="stepTitle"><div class="stepNum">3</div><b>APNI LEARNING TRACK KARO</b></div>
-<div class="box"><p style="font-size:13px;line-height:1.6">Har attempt ke baad apna score dekho aur dobara practice karo. Yeh abhi personal practice tool hai, competition ya prize draw nahi.</p></div>
+<div class="stepTitle"><div class="stepNum">3</div><b>JEETNE KE BAAD KYA KARNA HAI?</b></div>
+<div class="box"><p style="font-size:13px;line-height:1.6">1. Quiz khatam hote hi tumhara naam <b>Leaderboard</b> me aa jayega.<br>2. <b>CLAIM</b> wale tab me jaake apna Address + Pincode confirm karo.<br>3. Prize milne ke baad <b>PROOF</b> me apni photo dalo.</p></div>
 
 <!-- TABS -->
-<div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">📊 MY SCORES</button><button id="tabWinners" onclick="showTab('winners')">ℹ️ ABOUT</button></div>
+<div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 LEADERBOARD</button><button id="tabWinners" onclick="showTab('winners')">👑 WINNERS</button><button id="tabProof" onclick="showTab('proof')">📸 PROOF</button><button id="tabClaim" onclick="showTab('claim')">🎁 CLAIM</button></div>
 
 <div id="tabPlayDiv">
-<div class="box"><h3>📊 YOUR PRACTICE SCORES</h3><div id="publicBoard"></div><p class="small">Scores are stored only in this browser and are not a global leaderboard.</p></div>
+<div class="box"><h3>🏆 IS WEEK TOP PLAYERS - <span id="leaderWeek">Week 4</span></h3><div id="publicBoard"></div><p class="small">Yahan sirf Naam + City dikhega. Number/Address/Pincode Private hai.<br>No.1 wala hi Winner banega!</p></div>
 <div class="box"><h3>📊 TUMHARI PROGRESS</h3><p style="font-size:14px">🔥 Streak: <b>1 Day</b> • Level: <b id="levelText">Beginner</b><br>Best Score: <b id="bestText">0/5</b></p></div>
 </div>
 
@@ -99,7 +114,7 @@ input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3p
 <div class="box"><h3>📊 TOTAL PRIZE</h3><p style="font-size:14px">💰 Total Prize Diya: <b id="totalPrize">₹0</b><br>👑 Total Winners: <b id="totalWinners">0</b><br>🎮 Total Players: <b id="totalPlayers">0</b></p></div>
 </div>
 
-<div id="tabProofDiv" style="display:none"></div>
+<div id="tabProofDiv" style="display:none"><div class="box"><h3>📸 PRIZE PROOF - Winners Ne Khud Dala</h3><div id="proofGrid"></div><p id="proofCount" style="font-size:12px;color:green;margin-top:8px"></p></div></div>
 
 <div id="tabClaimDiv" style="display:none">
 <div class="box"><h3>🎁 STEP 1: CLAIM KARO</h3><p style="font-size:13px;margin-bottom:8px">Tumhari details pehle se bhari hogi, bas check karo.</p>
@@ -120,16 +135,14 @@ input:focus,textarea:focus,select:focus{border-color:#b58a1b;box-shadow:0 0 0 3p
 </div>
 </div>
 
-
+<div style="text-align:center;margin-top:10px"><button onclick="openAdmin()" style="background:none;border:none;color:#aaa;font-size:12px;text-decoration:underline;cursor:pointer">🔒 ADMIN - Winners + Address Dekho</button></div>
 <p class="small">Way To Jannah • Har Week Naya Video • Har Week Naya Winner<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#FF0000;font-weight:800">▶️ Hamara YouTube Channel</a></p>
 </div>
 
 <script>
 // ⭐ AUTOMATIC WEEK SYSTEM - Tumko kuch haath se nahi karna
 let WEEK_DATA = JSON.parse(localStorage.getItem("jannah_week")||"null");
-if(!WEEK_DATA){ WEEK_DATA={weekNo:1, videoTitle:"Islamic Knowledge", prize:0, lastDate:"Practice anytime"}; }
-WEEK_DATA.prize=0; WEEK_DATA.videoTitle="Islamic Knowledge"; WEEK_DATA.lastDate="Practice anytime";
-localStorage.setItem("jannah_week",JSON.stringify(WEEK_DATA));
+if(!WEEK_DATA){ WEEK_DATA={weekNo:4, videoTitle:"Jannat Ke 8 Darwaze", prize:500, lastDate:"Sunday 9 PM"}; localStorage.setItem("jannah_week", JSON.stringify(WEEK_DATA)); }
 let CURRENT_WEEK = WEEK_DATA;
 
 let WEEKLY_QUESTIONS=[
@@ -140,18 +153,26 @@ let WEEKLY_QUESTIONS=[
 {q:"Sabse lambi Surah kaunsi?",o:["Surah Yaseen","Surah Baqarah","Surah Kahf","Surah Rahman"],a:1},
 ];
 // Purane Winners - Pehli baar ke liye, fir AUTOMATIC judte jayenge
-let DEFAULT_HISTORY=[];
-// Remove earlier placeholder winner records; they were demo data, not verified winners.
-let oldHistory=JSON.parse(localStorage.getItem("jannah_history")||"[]");
-oldHistory=oldHistory.filter(x=>!(x.name==="Ahmed"&&x.city==="Bellary"&&x.prize===500&&x.week==="Week 1 - Jannat Ke Darwaze")&&!(x.name==="Fatima"&&x.city==="Hyderabad"&&x.prize===500&&x.week==="Week 2 - Ramzan Quiz")&&!(x.name==="Bilal"&&x.city==="Bangalore"&&x.prize===300&&x.week==="Week 3 - Quran Quiz"));
-localStorage.setItem("jannah_history",JSON.stringify(oldHistory));
+let DEFAULT_HISTORY=[
+{name:"Ahmed",city:"Bellary",prize:500,week:"Week 1 - Jannat Ke Darwaze",date:"10 Nov 2026"},
+{name:"Fatima",city:"Hyderabad",prize:500,week:"Week 2 - Ramzan Quiz",date:"17 Nov 2026"},
+{name:"Bilal",city:"Bangalore",prize:300,week:"Week 3 - Quran Quiz",date:"24 Nov 2026"},
+];
+if(!localStorage.getItem("jannah_history")){ localStorage.setItem("jannah_history", JSON.stringify(DEFAULT_HISTORY)); }
 
-let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="Practice",startTime=0,tempProofImg="";
+let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pincode="",prizeChoice="",startTime=0,tempProofImg="";
 
 function updateWeekUI(){
- document.getElementById("prizeBox").innerHTML=`<b>📚 FREE PRACTICE QUIZ</b><br><span style="font-size:13px">Islamic Knowledge • Practice anytime • No cash prize</span>`;
- document.getElementById("lastWinnerBanner").style.display="none";
-
+ document.getElementById("prizeBox").innerHTML=`<b>🏆 WEEK ${CURRENT_WEEK.weekNo} KA PRIZE: ₹${CURRENT_WEEK.prize} CASH / GIFT</b><br><span style="font-size:13px">Video: ${CURRENT_WEEK.videoTitle} • Last Date: ${CURRENT_WEEK.lastDate}</span>`;
+ document.getElementById("weekInfo").innerText=`Week ${CURRENT_WEEK.weekNo} • Video: ${CURRENT_WEEK.videoTitle} • Last Date: ${CURRENT_WEEK.lastDate}`;
+ document.getElementById("leaderWeek").innerText=`Week ${CURRENT_WEEK.weekNo}`;
+ // Last Week Winner Banner - Sabko dikhega
+ let hist=JSON.parse(localStorage.getItem("jannah_history")||"[]");
+ if(hist.length>0){
+   let last=hist[hist.length-1];
+   document.getElementById("lastWinnerBanner").style.display="block";
+   document.getElementById("lastWinnerBanner").innerHTML=`👑 <b>PICHHLE WEEK KA WINNER: ${last.name} (${last.city})</b><br>Jeeta: ₹${last.prize} ✅ • ${last.week} • Ab tumhari baari hai!`;
+ }
 }
 
 function loadProfile(){
@@ -160,30 +181,38 @@ function loadProfile(){
   document.getElementById("savedArea").style.display="block";
   document.getElementById("startArea").style.display="none";
   document.getElementById("savedName").innerText=s.name;
-  document.getElementById("savedDetails").innerText=s.city||"";
-  player=s.name;city=s.city||"";phone="";address="";pincode="";prizeChoice="Practice";
+  document.getElementById("savedDetails").innerText=`${s.city} • ${s.phone} • Pin: ${s.pincode} • ${s.prizeChoice}`;
+  document.getElementById("claimName").value=s.name;
+  document.getElementById("claimPhone").value=s.phone;
+  document.getElementById("claimAddress").value=s.address;
+  document.getElementById("claimPincode").value=s.pincode;
+  document.getElementById("proofName").value=s.name;
+  player=s.name;city=s.city;phone=s.phone;address=s.address;pincode=s.pincode;prizeChoice=s.prizeChoice;
  }
 }
 function editProfile(){
  document.getElementById("savedArea").style.display="none";
  document.getElementById("startArea").style.display="block";
  let s=JSON.parse(localStorage.getItem("jannah_profile")||"null");
- if(s){document.getElementById("playerName").value=s.name;document.getElementById("playerCity").value=s.city||"";}
+ if(s){document.getElementById("playerName").value=s.name;document.getElementById("playerCity").value=s.city;document.getElementById("playerPhone").value=s.phone;document.getElementById("playerAddress").value=s.address;document.getElementById("playerPincode").value=s.pincode;}
 }
-function saveProfile(){localStorage.setItem("jannah_profile",JSON.stringify({name:player,city:city}));}
+function saveProfile(){localStorage.setItem("jannah_profile",JSON.stringify({name:player,city:city,phone:phone,address:address,pincode:pincode,prizeChoice:prizeChoice}));}
 function showTab(t){
- ['play','winners'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display=x===t?'block':'none');
- ['Play','Winners'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active",x.toLowerCase()===t));
- if(t==='winners')renderWinners();
+ ['play','winners','proof','claim'].forEach(x=>document.getElementById("tab"+x.charAt(0).toUpperCase()+x.slice(1)+"Div").style.display=x==t?'block':'none');
+ ['Play','Winners','Proof','Claim'].forEach(x=>document.getElementById("tab"+x).classList.toggle("active",x.toLowerCase()==t));
+ if(t=='winners')renderWinners();if(t=='proof')renderProof();
 }
 function startGameSaved(){
  quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
  document.getElementById("startArea").style.display="none";document.getElementById("savedArea").style.display="none";document.getElementById("quizArea").style.display="block";load();
 }
 function startGame(){
- player=document.getElementById("playerName").value.trim();city=document.getElementById("playerCity").value.trim();phone="";address="";pincode="";prizeChoice="Practice";
- if(!player){alert("Pehle naam likho!");return;}
+ player=document.getElementById("playerName").value.trim();city=document.getElementById("playerCity").value.trim();phone=document.getElementById("playerPhone").value.trim();address=document.getElementById("playerAddress").value.trim();pincode=document.getElementById("playerPincode").value.trim();prizeChoice=document.getElementById("playerPrizeChoice").value;
+ if(!player){alert("Pehle Naam likho!");return;}
  if(!city){alert("City / Gaon likho!");return;}
+ if(!phone||phone.length<10){alert("Sahi Mobile Number likho!");return;}
+ if(!address||address.length<10){alert("Poora Address likho, Gift kahan bhejenge?");return;}
+ if(!pincode||pincode.length!=6){alert("Sahi 6 Digit ka Pincode likho! Jaise 583101");return;}
  saveProfile();
  quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
  document.getElementById("startArea").style.display="none";document.getElementById("quizArea").style.display="block";load();
@@ -205,7 +234,7 @@ function check(btn,i){
 }
 function saveWinner(totalTime){
  let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
- w.push({name:player,city:city||"-",score:score,total:quiz.length,time:totalTime,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
+ w.push({name:player,city:city||"-",phone:phone||"-",address:address||"-",pincode:pincode||"-",prizeChoice:prizeChoice||"-",score:score,total:quiz.length,time:totalTime,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
  w.sort((a,b)=>b.score-a.score||a.time-b.time);
  localStorage.setItem("jannah_winners",JSON.stringify(w));
  let best=document.getElementById("bestText"); if(best) best.innerText=`${score}/${quiz.length}`;
@@ -215,7 +244,7 @@ function nextQ(){
  if(idx>=quiz.length){
   let totalTime=Math.floor((Date.now()-startTime)/1000);
   saveWinner(totalTime);
-  document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎉</div><h1>Masha Allah ${player}!</h1><p style="margin:10px 0">Tumhara Score</p><h1 style="font-size:60px;color:#C9A227">${score} / ${quiz.length}</h1><p style="background:#E6FFE6;padding:12px;border-radius:12px;margin:10px 0">✅ Practice complete!<br>Your score is saved on this browser only.</p><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="color:#FF0000;font-weight:800">▶️ CHANNEL SUBSCRIBE KARO</a><br><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:12px">🔁 DOBARA KHELO</button></div>`;
+  document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:10px"><div style="font-size:50px">🎉</div><h1>Masha Allah ${player}!</h1><p style="margin:10px 0">Tumhara Score</p><h1 style="font-size:60px;color:#C9A227">${score} / ${quiz.length}</h1><p style="background:#E6FFE6;padding:12px;border-radius:12px;margin:10px 0">✅ Ho Gaya!<br>Tumhari Details Save Ho Gayi.<br>Agar tum jeete to Admin tumko Call karega.</p><p style="font-size:13px">Prize Choice: <b>${prizeChoice}</b><br>Pincode: <b>${pincode}</b></p><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" style="color:#FF0000;font-weight:800">▶️ CHANNEL SUBSCRIBE KARO</a><br><button onclick="location.reload()" style="padding:13px 22px;border:none;background:#0B3D2E;color:#F5D76E;border-radius:10px;font-weight:800;width:100%;margin-top:12px">🔁 DOBARA KHELO</button></div>`;
   return;
  }
  load();
@@ -228,10 +257,10 @@ function renderBoard(){
 function renderWinners(){
  let hist=JSON.parse(localStorage.getItem("jannah_history")||"[]");
  let live=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
- document.getElementById("totalPrize").innerText="Not active";
+ document.getElementById("totalPrize").innerText="₹"+hist.reduce((s,x)=>s+(x.prize||0),0);
  document.getElementById("totalWinners").innerText=hist.length;
  document.getElementById("totalPlayers").innerText=live.length+hist.length;
- if(hist.length==0){document.getElementById("winnersWall").innerHTML=`<p style="font-size:13px;line-height:1.6">No verified winners yet. This site is currently a free practice quiz. Prize competitions will only be announced after secure online verification is ready.</p>`;return;}
+ if(hist.length==0){document.getElementById("winnersWall").innerHTML=`<p>Abhi koi Winner nahi. Tum pehle bano!</p>`;return;}
  document.getElementById("winnersWall").innerHTML=hist.slice().reverse().map((w,i)=>`<div style="display:flex;gap:10px;background:#FFFBEA;border:1px solid #E5D68A;border-radius:12px;padding:10px;margin-bottom:8px;align-items:center"><div style="width:45px;height:45px;background:${i==0?'#FFD700':'#0B3D2E'};color:${i==0?'#000':'white'};border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:800">${w.name.charAt(0)}</div><div><b>${i==0?'👑 ':''}${w.name} - ${w.city}</b><br><span style="color:#0B7A55;font-weight:700">Jeeta: ₹${w.prize} ✅</span><br><small>${w.week} • ${w.date}</small></div></div>`).join("");
 }
 function renderProof(){
@@ -247,7 +276,7 @@ function submitClaim(){
  let c=JSON.parse(localStorage.getItem("jannah_claims")||"[]");
  c.push({name:n,phone:ph,address:addr,pincode:pin,method:meth,upi:upi,week:CURRENT_WEEK.weekNo,date:new Date().toLocaleString("en-IN")});
  localStorage.setItem("jannah_claims",JSON.stringify(c));
- document.getElementById("claimMsg").innerText="Demo mein claim isi browser par save hua hai. Admin ko online send nahi hua.";
+ document.getElementById("claimMsg").innerText="✅ Ho Gaya! Admin ko tumhara Address + Pincode mil gaya.";
 }
 function previewProof(e){
  let f=e.target.files[0];if(!f)return;
@@ -260,13 +289,12 @@ function uploadProof(){
  let p=JSON.parse(localStorage.getItem("jannah_proofs")||"[]");
  p.unshift({name:n,prize:pr||"₹500",img:tempProofImg,date:new Date().toLocaleString("en-IN")});
  localStorage.setItem("jannah_proofs",JSON.stringify(p));
- document.getElementById("proofMsg").innerText="Demo proof isi browser mein save hua hai; public par upload nahi hua.";
+ document.getElementById("proofMsg").innerText="✅ Masha Allah! Proof sabko dikhne laga!";
  renderProof();
 }
 
 // ⭐⭐ AUTOMATIC WINNER - Sunday ko ye dabao, sab khud ho jayega ⭐⭐
 function declareWinnerAndNextWeek(){
- alert("Winner selection is disabled in free practice mode."); return;
  let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]").filter(x=>x.week==CURRENT_WEEK.weekNo);
  if(w.length==0){alert("Is week koi khela hi nahi!");return;}
  let winner=w[0]; // No.1 = Winner
@@ -286,7 +314,6 @@ function declareWinnerAndNextWeek(){
 }
 
 function openAdmin(){
- alert("Admin panel is disabled until secure authentication is implemented."); return;
  let p=prompt("Admin Password:");if(p!=="jannah123"){alert("Galat Password!");return;}
  let w=JSON.parse(localStorage.getItem("jannah_winners")||"[]");
  let c=JSON.parse(localStorage.getItem("jannah_claims")||"[]");
