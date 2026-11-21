@@ -150,15 +150,8 @@ let quiz=[],idx=0,score=0,time=20,timer,player="",city="",phone="",address="",pi
 
 function updateWeekUI(){
  document.getElementById("prizeBox").innerHTML=`<b>📚 FREE PRACTICE QUIZ</b><br><span style="font-size:13px">Islamic Knowledge • Practice anytime • No cash prize</span>`;
- document.getElementById("weekInfo").innerText=`Week ${CURRENT_WEEK.weekNo} • Video: ${CURRENT_WEEK.videoTitle} • Last Date: ${CURRENT_WEEK.lastDate}`;
- document.getElementById("leaderWeek").innerText=`Week ${CURRENT_WEEK.weekNo}`;
- // Last Week Winner Banner - Sabko dikhega
- let hist=JSON.parse(localStorage.getItem("jannah_history")||"[]");
- if(hist.length>0){
-   let last=hist[hist.length-1];
-   document.getElementById("lastWinnerBanner").style.display="block";
-   document.getElementById("lastWinnerBanner").innerHTML=`👑 <b>PICHHLE WEEK KA WINNER: ${last.name} (${last.city})</b><br>Jeeta: ₹${last.prize} ✅ • ${last.week} • Ab tumhari baari hai!`;
- }
+ document.getElementById("lastWinnerBanner").style.display="none";
+
 }
 
 function loadProfile(){
