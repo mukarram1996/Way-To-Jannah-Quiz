@@ -20,7 +20,6 @@ button{width:100%;padding:15px;border:none;border-radius:12px;background:#ffd700
 .yt-btn{display:block;padding:13px;border-radius:12px;margin:6px 0;font-weight:800;text-decoration:none;font-size:15px}
 .like-btn{background:#ff0000;color:white}
 .sub-btn{background:#fff;color:#ff0000}
-.done-btn{background:#22c55e;color:white;cursor:pointer}
 .opt{background:white;color:#222;padding:14px;border-radius:12px;margin:8px 0;cursor:pointer;text-align:left;font-weight:600}
 .correct{background:#22c55e!important;color:white!important}
 .wrong{background:#ef4444!important;color:white!important}
@@ -46,23 +45,19 @@ td,th{padding:8px;border-bottom:1px solid #444;text-align:left} th{color:#ffd700
 <div class="prize-row"><span>🥈 2nd Winner</span><b>₹500 CASH</b></div>
 <div class="prize-row"><span>🥉 3rd Winner</span><b>₹300 CASH</b></div>
 </div>
-
-<!-- 🔴 LIKE SUBSCRIBE MUST STEP -->
 <div style="background:#ff0000;color:white;padding:10px;border-radius:12px;font-weight:900">⚠️ PRIZE KE LIYE LIKE + SUBSCRIBE MUST HAI!</div>
-<a class="yt-btn like-btn" href="https://youtube.com/@YOUR_CHANNEL" target="_blank" onclick="markLike()">👍 1. VIDEO KO LIKE KARO</a>
-<a class="yt-btn sub-btn" href="https://youtube.com/@YOUR_CHANNEL?sub_confirmation=1" target="_blank" onclick="markSub()">🔔 2. CHANNEL KO SUBSCRIBE KARO</a>
+<a class="yt-btn like-btn" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" onclick="markLike()">👍 1. VIDEO KO LIKE KARO</a>
+<a class="yt-btn sub-btn" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" onclick="markSub()">🔔 2. CHANNEL KO SUBSCRIBE KARO</a>
 <div class="check-box">
 <label><input type="checkbox" id="agree" style="width:18px;height:18px;vertical-align:middle"> ✅ Maine Video ko LIKE + Channel ko SUBSCRIBE kar diya hai</label>
 <div id="lockMsg" class="lock">🔒 Pehle upar wale 2 button dabao + tick karo, tabhi game khulega</div>
 </div>
-
 <input id="pname" placeholder="Apna Naam Likho...">
 <button onclick="startGame()">▶️ GAME SHURU KARO - TOP 3 ME AAO</button>
 <div class="rule">📜 <b>Rule:</b> Bina Like + Subscribe ke Prize nahi milega! 2 Videos (10 Min) ke baad Top 3 Winners ko Prize milega. Channel Monetize hone ke baad Prize aur badhega! InshaAllah!</div>
 <h3 style="margin-top:15px;color:#ffd700">🏆 TOP 3 LEADERBOARD</h3>
 <div id="board">Loading...</div>
 </div>
-
 <div class="card" id="quiz">
 <div style="display:flex;justify-content:space-between"><span id="qno"></span><span class="badge" id="score">Score: 0</span></div>
 <div class="progress"><div id="bar"></div></div>
@@ -70,7 +65,6 @@ td,th{padding:8px;border-bottom:1px solid #444;text-align:left} th{color:#ffd700
 <h2 id="qtext" style="margin:15px 0;font-size:21px"></h2>
 <div id="opts"></div>
 </div>
-
 <div class="card" id="result">
 <h1>🎉 MashaAllah!</h1>
 <h2 id="final" style="color:#ffd700;margin:12px 0"></h2>
@@ -81,7 +75,6 @@ td,th{padding:8px;border-bottom:1px solid #444;text-align:left} th{color:#ffd700
 <h3 style="margin-top:15px;color:#ffd700">🏆 TOP 3</h3>
 <div id="board2"></div>
 </div>
-
 <script>
 const firebaseConfig = {
   apiKey: "AIzaSyAl-CFpGaFN2O6c1BnBXK9qtqpB-WKHZm8",
