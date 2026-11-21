@@ -384,7 +384,7 @@ async function adminTab(which){
   const {data,error}=await sb.from("prize_proofs").select("*").order("created_at",{ascending:false}).limit(200);
   if(error){el.innerText=error.message;return;}
   let html="<h3>PRIZE PROOFS</h3>";
-  for(const x of data){const {data:img}=await sb.storage.from("prize-proofs").createSignedUrl(x.image_path,300);html+=`<div style="padding:10px;border-bottom:1px solid #ddd"><b>${esc(x.player_name)}</b> • ${esc(x.prize_description)}<br>${img?.signedUrl?`<img src="${img.signedUrl}" style="width:100%;max-width:320px;border-radius:10px;margin:8px 0">`:"Image unavailable"}<br><small>Status: ${esc(x.status)}</small></div>`;}
+  for(const x of data){const {data:img}=await sb.storage.from("prize-proofs").createSignedUrl(x.image_path,300);html+=`<div style="padding:10px;border-bottom:1px solid #ddd"><b>${esc(x.player_name)}</b> • ${esc(x.prize_description)}<br>${img?.signedUrl?`<img src="${img.signedUrl}" style="width:100%;max-width:320px;border-radius:10px;margin:8px 0">`:"Image unavailable"}<br><small>Status: ${esc(x.status)}</small><select id="proof-${x.id}"><option value="pending" ${x.status==="pending"?"selected":""}>Pending</option><option value="approved" ${x.status==="approved"?"selected":""}>Approved</option><option value="rejected" ${x.status==="rejected"?"selected":""}>Rejected</option></select><button class="btn" onclick="updateProof('${x.id}')">SAVE PROOF STATUS</button></div>`;}
   el.innerHTML=html+(data.length?"":"No proofs yet.");
  }else{
   const {data,error}=await sb.from("public_winners").select("*").order("awarded_at",{ascending:false}).limit(200);
@@ -396,6 +396,11 @@ async function updateClaim(id){
  const status=document.getElementById("claim-"+id).value;
  const {error}=await sb.from("prize_claims").update({status}).eq("id",id);
  if(error){alert(error.message);return;}await adminTab("claims");
+}
+async function updateProof(id){
+ const status=document.getElementById("proof-"+id).value;
+ const {error}=await sb.from("prize_proofs").update({status}).eq("id",id);
+ if(error){alert(error.message);return;}await adminTab("proofs");
 }
 async function declareOnlineWinner(){
  const week=Number(document.getElementById("winnerWeek").value),prize=Number(document.getElementById("winnerPrize").value);
