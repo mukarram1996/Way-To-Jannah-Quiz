@@ -7,57 +7,60 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif}
-body{background:#F0F2F5;display:flex;justify-content:center}
-.main{width:100%;max-width:520px;background:#fff;min-height:100vh}
-.top{padding:22px 20px 18px;text-align:center;border-bottom:1px solid #E9ECEF}
-.top .logo{width:58px;height:58px;background:#E8F5E9;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:30px;margin:0 auto}
-.top h1{font-size:26px;color:#111;margin-top:10px;letter-spacing:-.5px}
-.top h1 span{color:#1A7A4C}
-.top p{font-size:14px;color:#65676B;line-height:1.5;margin-top:8px}
-.tag{display:inline-block;background:#E8F5E9;color:#1A7A4C;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;margin-top:10px}
-.sec{padding:16px 20px}
-.card{border:1px solid #E9ECEF;border-radius:16px;padding:16px;margin-bottom:12px;background:#fff}
-.card h3{font-size:16px;color:#111;margin-bottom:6px}
-.card p{font-size:13px;color:#65676B;line-height:1.6}
-.steps{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin:14px 0}
-.steps div{background:#F8F9FA;border-radius:14px;padding:14px 6px;text-align:center}
-.steps b{font-size:22px}.steps span{font-size:12px;font-weight:600;color:#111;display:block;margin-top:6px;line-height:1.3}
-.inamBox{background:#F8F9FA;border-radius:16px;padding:16px}
-.inamRow{display:flex;justify-content:space-between;align-items:center;background:#fff;border:1px solid #E9ECEF;padding:12px;border-radius:12px;margin-top:8px}
-.inamRow span{font-size:14px}.inamRow b{color:#1A7A4C}
-.btnBig{width:100%;padding:16px;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-bottom:10px}
-.btnPri{background:#1A7A4C;color:#fff}
-.btnPra{background:#fff;color:#1A7A4C;border:1.5px solid #DDE1E6}
-.btn{width:100%;padding:14px;border:none;border-radius:12px;background:#1A7A4C;color:#fff;font-size:15px;font-weight:700;cursor:pointer;margin-top:8px}
-.btnOutline{background:#fff;color:#111;border:1.5px solid #DDE1E6}
-input,textarea,select{width:100%;padding:13px;border:1.5px solid #DDE1E6;border-radius:12px;margin-bottom:10px;font-size:15px;background:#fff;outline:none}
-input:focus,textarea:focus{border-color:#1A7A4C}
-.qbox{background:#1A7A4C;color:#fff;padding:16px;border-radius:12px;margin-bottom:10px}
-.opt{width:100%;text-align:left;background:#fff;border:1.5px solid #DDE1E6;padding:14px;border-radius:12px;margin-bottom:9px;font-size:15px;font-weight:600;cursor:pointer}
-.opt.correct{background:#1A7A4C;color:#fff;border-color:#1A7A4C}.opt.wrong{background:#D32F2F;color:#fff;border-color:#D32F2F}
-.tabs{display:flex;gap:6px;padding:0 20px 12px;flex-wrap:wrap}.tabs button{flex:1;padding:11px;border:1px solid #E9ECEF;border-radius:10px;font-weight:600;cursor:pointer;background:#F8F9FA;font-size:12px;min-width:70px;color:#111}.tabs button.active{background:#111;color:#fff;border-color:#111}
-.small{font-size:12px;color:#999;text-align:center;margin-top:8px}
-.yt{display:block;padding:13px;border-radius:12px;margin:6px 0;font-weight:700;text-decoration:none;font-size:14px;text-align:center}
-.likeB{background:#111;color:#fff}.subB{background:#fff;color:#111;border:1.5px solid #111}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+body{background:#F8F3E6;display:flex;justify-content:center}
+.main{width:100%;max-width:520px;background:#FFFEF8;min-height:100vh}
+.hero{background:linear-gradient(180deg,#0B3D2E 0%,#125741 100%);color:white;text-align:center;padding:28px 18px 24px;border-radius:0 0 32px 32px;position:relative;overflow:hidden}
+.hero:before{content:"🕌";font-size:110px;position:absolute;right:-10px;bottom:-20px;opacity:.12}
+.hero .bismillah{font-size:13px;opacity:.8;letter-spacing:1px}
+.hero h1{font-size:30px;line-height:1.15;margin-top:8px;font-weight:900}
+.hero h1 span{color:#E8C979;font-style:italic}
+.hero p{font-size:14px;line-height:1.6;opacity:.9;margin-top:10px}
+.hero .tag{background:rgba(255,255,255,.15);display:inline-block;padding:6px 14px;border-radius:20px;font-size:12px;margin-top:12px;border:1px solid rgba(255,255,255,.2)}
+.ilm{margin:16px;background:white;border:1px solid #EADFAE;border-radius:18px;padding:16px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.06)}
+.ilm h2{color:#0B3D2E;font-size:18px}
+.ilm p{font-size:13px;color:#666;line-height:1.6;margin-top:6px}
+.steps{padding:0 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}
+.steps div{background:#FFFEF8;border:1px solid #EADFAE;border-radius:14px;padding:12px 6px}
+.steps b{font-size:22px}.steps span{font-size:12px;font-weight:700;color:#0B3D2E;display:block;margin-top:4px;line-height:1.3}
+.inam{margin:16px;background:linear-gradient(135deg,#FFF8D6,#FFF2B0);border:1.5px solid #C9A227;border-radius:18px;padding:16px}
+.inam h3{color:#0B3D2E;text-align:center;font-size:16px}
+.inam p{text-align:center;font-size:12px;color:#666;margin-top:4px}
+.inamRow{display:flex;justify-content:space-between;align-items:center;background:white;padding:11px 12px;border-radius:12px;margin-top:8px}
+.inamRow b{color:#0B3D2E}
+.btnBig{width:calc(100% - 32px);margin:0 16px 10px;padding:17px;border:none;border-radius:16px;font-size:16px;font-weight:900;cursor:pointer}
+.btnPractice{background:#fff;color:#0B3D2E;border:2px solid #0B3D2E}
+.btnPrize{background:#0B3D2E;color:#E8C979}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;background:#0B3D2E;color:#E8C979;font-size:16px;font-weight:800;cursor:pointer;margin-top:8px}
+.btnGold{background:#C9A227;color:#fff}
+.card{padding:0 16px 16px}
+.white{border:1px solid #EADFAE;border-radius:16px;padding:14px;margin-bottom:12px;background:white}
+.white h3{color:#0B3D2E;margin-bottom:8px}
+input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-radius:12px;margin-bottom:10px;font-size:15px;background:#FFFEF8}
+.qbox{background:#0B3D2E;color:white;padding:16px;border-radius:14px;margin-bottom:10px}
+.opt{width:100%;text-align:left;background:white;border:1.5px solid #EADFAE;padding:14px;border-radius:12px;margin-bottom:9px;font-size:15px;font-weight:600;cursor:pointer}
+.opt.correct{background:#0B7A55;color:white}.opt.wrong{background:#B42318;color:white}
+.tabs{display:flex;gap:6px;padding:0 16px 12px;flex-wrap:wrap}.tabs button{flex:1;padding:11px;border:none;border-radius:10px;font-weight:700;cursor:pointer;background:#EFE8C8;font-size:12px;min-width:70px;color:#0B3D2E}.tabs button.active{background:#0B3D2E;color:#E8C979}
+.small{font-size:12px;color:#888;text-align:center;margin-top:8px}
+.yt{display:block;padding:13px;border-radius:12px;margin:6px 0;font-weight:800;text-decoration:none;font-size:15px;text-align:center}
+.likeB{background:#0B3D2E;color:white}.subB{background:white;color:#0B3D2E;border:2px solid #0B3D2E}
 .hidden{display:none!important}
 </style>
 </head>
 <body>
 <div class="main" id="mainCard">
 
-<!-- CLEAN HEADER -->
-<div class="top">
-<div class="logo">📖</div>
-<h1>Way To <span>Jannah</span></h1>
-<p>Ilm Ka Safar<br>Quran • Seerat • Namaz • Jannat<br>Roz thoda Ilm seekho, apne Deen ko mazboot karo.</p>
-<div class="tag">✦ Seekho • Samjho • Aage Badho ✦</div>
+<!-- ISLAMIC HERO - SATTA NAHI, ILM -->
+<div class="hero">
+<div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+<h1>WAY TO <span>JANNAH</span><br>ILM KA SAFAR 📖</h1>
+<p>Quran • Seerat • Namaz • Jannat<br>Roz thoda Ilm seekho, apne Deen ko mazboot karo.</p>
+<div class="tag">✨ Seekho • Samjho • Aage Badho ✨</div>
 </div>
 
-<div class="sec">
-<div class="card">
-<h3>Ye kya hai?</h3>
-<p>Har hafte ek nayi video, usi par 5 sawal.<br>Sahi jawab do, Ilm badhao aur pyaara sa <b>Hadiya (Inam)</b> pao.<br><b>Ye koi satta / jua nahi hai,</b> ye Ilm ki mehnat ka inaam hai.</p>
+<div class="ilm">
+<h2>📖 Aaj Ka Sawal, Aaj Ka Ilm</h2>
+<p>Har hafte ek nayi video, usi par 5 pyaare sawal.<br>Sahi jawab do, Ilm badhao aur pyaara sa <b>Hadiya (Inam)</b> pao.<br>Ye koi satta / jua nahi hai, ye <b>Ilm ki mehnat ka inaam</b> hai.</p>
 </div>
 
 <div class="steps">
@@ -66,32 +69,33 @@ input:focus,textarea:focus{border-color:#1A7A4C}
 <div><b>🎁</b><span>Hadiya<br>Pao</span></div>
 </div>
 
-<div class="card inamBox">
-<h3 style="text-align:center">🎁 Is Hafte Ke Hadiya</h3>
-<p style="text-align:center">Jo sabse accha Ilm dikhayenge, unko mohabbat se hadiya diya jayega</p>
-<div class="inamRow"><span>🥇 Pehla Maqaam</span><b id="pz1">₹1000</b></div>
+<!-- INAM - PYAAR SE, SATTA JAISA NAHI -->
+<div class="inam">
+<h3>🎁 Is Hafte Ke 3 Mehnati Sathi Ko Hadiya</h3>
+<p>Jo sabse accha Ilm dikhayenge, unko mohabbat se hadiya diya jayega</p>
+<div class="inamRow"><span>🥇 Pehla Maqaam - Sabse Zyada Ilm</span><b id="pz1">₹1000</b></div>
 <div class="inamRow"><span>🥈 Dusra Maqaam</span><b id="pz2">₹500</b></div>
 <div class="inamRow"><span>🥉 Teesra Maqaam</span><b id="pz3">₹300</b></div>
-<p style="font-size:12px;margin-top:8px;text-align:center" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Aakhri Din: Sunday 9 PM</p>
+<p style="font-size:12px;margin-top:8px" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Aakhri Din: Sunday 9 PM</p>
 </div>
 
-<button class="btnBig btnPra" onclick="startPractice()">📖 Practice Karo - Free<br><span style="font-size:12px;font-weight:500">Bina Details Ke, Sirf Seekhne Ke Liye</span></button>
-<button class="btnBig btnPri" onclick="showPrizeForm()">🎁 Hadiya Ke Liye Shamil Ho<br><span style="font-size:12px;font-weight:500">Ilm Dikhayo, Hadiya Pao</span></button>
+<button class="btnBig btnPractice" onclick="startPractice()">📖 PEHLE SEEKHO - PRACTICE KARO<br><span style="font-size:12px;font-weight:600">Free Hai, Koi Details Nahi Chahiye</span></button>
+<button class="btnBig btnPrize" onclick="showPrizeForm()">🎁 HADIYA KE LIYE SHAMIL HO<br><span style="font-size:12px;font-weight:600">Ilm Dikhayo, Hadiya Pao</span></button>
 
-<div id="lastWinnerBanner" style="background:#F8F9FA;border:1px solid #E9ECEF;padding:12px;border-radius:12px;text-align:center;font-size:13px;display:none;margin-bottom:12px"></div>
+<div id="lastWinnerBanner" style="margin:0 16px 12px;background:#0B3D2E;color:#E8C979;padding:12px;border-radius:14px;text-align:center;font-size:13px;display:none"></div>
 
-<div id="prizeFormWrap" class="hidden">
-<div class="card">
-<h3>1. Hamare Sath Judein</h3>
-<p>Hamari Deeni videos zyada logo tak pahunche, isliye support karein. Ye FREE hai.</p>
-<a class="yt likeB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" onclick="markLike()">👍 Video Ko Pasand Karein</a>
+<div id="prizeFormWrap" class="card hidden">
+<div class="white">
+<h3>Step 1 - Hamare Sath Judein 🤲</h3>
+<p style="font-size:13px;margin-bottom:8px">Hamari Deeni videos zyada logo tak pahunche, isliye Channel ko support karein. Ye FREE hai.</p>
+<a class="yt likeB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" onclick="markLike()">🤲 Video Ko Pasand Karein</a>
 <a class="yt subB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" onclick="markSub()">🔔 Channel Se Judein - Subscribe</a>
-<label style="display:block;background:#F8F9FA;padding:10px;border-radius:10px;font-size:14px;border:1px solid #E9ECEF"><input type="checkbox" id="agree" onchange="checkLock()" style="width:18px;height:18px;vertical-align:middle;margin:0"> ✅ Maine Support Kar Diya Hai</label>
-<div id="lockMsg" style="color:#D32F2F;font-weight:700;font-size:13px;margin-top:6px;text-align:center">Pehle upar wale 2 button dabayein + tick karein</div>
+<label style="display:block;background:#FFFEF8;padding:10px;border-radius:10px;font-size:14px;border:1px solid #EADFAE"><input type="checkbox" id="agree" onchange="checkLock()" style="width:18px;height:18px;vertical-align:middle;margin:0"> ✅ Maine Support Kar Diya Hai</label>
+<div id="lockMsg" style="color:#B42318;font-weight:700;font-size:13px;margin-top:6px;text-align:center">Pehle upar wale 2 button dabayein + tick karein</div>
 </div>
-<div class="card">
-<h3>2. Apni Maloomat</h3>
-<p>Hadiya bhejne ke liye. Ye sirf Admin ko dikhega.</p>
+<div class="white">
+<h3>Step 2 - Apni Maloomat 📝</h3>
+<p style="font-size:12px;color:#666;margin-bottom:8px">Hadiya bhejne ke liye. Ye sirf Admin ko dikhega.</p>
 <div id="startArea">
 <input id="playerName" placeholder="Poora Naam *">
 <input id="playerCity" placeholder="City / Gaon *">
@@ -99,53 +103,51 @@ input:focus,textarea:focus{border-color:#1A7A4C}
 <textarea id="playerAddress" rows="2" placeholder="Poora Address - House No, Gali, Area *"></textarea>
 <input id="playerPincode" placeholder="Pincode - Jaise 583101 *" inputmode="numeric" maxlength="6">
 <select id="playerPrizeChoice"><option value="Cash - UPI">Hadiya Kya Chahiye? - Cash (UPI)</option><option value="Gift - Courier">Hadiya Kya Chahiye? - Gift (Courier)</option><option value="Recharge">Hadiya Kya Chahiye? - Mobile Recharge</option></select>
-<div style="background:#F0F7FF;border:1.5px dashed #2563EB;padding:10px;border-radius:12px;margin-bottom:10px">
+<div style="background:#E6F0FF;border:1.5px dashed #2563EB;padding:10px;border-radius:12px;margin-bottom:10px">
 <b>💳 UPI ID Yahan Paste Karein</b>
 <input id="playerUpi" placeholder="Jaise 98765@okhdfcbank" style="margin-top:8px;margin-bottom:2px">
 <p style="font-size:11px;color:#666">Hadiya isi UPI pe aayega.</p>
 </div>
-<button class="btn" onclick="startGame()">▶️ 3. Quiz Shuru Karein</button>
+<button class="btn" onclick="startGame()">▶️ STEP 3 - QUIZ SHURU KAREIN</button>
 </div>
-<div id="savedArea" style="display:none;background:#E8F5E9;border:1px solid #1A7A4C;padding:12px;border-radius:12px;text-align:center">
+<div id="savedArea" style="display:none;background:#E6FFE6;border:1.5px solid #0B7A55;padding:12px;border-radius:12px;text-align:center">
 <b>Assalamu Alaikum, <span id="savedName"></span>!</b><br><small id="savedDetails"></small><br>
-<button class="btn" onclick="startGameSaved()" style="margin-top:8px">▶️ Quiz Shuru Karein</button>
-<button onclick="editProfile()" style="background:none;border:none;color:#1A7A4C;text-decoration:underline;font-size:12px;cursor:pointer;margin-top:6px">✏️ Maloomat Badalni Hai?</button>
+<button class="btn" onclick="startGameSaved()" style="margin-top:8px">▶️ QUIZ SHURU KAREIN</button>
+<button onclick="editProfile()" style="background:none;border:none;color:#0B3D2E;text-decoration:underline;font-size:12px;cursor:pointer;margin-top:6px">✏️ Maloomat Badalni Hai?</button>
 </div>
 </div>
 </div>
 
-<div id="quizArea" class="hidden">
-<div class="card">
-<div style="display:flex;justify-content:space-between"><span id="timer" style="background:#E8F5E9;color:#1A7A4C;padding:4px 10px;border-radius:20px;font-weight:700">⏱ 20s</span><span id="qnum" style="font-weight:700">Q 1/5</span></div>
-<div style="height:8px;background:#E9ECEF;border-radius:99px;overflow:hidden;margin:10px 0"><div id="progress" style="height:100%;width:10%;background:#1A7A4C"></div></div>
+<div id="quizArea" class="card hidden">
+<div class="white">
+<div style="display:flex;justify-content:space-between"><span id="timer" style="background:#E8C979;padding:4px 10px;border-radius:20px;font-weight:800">⏱ 20s</span><span id="qnum" style="font-weight:800">Q 1/5</span></div>
+<div style="height:8px;background:#EADFAE;border-radius:99px;overflow:hidden;margin:10px 0"><div id="progress" style="height:100%;width:10%;background:#0B3D2E"></div></div>
 <div class="qbox"><h2 id="question" style="font-size:18px"></h2></div>
 <div id="options"></div>
-<button class="btn" id="nextBtn" onclick="nextQ()">Aage →</button>
+<button class="btn" id="nextBtn" onclick="nextQ()">AAGE →</button>
 </div>
 </div>
 
+<div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 Leaderboard</button><button id="tabWinners" onclick="showTab('winners')">👑 Winners</button><button id="tabWeekly" onclick="showTab('weekly')">📅 Weekly</button><button id="tabPractice" onclick="showTab('practice')">📖 Practice</button><button id="tabProof" onclick="showTab('proof')">📸 Proof</button><button id="tabClaim" onclick="showTab('claim')">🎁 Hadiya Claim</button></div>
+
+<div id="tabPlayDiv" class="card" style="padding-top:0"><div class="white"><h3>🏆 Is Hafte Ke Mehnati Sathi - <span id="leaderWeek">Week 4</span></h3><div id="publicBoard">Loading...</div><p class="small">Sirf Naam + City dikhega.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300</p></div>
+<div class="white"><h3>📊 Aapki Mehnat</h3><p>Streak: <b id="streakText">1 Day</b> • Best: <b id="bestText">0/5</b><br>Practice: <b id="practiceCount">0 Baar</b> • Jude Hue: <b id="subStatus">❌ Nahi</b></p></div></div>
+
+<div id="tabWinnersDiv" class="card hidden" style="padding-top:0"><div class="white"><h3>👑 Sabhi Hadiya Paane Wale</h3><div id="winnersWall"></div></div><div class="white"><h3>📊 Total</h3><p>Total Hadiya: <b id="totalPrize">₹0</b> • Winners: <b id="totalWinners">0</b> • Shamil: <b id="totalPlayers">0</b></p></div></div>
+
+<div id="tabWeeklyDiv" class="card hidden" style="padding-top:0"><div class="white"><h3>📅 Har Hafte Ke Hadiya Paane Wale</h3><p style="font-size:12px;color:#666">Har Sunday hafte ka safar khatam hota hai, Top 3 yahan aa jate hain.</p><div id="weeklyWall" style="margin-top:10px"></div></div></div>
+
+<div id="tabPracticeDiv" class="card hidden" style="padding-top:0"><div class="white"><h3>📖 Roz Ki Practice - Ilm Badhao</h3><p>• Roz Naye Sawal<br>• Score Leaderboard Me Nahi Jayega<br>• Unlimited Baar, Koi Details Nahi Chahiye</p><button class="btn" style="background:#0B3D2E;color:#E8C979" onclick="startPractice()">📖 Aaj Ki Practice Karein - Free</button><p style="margin-top:10px">Aaj: <b id="todayPractice">0 Baar</b> • Total: <b id="totalPractice2">0 Baar</b></p></div></div>
+
+<div id="tabProofDiv" class="card hidden" style="padding-top:0"><div class="white"><h3>📸 Hadiya Milne Ka Proof</h3><div id="proofGrid"></div><p id="proofCount" style="font-size:12px;color:green"></p></div></div>
+
+<div id="tabClaimDiv" class="card hidden" style="padding-top:0">
+<div class="white"><h3>🎁 Hadiya Claim Karein</h3><p style="font-size:13px">Hadiya paane ke baad yahan se apna Address + UPI confirm karein.</p>
+<input id="claimName" placeholder="Naam *"><input id="claimPhone" placeholder="Mobile *"><textarea id="claimAddress" rows="3" placeholder="Poora Address *"></textarea><input id="claimPincode" placeholder="Pincode *"><select id="claimMethod"><option>Cash - UPI</option><option>Gift - Courier Se Bhejo</option><option>Bank Transfer</option><option>Mobile Recharge</option></select><input id="claimUpi" placeholder="💳 UPI ID Paste Karein *"><button class="btn btnGold" onclick="submitClaim()">✅ CLAIM SUBMIT KAREIN</button><p id="claimMsg" style="font-size:13px;color:green"></p></div>
+<div class="white"><h3>📸 Hadiya Milne Ke Baad Proof Dalo</h3><input type="file" id="proofFile" accept="image/*" onchange="previewProof(event)"><img id="proofPreview" style="width:100%;border-radius:12px;display:none;margin-top:8px"><input id="proofName" placeholder="Apna Naam"><input id="proofPrize" placeholder="Kya Mila? Jaise ₹1000"><button class="btn" onclick="uploadProof()">📸 PROOF UPLOAD KARO</button><p id="proofMsg" style="font-size:13px;color:green"></p></div>
 </div>
 
-<div class="tabs"><button class="active" id="tabPlay" onclick="showTab('play')">🏆 Leaderboard</button><button id="tabWinners" onclick="showTab('winners')">👑 Winners</button><button id="tabWeekly" onclick="showTab('weekly')">📅 Weekly</button><button id="tabPractice" onclick="showTab('practice')">📖 Practice</button><button id="tabProof" onclick="showTab('proof')">📸 Proof</button><button id="tabClaim" onclick="showTab('claim')">🎁 Claim</button></div>
-
-<div id="tabPlayDiv" class="sec" style="padding-top:0"><div class="card"><h3>🏆 Is Hafte Ke Mehnati Sathi - <span id="leaderWeek">Week 4</span></h3><div id="publicBoard">Loading...</div><p class="small">Sirf Naam + City dikhega.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300</p></div>
-<div class="card"><h3>📊 Aapki Mehnat</h3><p>Streak: <b id="streakText">1 Day</b> • Best: <b id="bestText">0/5</b><br>Practice: <b id="practiceCount">0 Baar</b> • Jude Hue: <b id="subStatus">❌ Nahi</b></p></div></div>
-
-<div id="tabWinnersDiv" class="sec hidden" style="padding-top:0"><div class="card"><h3>👑 Sabhi Hadiya Paane Wale</h3><div id="winnersWall"></div></div><div class="card"><h3>📊 Total</h3><p>Total Hadiya: <b id="totalPrize">₹0</b> • Winners: <b id="totalWinners">0</b> • Shamil: <b id="totalPlayers">0</b></p></div></div>
-
-<div id="tabWeeklyDiv" class="sec hidden" style="padding-top:0"><div class="card"><h3>📅 Har Hafte Ke Hadiya Paane Wale</h3><p>Har Sunday hafte ka safar khatam hota hai, Top 3 yahan aa jate hain.</p><div id="weeklyWall" style="margin-top:10px"></div></div></div>
-
-<div id="tabPracticeDiv" class="sec hidden" style="padding-top:0"><div class="card"><h3>📖 Roz Ki Practice - Ilm Badhao</h3><p>• Roz Naye Sawal<br>• Score Leaderboard Me Nahi Jayega<br>• Unlimited Baar, Koi Details Nahi Chahiye</p><button class="btn" onclick="startPractice()">📖 Aaj Ki Practice Karein - Free</button><p style="margin-top:10px">Aaj: <b id="todayPractice">0 Baar</b> • Total: <b id="totalPractice2">0 Baar</b></p></div></div>
-
-<div id="tabProofDiv" class="sec hidden" style="padding-top:0"><div class="card"><h3>📸 Hadiya Milne Ka Proof</h3><div id="proofGrid"></div><p id="proofCount" style="font-size:12px;color:green"></p></div></div>
-
-<div id="tabClaimDiv" class="sec hidden" style="padding-top:0">
-<div class="card"><h3>🎁 Hadiya Claim Karein</h3><p>Hadiya paane ke baad yahan se apna Address + UPI confirm karein.</p>
-<input id="claimName" placeholder="Naam *"><input id="claimPhone" placeholder="Mobile *"><textarea id="claimAddress" rows="3" placeholder="Poora Address *"></textarea><input id="claimPincode" placeholder="Pincode *"><select id="claimMethod"><option>Cash - UPI</option><option>Gift - Courier Se Bhejo</option><option>Bank Transfer</option><option>Mobile Recharge</option></select><input id="claimUpi" placeholder="💳 UPI ID Paste Karein *"><button class="btn" onclick="submitClaim()">✅ Claim Submit Karein</button><p id="claimMsg" style="font-size:13px;color:green"></p></div>
-<div class="card"><h3>📸 Hadiya Milne Ke Baad Proof Dalo</h3><input type="file" id="proofFile" accept="image/*" onchange="previewProof(event)"><img id="proofPreview" style="width:100%;border-radius:12px;display:none;margin-top:8px"><input id="proofName" placeholder="Apna Naam"><input id="proofPrize" placeholder="Kya Mila? Jaise ₹1000"><button class="btn" onclick="uploadProof()">📸 Proof Upload Karo</button><p id="proofMsg" style="font-size:13px;color:green"></p></div>
-</div>
-
-<div style="text-align:center;padding:0 20px 20px"><button onclick="openAdmin()" style="background:none;border:none;color:#aaa;font-size:12px;text-decoration:underline;cursor:pointer">🔒 Admin</button><p class="small">Way To Jannah • Ilm Seekho, Aage Badho<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#1A7A4C;font-weight:700">▶️ Hamara YouTube Channel</a></p></div>
+<div style="text-align:center;padding:0 16px 20px"><button onclick="openAdmin()" style="background:none;border:none;color:#aaa;font-size:12px;text-decoration:underline;cursor:pointer">🔒 ADMIN</button><p class="small">Way To Jannah • Ilm Seekho, Aage Badho<br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#0B3D2E;font-weight:800">▶️ Hamara YouTube Channel</a></p></div>
 </div>
 <script>
 const firebaseConfig = {
@@ -191,8 +193,8 @@ function checkLock(){
   let agree=document.getElementById("agree").checked;
   let lockMsg=document.getElementById("lockMsg");
   let subStatus=document.getElementById("subStatus");
-  if(liked&&subbed&&agree){ lockMsg.innerHTML="✅ Shukriya! Ab Quiz Khelo!"; lockMsg.style.color="#1A7A4C"; if(subStatus) subStatus.innerText="✅ Haan"; localStorage.setItem("jannah_subscribed","yes"); }
-  else { lockMsg.innerHTML="Pehle upar wale 2 button dabayein + tick karein"; lockMsg.style.color="#D32F2F"; if(subStatus) subStatus.innerText="❌ Nahi"; }
+  if(liked&&subbed&&agree){ lockMsg.innerHTML="✅ Shukriya! Ab Quiz Khelo!"; lockMsg.style.color="#0B7A55"; if(subStatus) subStatus.innerText="✅ Haan"; localStorage.setItem("jannah_subscribed","yes"); }
+  else { lockMsg.innerHTML="Pehle upar wale 2 button dabayein + tick karein"; lockMsg.style.color="#B42318"; if(subStatus) subStatus.innerText="❌ Nahi"; }
 }
 if(localStorage.getItem("jannah_subscribed")==="yes"){ liked=true; subbed=true; setTimeout(()=>{let a=document.getElementById("agree"); if(a){a.checked=true; checkLock();}},600); }
 db.ref('jannah_week').on('value',snap=>{ if(snap.val()){CURRENT_WEEK=snap.val(); if(CURRENT_WEEK.prize1){PRIZES=[CURRENT_WEEK.prize1,CURRENT_WEEK.prize2,CURRENT_WEEK.prize3];} updateWeekUI(); renderBoard();} });
@@ -309,11 +311,11 @@ function nextQ(){
     let today=parseInt(localStorage.getItem(todayKey)||"0")+1;
     localStorage.setItem(todayKey, today);
     updatePracticeStats();
-    document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:30px 20px"><div style="font-size:50px">📖</div><h1>Practice Mukammal!</h1><p>Tumhara Score</p><h1 style="font-size:60px;color:#1A7A4C">${score} / ${quiz.length}</h1><p style="background:#F8F9FA;padding:14px;border-radius:14px;margin:14px 0">Masha Allah! Ilm badh raha hai.<br>Ab Hadiya wale safar me shamil ho!</p><button onclick="location.reload()" style="padding:14px;border:none;background:#1A7A4C;color:#fff;border-radius:12px;font-weight:800;width:100%">📖 FIR SE PRACTICE</button><button onclick="location.reload()" style="padding:14px;border:none;background:#111;color:#fff;border-radius:12px;font-weight:800;width:100%;margin-top:8px">🎁 AB HADIYA WALA KHELO</button></div>`;
+    document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:30px 20px"><div style="font-size:50px">📖</div><h1>Practice Mukammal!</h1><p>Tumhara Score</p><h1 style="font-size:60px;color:#0B3D2E">${score} / ${quiz.length}</h1><p style="background:#F8F3E6;padding:14px;border-radius:14px;margin:14px 0">Masha Allah! Ilm badh raha hai.<br>Ab Hadiya wale safar me shamil ho!</p><button onclick="location.reload()" style="padding:14px;border:none;background:#0B3D2E;color:#E8C979;border-radius:12px;font-weight:800;width:100%">📖 FIR SE PRACTICE</button><button onclick="location.reload()" style="padding:14px;border:none;background:#C9A227;color:white;border-radius:12px;font-weight:800;width:100%;margin-top:8px">🎁 AB HADIYA WALA KHELO</button></div>`;
     return;
   }
   saveWinner(totalTime);
-  document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:30px 20px"><div style="font-size:50px">🤲</div><h1>Masha Allah ${player}!</h1><p>Tumhara Score</p><h1 style="font-size:60px;color:#1A7A4C">${score} / ${quiz.length}</h1><p style="background:#E8F5E9;padding:14px;border-radius:14px;margin:14px 0">JazakAllah Khair! Aapki mehnat save ho gayi.<br>Top 3 me aaye to Hadiya: 🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}</p><p>Hadiya: <b>${prizeChoice}</b> • Pincode: <b>${pincode}</b> • UPI: <b>${upiId||'-'}</b></p><button onclick="location.reload()" style="padding:14px;border:none;background:#1A7A4C;color:#fff;border-radius:12px;font-weight:800;width:100%">🔁 DOBARA KHELO</button></div>`;
+  document.getElementById("mainCard").innerHTML=`<div style="text-align:center;padding:30px 20px"><div style="font-size:50px">🤲</div><h1>Masha Allah ${player}!</h1><p>Tumhara Score</p><h1 style="font-size:60px;color:#0B3D2E">${score} / ${quiz.length}</h1><p style="background:#E6FFE6;padding:14px;border-radius:14px;margin:14px 0">JazakAllah Khair! Aapki mehnat save ho gayi.<br>Top 3 me aaye to Hadiya: 🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}</p><p>Hadiya: <b>${prizeChoice}</b> • Pincode: <b>${pincode}</b> • UPI: <b>${upiId||'-'}</b></p><button onclick="location.reload()" style="padding:14px;border:none;background:#0B3D2E;color:#E8C979;border-radius:12px;font-weight:800;width:100%">🔁 DOBARA KHELO</button></div>`;
   return;
  }
  load();
@@ -321,7 +323,7 @@ function nextQ(){
 function renderBoard(){
  let w=ALL_WINNERS.filter(x=>x.week==CURRENT_WEEK.weekNo);
  if(w.length==0){let el=document.getElementById("publicBoard"); if(el) el.innerHTML=`<p>Abhi koi shamil nahi hua. Aap pehle banein! 🤲</p>`;return;}
- document.getElementById("publicBoard").innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#111;color:#fff;padding:8px;text-align:left">Maqaam</th><th style="background:#111;color:#fff;padding:8px;text-align:left">Naam</th><th style="background:#111;color:#fff;padding:8px;text-align:left">Score</th><th style="background:#111;color:#fff;padding:8px;text-align:left">Hadiya</th></tr>`+w.slice(0,5).map((x,i)=>`<tr><td style="padding:8px;border:1px solid #eee">${i+1} ${i==0?'👑':''}</td><td style="padding:8px;border:1px solid #eee"><b>${x.name}</b><br><small>${x.city}</small></td><td style="padding:8px;border:1px solid #eee">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #eee">${i<3?'₹'+PRIZES[i]:'-'}</td></tr>`).join("")+"</table>";
+ document.getElementById("publicBoard").innerHTML=`<table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Maqaam</th><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Naam</th><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Score</th><th style="background:#0B3D2E;color:white;padding:8px;text-align:left">Hadiya</th></tr>`+w.slice(0,5).map((x,i)=>`<tr><td style="padding:8px;border:1px solid #eee">${i+1} ${i==0?'👑':''}</td><td style="padding:8px;border:1px solid #eee"><b>${x.name}</b><br><small>${x.city}</small></td><td style="padding:8px;border:1px solid #eee">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #eee">${i<3?'₹'+PRIZES[i]:'-'}</td></tr>`).join("")+"</table>";
 }
 function renderWinners(){
  let hist=ALL_HISTORY;
@@ -331,7 +333,7 @@ function renderWinners(){
  if(hist.length==0){document.getElementById("winnersWall").innerHTML=`<p>Abhi koi Hadiya paane wala nahi.</p>`;return;}
  document.getElementById("winnersWall").innerHTML=hist.slice().reverse().map((w,i)=>{
    let medal=w.rank==1?'🥇':w.rank==2?'🥈':w.rank==3?'🥉':'👑';
-   return `<div style="display:flex;gap:10px;background:#F8F9FA;border:1px solid #E9ECEF;border-radius:12px;padding:10px;margin-bottom:8px"><div style="width:42px;height:42px;background:${w.rank==1?'#1A7A4C':'#111'};color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800">${w.name.charAt(0)}</div><div><b>${medal} ${w.name} - ${w.city}</b><br><span style="color:#1A7A4C;font-weight:700">Hadiya: ₹${w.prize} ✅</span><br><small>${w.week}</small></div></div>`;
+   return `<div style="display:flex;gap:10px;background:#FFFEF8;border:1px solid #EADFAE;border-radius:12px;padding:10px;margin-bottom:8px"><div style="width:42px;height:42px;background:${w.rank==1?'#C9A227':'#0B3D2E'};color:white;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800">${w.name.charAt(0)}</div><div><b>${medal} ${w.name} - ${w.city}</b><br><span style="color:#0B7A55;font-weight:700">Hadiya: ₹${w.prize} ✅</span><br><small>${w.week}</small></div></div>`;
  }).join("");
 }
 function renderWeeklyWinners(){
@@ -344,16 +346,16 @@ function renderWeeklyWinners(){
   let weeks=Object.keys(groups).reverse();
   wall.innerHTML=weeks.map(week=>{
     let list=groups[week].sort((a,b)=>(a.rank||99)-(b.rank||99));
-    return `<div style="background:#F8F9FA;border:1px solid #E9ECEF;border-radius:12px;padding:10px;margin-bottom:10px"><h3 style="text-align:center">📅 ${week}</h3>`+list.map(w=>{
+    return `<div style="background:#FFFEF8;border:1px solid #EADFAE;border-radius:12px;padding:10px;margin-bottom:10px"><h3 style="text-align:center">📅 ${week}</h3>`+list.map(w=>{
       let medal=w.rank==1?'🥇 Pehla':w.rank==2?'🥈 Dusra':w.rank==3?'🥉 Teesra':'👑';
-      return `<div style="display:flex;justify-content:space-between;background:#fff;padding:8px;border-radius:8px;margin:5px 0"><span><b>${medal} ${w.name}</b><br><small>${w.city}</small></span><b style="color:#1A7A4C">₹${w.prize} ✅</b></div>`;
+      return `<div style="display:flex;justify-content:space-between;background:white;padding:8px;border-radius:8px;margin:5px 0"><span><b>${medal} ${w.name}</b><br><small>${w.city}</small></span><b style="color:#0B7A55">₹${w.prize} ✅</b></div>`;
     }).join("")+`</div>`;
   }).join("");
 }
 function renderProof(){
  let proofs=ALL_PROOFS;
  if(proofs.length==0){let g=document.getElementById("proofGrid"); if(g) g.innerHTML=`<p>Abhi koi proof nahi.</p>`;let pc=document.getElementById("proofCount"); if(pc) pc.innerText="";return;}
- document.getElementById("proofGrid").innerHTML=proofs.map(p=>`<div style="margin-bottom:10px"><img src="${p.img}" style="width:100%;height:130px;object-fit:cover;border-radius:12px;border:1px solid #E9ECEF"><p>👑 ${p.name} - ${p.prize} ✅</p></div>`).join("");
+ document.getElementById("proofGrid").innerHTML=proofs.map(p=>`<div style="margin-bottom:10px"><img src="${p.img}" style="width:100%;height:130px;object-fit:cover;border-radius:12px;border:2px solid #C9A227"><p>👑 ${p.name} - ${p.prize} ✅</p></div>`).join("");
  document.getElementById("proofCount").innerText=`✅ ${proofs.length} logo ne Proof Dala Hai`;
 }
 function submitClaim(){
@@ -424,16 +426,16 @@ function openAdmin(){
  let p=prompt("Admin Password:");if(p!=="jannah123"){alert("Galat Password!");return;}
  let w=ALL_WINNERS.filter(x=>x.week==CURRENT_WEEK.weekNo);
  let c=ALL_CLAIMS;
- let wRows=w.map((x,i)=>`<tr><td style="padding:8px;border:1px solid #eee">${i+1}</td><td style="padding:8px;border:1px solid #eee"><b>${x.name}</b><br>📞 ${x.phone}<br>📍 ${x.address}<br>📮 Pin: ${x.pincode}<br>💳 UPI: ${x.upiId||x.upi||'-'}<br>🎁 Hadiya: ${i<3?'₹'+PRIZES[i]:'-'}</td><td style="padding:8px;border:1px solid #eee">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #eee">${x.time}s<br><button onclick="adminDeletePlayer('${x._key}')" style="background:#D32F2F;color:#fff;border:none;padding:4px 8px;border-radius:6px">Delete</button></td></tr>`).join("")||`<tr><td colspan="4">Koi nahi khela</td></tr>`;
+ let wRows=w.map((x,i)=>`<tr><td style="padding:8px;border:1px solid #eee">${i+1}</td><td style="padding:8px;border:1px solid #eee"><b>${x.name}</b><br>📞 ${x.phone}<br>📍 ${x.address}<br>📮 Pin: ${x.pincode}<br>💳 UPI: ${x.upiId||x.upi||'-'}<br>🎁 Hadiya: ${i<3?'₹'+PRIZES[i]:'-'}</td><td style="padding:8px;border:1px solid #eee">${x.score}/${x.total}</td><td style="padding:8px;border:1px solid #eee">${x.time}s<br><button onclick="adminDeletePlayer('${x._key}')" style="background:#B42318;color:white;border:none;padding:4px 8px;border-radius:6px">Delete</button></td></tr>`).join("")||`<tr><td colspan="4">Koi nahi khela</td></tr>`;
  let cRows=c.map((x,i)=>`<tr><td style="padding:8px;border:1px solid #eee">${i+1}</td><td style="padding:8px;border:1px solid #eee"><b>${x.name}</b><br>📞 ${x.phone}<br>📍 ${x.address}<br>📮 Pin: ${x.pincode}<br>💳 UPI: ${x.upi||'-'}</td><td style="padding:8px;border:1px solid #eee">${x.method}</td><td style="padding:8px;border:1px solid #eee">${x.upi||'-'}</td></tr>`).join("")||`<tr><td colspan="4">Koi claim nahi</td></tr>`;
  let weeklySummary=""; let groups={};
  ALL_HISTORY.forEach(h=>{ if(!groups[h.week]) groups[h.week]=[]; groups[h.week].push(h); });
- Object.keys(groups).reverse().forEach(week=>{ weeklySummary+=`<div style="background:#fff;padding:8px;border-radius:8px;margin:5px 0;font-size:12px"><b>${week}</b><br>`+groups[week].map(h=>`${h.rank==1?'🥇':h.rank==2?'🥈':'🥉'} ${h.name} - ₹${h.prize}`).join("<br>")+`</div>`; });
- document.getElementById("mainCard").innerHTML=`<div style="padding:20px"><h1>🔒 Admin Panel - Week ${CURRENT_WEEK.weekNo}</h1><p style="text-align:center">Players: ${w.length} | Claims: ${c.length}</p>
- <div style="background:#F8F9FA;border:1px solid #E9ECEF;padding:14px;border-radius:14px;margin:12px 0"><h3 style="text-align:center">🎁 3 Hadiya Badlo</h3><input id="newPz1" placeholder="1st Hadiya" type="number" value="${PRIZES[0]}"><input id="newPz2" placeholder="2nd Hadiya" type="number" value="${PRIZES[1]}"><input id="newPz3" placeholder="3rd Hadiya" type="number" value="${PRIZES[2]}"><button onclick="updatePrizeInAdmin()" style="padding:12px;border:none;background:#1A7A4C;color:#fff;border-radius:10px;font-weight:700;width:100%">💾 Hadiya Update Karo</button></div>
- <div style="background:#F8F9FA;border:1px solid #E9ECEF;padding:14px;border-radius:14px;margin:12px 0"><h3 style="text-align:center">📅 Weekly Winners</h3>${weeklySummary||"Abhi koi nahi"}</div>
- <div style="background:#E8F5E9;border:1px solid #1A7A4C;padding:14px;border-radius:14px;margin:12px 0"><h3 style="text-align:center">➕ Naya Data Add Karo</h3><input id="aName" placeholder="Naam *"><input id="aCity" placeholder="City *"><input id="aPhone" placeholder="Mobile *"><textarea id="aAddress" rows="2" placeholder="Address *"></textarea><input id="aPincode" placeholder="Pincode *" maxlength="6"><input id="aUpi" placeholder="💳 UPI ID Paste Karo"><input id="aScore" placeholder="Score" type="number"><select id="aPrizeChoice"><option value="Cash - UPI">Cash - UPI</option><option value="Gift - Courier">Gift - Courier</option><option value="Recharge">Recharge</option></select><button onclick="adminAddData()" style="padding:12px;border:none;background:#1A7A4C;color:#fff;border-radius:10px;font-weight:700;width:100%">✅ Data Add Karo</button></div>
- <div style="background:#F8F9FA;padding:14px;border-radius:14px;text-align:center;margin:12px 0"><b>🎁 Week ${CURRENT_WEEK.weekNo} Ke 3 Hadiya Ghoshit Karo</b><br><small>🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}</small><br><button onclick="declareWinnerAndNextWeek()" style="padding:12px;border:none;background:#111;color:#fff;border-radius:10px;font-weight:700;margin-top:8px;width:100%">👑 3 Hadiya Ghoshit Karo + Naya Hafta</button></div><h3>🏆 Leaderboard</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#111;color:#fff;padding:8px">Maqaam</th><th style="background:#111;color:#fff;padding:8px">Details</th><th style="background:#111;color:#fff;padding:8px">Score</th><th style="background:#111;color:#fff;padding:8px">Time</th></tr>${wRows}</table><h3 style="margin-top:12px">🎁 Claims</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#111;color:#fff;padding:8px">#</th><th style="background:#111;color:#fff;padding:8px">Details</th><th style="background:#111;color:#fff;padding:8px">Method</th><th style="background:#111;color:#fff;padding:8px">UPI</th></tr>${cRows}</table><button onclick="copyWinners()" style="padding:10px;border:none;background:#111;color:#fff;border-radius:8px;font-weight:700;margin-top:10px">📋 Copy All Data</button> <button onclick="location.reload()" style="padding:10px;border:none;background:#E9ECEF;border-radius:8px;font-weight:700">⬅ Back</button></div>`;
+ Object.keys(groups).reverse().forEach(week=>{ weeklySummary+=`<div style="background:white;padding:8px;border-radius:8px;margin:5px 0;font-size:12px"><b>${week}</b><br>`+groups[week].map(h=>`${h.rank==1?'🥇':h.rank==2?'🥈':'🥉'} ${h.name} - ₹${h.prize}`).join("<br>")+`</div>`; });
+ document.getElementById("mainCard").innerHTML=`<div style="padding:20px"><h1>🔒 ADMIN PANEL - Week ${CURRENT_WEEK.weekNo}</h1><p style="text-align:center">Players: ${w.length} | Claims: ${c.length}</p>
+ <div style="background:#FFF3CD;border:2px solid #C9A227;padding:14px;border-radius:14px;margin:12px 0"><h3 style="text-align:center">🎁 3 Hadiya Badlo</h3><input id="newPz1" placeholder="1st Hadiya" type="number" value="${PRIZES[0]}"><input id="newPz2" placeholder="2nd Hadiya" type="number" value="${PRIZES[1]}"><input id="newPz3" placeholder="3rd Hadiya" type="number" value="${PRIZES[2]}"><button onclick="updatePrizeInAdmin()" style="padding:12px;border:none;background:#C9A227;border-radius:10px;font-weight:800;width:100%">💾 HADIYA UPDATE KARO</button></div>
+ <div style="background:#E6F0FF;border:2px solid #2563EB;padding:14px;border-radius:14px;margin:12px 0"><h3 style="text-align:center">📅 WEEKLY WINNERS</h3>${weeklySummary||"Abhi koi nahi"}</div>
+ <div style="background:#E6FFE6;border:2px solid #0B7A55;padding:14px;border-radius:14px;margin:12px 0"><h3 style="text-align:center">➕ NAYA DATA ADD KARO</h3><input id="aName" placeholder="Naam *"><input id="aCity" placeholder="City *"><input id="aPhone" placeholder="Mobile *"><textarea id="aAddress" rows="2" placeholder="Address *"></textarea><input id="aPincode" placeholder="Pincode *" maxlength="6"><input id="aUpi" placeholder="💳 UPI ID Paste Karo"><input id="aScore" placeholder="Score" type="number"><select id="aPrizeChoice"><option value="Cash - UPI">Cash - UPI</option><option value="Gift - Courier">Gift - Courier</option><option value="Recharge">Recharge</option></select><button onclick="adminAddData()" style="padding:12px;border:none;background:#0B7A55;color:white;border-radius:10px;font-weight:800;width:100%">✅ DATA ADD KARO</button></div>
+ <div style="background:#FFF2B0;padding:14px;border-radius:14px;text-align:center;margin:12px 0"><b>🎁 WEEK ${CURRENT_WEEK.weekNo} KE 3 HADIYA GHOSHIT KARO</b><br><small>🥇 ₹${PRIZES[0]} | 🥈 ₹${PRIZES[1]} | 🥉 ₹${PRIZES[2]}</small><br><button onclick="declareWinnerAndNextWeek()" style="padding:12px;border:none;background:#0B3D2E;color:#E8C979;border-radius:10px;font-weight:800;margin-top:8px;width:100%">👑 3 HADIYA GHOSHIT KARO + NAYA HAFTA</button></div><h3>🏆 LEADERBOARD</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">Maqaam</th><th style="background:#0B3D2E;color:white;padding:8px">Details</th><th style="background:#0B3D2E;color:white;padding:8px">Score</th><th style="background:#0B3D2E;color:white;padding:8px">Time</th></tr>${wRows}</table><h3 style="margin-top:12px">🎁 CLAIMS</h3><table style="width:100%;border-collapse:collapse;font-size:13px"><tr><th style="background:#0B3D2E;color:white;padding:8px">#</th><th style="background:#0B3D2E;color:white;padding:8px">Details</th><th style="background:#0B3D2E;color:white;padding:8px">Method</th><th style="background:#0B3D2E;color:white;padding:8px">UPI</th></tr>${cRows}</table><button onclick="copyWinners()" style="padding:10px;border:none;background:#0B3D2E;color:white;border-radius:8px;font-weight:800;margin-top:10px">📋 Copy All Data</button> <button onclick="location.reload()" style="padding:10px;border:none;background:#C9A227;border-radius:8px;font-weight:800">⬅ Back</button></div>`;
 }
 function copyWinners(){
  let w=ALL_WINNERS.filter(x=>x.week==CURRENT_WEEK.weekNo);
