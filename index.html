@@ -7,39 +7,54 @@
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-body{background:#F8F3E6;display:flex;justify-content:center}
-.main{width:100%;max-width:520px;background:#FFFEF8;min-height:100vh}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,sans-serif}
+body{background:#F2EEE2;display:flex;justify-content:center}
+.main{width:100%;max-width:520px;background:#FFFEF8;min-height:100vh;padding-bottom:20px}
+/* TOP BAR */
 .langBar{background:#0B3D2E;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.langBar span{color:#E8C979;font-size:13px;font-weight:700}
+.langBar span{color:#E8C979;font-size:13px;font-weight:800}
 .langBar select{background:#fff;border:none;padding:8px 10px;border-radius:99px;font-size:13px;font-weight:700;color:#0B3D2E;outline:none;max-width:170px}
-.hero{background:linear-gradient(180deg,#0B3D2E 0%,#125741 100%);color:white;text-align:center;padding:28px 18px 24px;border-radius:0 0 32px 32px;position:relative;overflow:hidden}
-.hero:before{content:"🕌";font-size:110px;position:absolute;right:-10px;bottom:-20px;opacity:.12}
-.hero .bismillah{font-size:13px;opacity:.8;letter-spacing:1px}
-.hero h1{font-size:30px;line-height:1.15;margin-top:8px;font-weight:900}
+/* HERO */
+.hero{background:linear-gradient(180deg,#0B3D2E 0%,#145A43 100%);color:white;text-align:center;padding:24px 18px 20px;border-radius:0 0 28px 28px;position:relative;overflow:hidden}
+.hero:before{content:"🕌";font-size:110px;position:absolute;right:-10px;bottom:-20px;opacity:.10}
+.hero .bismillah{font-size:13px;opacity:.85;letter-spacing:1px}
+.hero h1{font-size:29px;line-height:1.2;margin-top:8px;font-weight:900}
 .hero h1 span{color:#E8C979;font-style:italic}
-.hero p{font-size:14px;line-height:1.6;opacity:.9;margin-top:10px}
-.hero .tag{background:rgba(255,255,255,.15);display:inline-block;padding:6px 14px;border-radius:20px;font-size:12px;margin-top:12px;border:1px solid rgba(255,255,255,.2)}
-.ilm{margin:16px;background:white;border:1px solid #EADFAE;border-radius:18px;padding:16px;text-align:center;box-shadow:0 6px 18px rgba(0,0,0,.06)}
-.ilm h2{color:#0B3D2E;font-size:18px}
-.ilm p{font-size:13px;color:#666;line-height:1.6;margin-top:6px}
-.steps{padding:0 16px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}
-.steps div{background:#FFFEF8;border:1px solid #EADFAE;border-radius:14px;padding:12px 6px}
-.steps b{font-size:22px}.steps span{font-size:12px;font-weight:700;color:#0B3D2E;display:block;margin-top:4px;line-height:1.3}
+.hero p{font-size:14px;line-height:1.6;opacity:.92;margin-top:10px}
+.hero .tag{background:rgba(255,255,255,.16);display:inline-block;padding:6px 14px;border-radius:20px;font-size:12px;margin-top:12px;border:1px solid rgba(255,255,255,.25)}
+/* PROGRESS STEPS - PROFESSIONAL */
+.progressWrap{margin:16px 16px 0;background:#fff;border:1px solid #EADFAE;border-radius:18px;padding:16px}
+.progressWrap h2{text-align:center;color:#0B3D2E;font-size:17px}
+.progressWrap p{text-align:center;font-size:12.5px;color:#666;line-height:1.5;margin-top:5px}
+.stepFlow{display:flex;align-items:center;justify-content:space-between;margin-top:14px}
+.stepItem{text-align:center;flex:1}
+.stepCircle{width:44px;height:44px;border-radius:50%;background:#0B3D2E;color:#E8C979;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;margin:0 auto;border:3px solid #E8C979}
+.stepItem b{display:block;font-size:12px;color:#0B3D2E;margin-top:6px;line-height:1.3}
+.stepItem small{font-size:11px;color:#888}
+.stepLine{height:3px;background:#EADFAE;flex:0.4;border-radius:99px;margin-bottom:22px}
+/* HADIYA BOX */
 .inam{margin:16px;background:linear-gradient(135deg,#FFF8D6,#FFF2B0);border:1.5px solid #C9A227;border-radius:18px;padding:16px}
 .inam h3{color:#0B3D2E;text-align:center;font-size:16px}
 .inam p{text-align:center;font-size:12px;color:#666;margin-top:4px}
 .inamRow{display:flex;justify-content:space-between;align-items:center;background:white;padding:11px 12px;border-radius:12px;margin-top:8px}
 .inamRow b{color:#0B3D2E}
-.btnBig{width:calc(100% - 32px);margin:0 16px 10px;padding:17px;border:none;border-radius:16px;font-size:16px;font-weight:900;cursor:pointer}
+/* BIG ACTIONS - CLEAR */
+.actionCard{margin:0 16px 12px;background:#fff;border:2px solid #0B3D2E;border-radius:18px;padding:14px}
+.actionCard.gold{border-color:#C9A227;background:linear-gradient(180deg,#FFFEF8,#FFF8D6)}
+.actionCard h3{color:#0B3D2E;font-size:15px}
+.actionCard p{font-size:12.5px;color:#666;line-height:1.5;margin:5px 0 10px}
+.btnBig{width:100%;padding:16px;border:none;border-radius:14px;font-size:15px;font-weight:900;cursor:pointer}
 .btnPractice{background:#fff;color:#0B3D2E;border:2px solid #0B3D2E}
 .btnPrize{background:#0B3D2E;color:#E8C979}
-.btn{width:100%;padding:14px;border:none;border-radius:12px;background:#0B3D2E;color:#E8C979;font-size:16px;font-weight:800;cursor:pointer;margin-top:8px}
+.btn{width:100%;padding:14px;border:none;border-radius:12px;background:#0B3D2E;color:#E8C979;font-size:15px;font-weight:800;cursor:pointer;margin-top:8px}
 .btnGold{background:#C9A227;color:#fff}
 .card{padding:0 16px 16px}
 .white{border:1px solid #EADFAE;border-radius:16px;padding:14px;margin-bottom:12px;background:white}
 .white h3{color:#0B3D2E;margin-bottom:8px}
+.sectionHead{display:flex;gap:10px;align-items:flex-start}
+.num{width:32px;height:32px;min-width:32px;border-radius:50%;background:#0B3D2E;color:#E8C979;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px}
 input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-radius:12px;margin-bottom:10px;font-size:15px;background:#FFFEF8}
+label.lbl{font-size:12px;font-weight:800;color:#0B3D2E;display:block;margin:2px 0 5px}
 .qbox{background:#0B3D2E;color:white;padding:16px;border-radius:14px;margin-bottom:10px}
 .opt{width:100%;text-align:left;background:white;border:1.5px solid #EADFAE;padding:14px;border-radius:12px;margin-bottom:9px;font-size:15px;font-weight:600;cursor:pointer}
 .opt.correct{background:#0B7A55;color:white}.opt.wrong{background:#B42318;color:white}
@@ -50,6 +65,7 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-
 .hidden{display:none!important}
 .wiseBox{background:#E6F0FF;border:1.5px dashed #2563EB;padding:12px;border-radius:12px;margin-bottom:10px}
 .upiBox{background:#E6FFE6;border:1.5px dashed #0B7A55;padding:12px;border-radius:12px;margin-bottom:10px}
+.hint{background:#FFF8D6;border:1px solid #EADFAE;border-radius:10px;padding:9px;font-size:12px;color:#555;line-height:1.5;margin-bottom:10px}
 </style>
 </head>
 <body>
@@ -75,15 +91,17 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-
 <div class="tag" id="t_tag">✨ Seekho • Samjho • Aage Badho ✨</div>
 </div>
 
-<div class="ilm">
+<!-- STEP FLOW - PROFESSIONAL -->
+<div class="progressWrap">
 <h2 id="t_ilmTitle">📖 Aaj Ka Sawal, Aaj Ka Ilm</h2>
-<p id="t_ilmDesc">Har hafte ek nayi video, usi par 5 pyaare sawal.<br>Sahi jawab do, Ilm badhao aur pyaara sa <b>Hadiya (Inam)</b> pao.<br>Ye koi satta / jua nahi hai, ye <b>Ilm ki mehnat ka inaam</b> hai.</p>
+<p id="t_ilmDesc">Har hafte ek nayi video, usi par 5 pyaare sawal. Sahi jawab do, Ilm badhao aur pyaara sa <b>Hadiya</b> pao. Ye koi satta / jua nahi hai, ye <b>Ilm ki mehnat ka inaam</b> hai.</p>
+<div class="stepFlow">
+<div class="stepItem"><div class="stepCircle">1</div><b id="t_step1">Video<br>Dekho</b><small>2 Minute</small></div>
+<div class="stepLine"></div>
+<div class="stepItem"><div class="stepCircle">2</div><b id="t_step2">Quiz<br>Khelo</b><small>5 Sawal</small></div>
+<div class="stepLine"></div>
+<div class="stepItem"><div class="stepCircle">3</div><b id="t_step3">Hadiya<br>Pao</b><small>Top 3 Ko</small></div>
 </div>
-
-<div class="steps">
-<div><b>📺</b><span id="t_step1">Video<br>Dekho</span></div>
-<div><b>📖</b><span id="t_step2">Quiz<br>Khelo</span></div>
-<div><b>🎁</b><span id="t_step3">Hadiya<br>Pao</span></div>
 </div>
 
 <div class="inam">
@@ -95,72 +113,82 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-
 <p style="font-size:12px;margin-top:8px" id="weekInfo">Week 4 • Video: Jannat Ke 8 Darwaze • Aakhri Din: Sunday 9 PM</p>
 </div>
 
+<!-- 2 CLEAR BUTTONS - PEHLE PRACTICE, PHIR HADIYA -->
+<div class="actionCard">
+<h3>📖 Option 1 - Sirf Seekhna Hai? (Free)</h3>
+<p>Koi form nahi, koi details nahi. Bas Quiz khelo aur Ilm badhao.</p>
 <button class="btnBig btnPractice" onclick="startPractice()"><span id="t_practiceBtn">📖 PEHLE SEEKHO - PRACTICE KARO</span><br><span style="font-size:12px;font-weight:600" id="t_practiceSub">Free Hai, Koi Details Nahi Chahiye</span></button>
+</div>
+
+<div class="actionCard gold">
+<h3>🎁 Option 2 - Hadiya Jeetna Hai?</h3>
+<p>Neeche apni details bharo, Quiz khelo, Top 3 me aao aur Hadiya pao.</p>
 <button class="btnBig btnPrize" onclick="showPrizeForm()"><span id="t_joinBtn">🎁 HADIYA KE LIYE SHAMIL HO</span><br><span style="font-size:12px;font-weight:600" id="t_joinSub">Ilm Dikhayo, Hadiya Pao</span></button>
+</div>
 
 <div id="lastWinnerBanner" style="margin:0 16px 12px;background:#0B3D2E;color:#E8C979;padding:12px;border-radius:14px;text-align:center;font-size:13px;display:none"></div>
 
+<!-- FORM - 3 CLEAR STEPS -->
 <div id="prizeFormWrap" class="card hidden">
 <div class="white">
-<h3 id="t_step1Title">Step 1 - Hamare Sath Judein 🤲</h3>
-<p style="font-size:13px;margin-bottom:8px" id="t_step1Desc">Hamari Deeni videos zyada logo tak pahunche, isliye Channel ko support karein. Ye FREE hai.</p>
-<a class="yt likeB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" onclick="markLike()" id="t_likeBtn">🤲 Video Ko Pasand Karein</a>
-<a class="yt subB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" onclick="markSub()" id="t_subBtn">🔔 Channel Se Judein - Subscribe</a>
-<label style="display:block;background:#FFFEF8;padding:10px;border-radius:10px;font-size:14px;border:1px solid #EADFAE"><input type="checkbox" id="agree" onchange="checkLock()" style="width:18px;height:18px;vertical-align:middle;margin:0"> <span id="t_agree">✅ Maine Support Kar Diya Hai</span></label>
+<div class="sectionHead"><div class="num">1</div><div><h3 id="t_step1Title">Step 1 - Hamare Sath Judein 🤲</h3><p style="font-size:12.5px;color:#666;line-height:1.5" id="t_step1Desc">Hamari Deeni videos zyada logo tak pahunche, isliye Channel ko support karein. Ye FREE hai.</p></div></div>
+<div class="hint">👇 Pehle ye 2 kaam karo, phir tick karo:</div>
+<a class="yt likeB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" onclick="markLike()" id="t_likeBtn">👍 1. Video Ko Pasand Karein - Like</a>
+<a class="yt subB" href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA?sub_confirmation=1" target="_blank" onclick="markSub()" id="t_subBtn">🔔 2. Channel Se Judein - Subscribe</a>
+<label style="display:block;background:#FFFEF8;padding:11px;border-radius:10px;font-size:14px;border:1px solid #EADFAE"><input type="checkbox" id="agree" onchange="checkLock()" style="width:18px;height:18px;vertical-align:middle;margin:0"> <span id="t_agree">✅ 3. Maine Upar Wale Dono Kaam Kar Diye Hain</span></label>
 <div id="lockMsg" style="color:#B42318;font-weight:700;font-size:13px;margin-top:6px;text-align:center">Pehle upar wale 2 button dabayein + tick karein</div>
 </div>
+
 <div class="white">
-<h3 id="t_step2Title">Step 2 - Apni Maloomat 📝</h3>
-<p style="font-size:12px;color:#666;margin-bottom:8px" id="t_step2Desc">Hadiya bhejne ke liye. Ye sirf Admin ko dikhega.</p>
+<div class="sectionHead"><div class="num">2</div><div><h3 id="t_step2Title">Step 2 - Apni Maloomat 📝</h3><p style="font-size:12px;color:#666;margin-bottom:8px" id="t_step2Desc">Hadiya bhejne ke liye. Ye sirf Admin ko dikhega, sabko nahi.</p></div></div>
 <div id="startArea">
-<input id="playerName" placeholder="Poora Naam *">
-<input id="playerCity" placeholder="City / Gaon *">
-<input id="playerPhone" placeholder="Mobile Number (10 Digit) *">
-<textarea id="playerAddress" rows="2" placeholder="Poora Address - House No, Gali, Area *"></textarea>
-<input id="playerPincode" placeholder="Pincode - Jaise 583101 *" inputmode="numeric" maxlength="6">
-<!-- COUNTRY + PAYMENT - WISE WALA NAYA HISSA -->
+<label class="lbl">Poora Naam *</label><input id="playerName" placeholder="Jaise: Ahmed Khan">
+<label class="lbl">City / Gaon *</label><input id="playerCity" placeholder="Jaise: Bellary">
+<label class="lbl">Mobile Number *</label><input id="playerPhone" placeholder="10 Digit Mobile Number">
+<label class="lbl">Poora Address *</label><textarea id="playerAddress" rows="2" placeholder="House No, Gali, Area, City"></textarea>
+<label class="lbl">Pincode / Zip Code *</label><input id="playerPincode" placeholder="Jaise 583101" inputmode="numeric" maxlength="10">
+<label class="lbl">Aap Kis Desh Se Ho? *</label>
 <select id="playerCountry" onchange="togglePayment()">
-<option value="India">🇮🇳 Country: India</option>
-<option value="Pakistan">🇵🇰 Country: Pakistan</option>
-<option value="Bangladesh">🇧🇩 Country: Bangladesh</option>
-<option value="Saudi Arabia">🇸🇦 Country: Saudi Arabia</option>
-<option value="UAE - Dubai">🇦🇪 Country: UAE - Dubai</option>
-<option value="Qatar">🇶🇦 Country: Qatar</option>
-<option value="Turkey">🇹🇷 Country: Turkey</option>
-<option value="Indonesia">🇮🇩 Country: Indonesia</option>
-<option value="Malaysia">🇲🇾 Country: Malaysia</option>
-<option value="USA">🇺🇸 Country: USA</option>
-<option value="UK">🇬🇧 Country: UK</option>
-<option value="France">🇫🇷 Country: France</option>
-<option value="Canada">🇨🇦 Country: Canada</option>
-<option value="Australia">🇦🇺 Country: Australia</option>
-<option value="Other">🌍 Country: Other</option>
+<option value="India">🇮🇳 India</option>
+<option value="Pakistan">🇵🇰 Pakistan</option>
+<option value="Bangladesh">🇧🇩 Bangladesh</option>
+<option value="Saudi Arabia">🇸🇦 Saudi Arabia</option>
+<option value="UAE - Dubai">🇦🇪 UAE - Dubai</option>
+<option value="Qatar">🇶🇦 Qatar</option>
+<option value="Turkey">🇹🇷 Turkey</option>
+<option value="Indonesia">🇮🇩 Indonesia</option>
+<option value="Malaysia">🇲🇾 Malaysia</option>
+<option value="USA">🇺🇸 USA</option>
+<option value="UK">🇬🇧 UK</option>
+<option value="France">🇫🇷 France</option>
+<option value="Canada">🇨🇦 Canada</option>
+<option value="Australia">🇦🇺 Australia</option>
+<option value="Other">🌍 Other</option>
 </select>
+<label class="lbl">Hadiya Kaise Chahiye? *</label>
 <select id="playerPrizeChoice" onchange="togglePayment()">
-<option value="Cash - UPI">Hadiya Kya Chahiye? - Cash (UPI - Sirf India)</option>
-<option value="Cash - Wise">Hadiya Kya Chahiye? - Cash (Wise - Bahar Ke Desh)</option>
-<option value="Gift - Courier">Hadiya Kya Chahiye? - Gift (Courier)</option>
-<option value="Recharge">Hadiya Kya Chahiye? - Mobile Recharge</option>
+<option value="Cash - UPI">💳 Cash - UPI (Sirf India Ke Liye)</option>
+<option value="Cash - Wise">🌍 Cash - Wise (Bahar Ke Desh Ke Liye)</option>
+<option value="Gift - Courier">🎁 Gift - Courier Se Bhejo</option>
+<option value="Recharge">📱 Mobile Recharge</option>
 </select>
 
-<!-- UPI BOX - SIRF INDIA -->
 <div id="upiBox" class="upiBox">
 <b id="t_upiTitle">💳 UPI ID Yahan Paste Karein</b>
 <input id="playerUpi" placeholder="Jaise 98765@okhdfcbank" style="margin-top:8px;margin-bottom:2px">
 <p style="font-size:11px;color:#666" id="t_upiDesc">Hadiya isi UPI pe aayega. (Sirf India)</p>
 </div>
 
-<!-- WISE BOX - BAHAR KE DESH -->
 <div id="wiseBox" class="wiseBox" style="display:none">
 <b>🌍 Wise Se Hadiya Paane Ke Liye</b>
 <p style="font-size:11px;color:#444;margin:4px 0">Wise se 170+ country me paise bheje jate hain. Ye details Admin ko hi dikhengi.</p>
-<input id="playerWiseName" placeholder="Bank Me Jo Naam Hai - Full Name *">
-<input id="playerWiseIban" placeholder="IBAN / Account Number *">
-<input id="playerWiseBank" placeholder="Bank Ka Naam *">
-<input id="playerWiseSwift" placeholder="SWIFT / BIC Code (Agar Hai To)">
-<p style="font-size:11px;color:#666">Example: Saudi - SA03 8000... | Dubai - AE07 033... | Pakistan - PK36...</p>
+<label class="lbl">Bank Me Jo Naam Hai *</label><input id="playerWiseName" placeholder="Full Name As In Bank">
+<label class="lbl">IBAN / Account Number *</label><input id="playerWiseIban" placeholder="Jaise SA03 8000... / PK36...">
+<label class="lbl">Bank Ka Naam *</label><input id="playerWiseBank" placeholder="Jaise Al Rajhi Bank">
+<label class="lbl">SWIFT / BIC Code (Agar Hai To)</label><input id="playerWiseSwift" placeholder="Jaise RJHISARI">
 </div>
 
+<div class="sectionHead" style="margin-top:14px"><div class="num">3</div><div><h3>Step 3 - Quiz Shuru Karein</h3><p style="font-size:12px;color:#666">Sab sahi hai? To neeche wale button ko dabao.</p></div></div>
 <button class="btn" onclick="startGame()" id="t_startQuiz">▶️ STEP 3 - QUIZ SHURU KAREIN</button>
 </div>
 <div id="savedArea" style="display:none;background:#E6FFE6;border:1.5px solid #0B7A55;padding:12px;border-radius:12px;text-align:center">
@@ -178,6 +206,7 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-
 <div class="qbox"><h2 id="question" style="font-size:18px"></h2></div>
 <div id="options"></div>
 <button class="btn" id="nextBtn" onclick="nextQ()">AAGE →</button>
+<p style="font-size:12px;color:#888;text-align:center;margin-top:8px">Sahi jawab chuno, phir AAGE dabao</p>
 </div>
 </div>
 
@@ -196,19 +225,20 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-
 
 <div id="tabClaimDiv" class="card hidden" style="padding-top:0">
 <div class="white"><h3 id="t_claimTitle">🎁 Hadiya Claim Karein</h3><p style="font-size:13px" id="t_claimDesc">Hadiya paane ke baad yahan se apna Address + UPI / Wise confirm karein.</p>
-<input id="claimName" placeholder="Naam *"><input id="claimPhone" placeholder="Mobile *"><textarea id="claimAddress" rows="3" placeholder="Poora Address *"></textarea><input id="claimPincode" placeholder="Pincode *">
-<select id="claimMethod" onchange="toggleClaimPayment()"><option>Cash - UPI (India)</option><option>Cash - Wise (Bahar Ke Desh)</option><option>Gift - Courier Se Bhejo</option><option>Bank Transfer</option><option>Mobile Recharge</option></select>
-<div id="claimUpiBox"><input id="claimUpi" placeholder="💳 UPI ID Paste Karein *"></div>
+<div class="hint">Step 1: Naam + Mobile likho<br>Step 2: Address + Pincode likho<br>Step 3: UPI ya Wise chuno aur Submit karo</div>
+<label class="lbl">Naam *</label><input id="claimName" placeholder="Naam *"><label class="lbl">Mobile *</label><input id="claimPhone" placeholder="Mobile *"><label class="lbl">Poora Address *</label><textarea id="claimAddress" rows="3" placeholder="Poora Address *"></textarea><label class="lbl">Pincode / Zip *</label><input id="claimPincode" placeholder="Pincode *">
+<label class="lbl">Hadiya Kaise Chahiye?</label><select id="claimMethod" onchange="toggleClaimPayment()"><option>Cash - UPI (India)</option><option>Cash - Wise (Bahar Ke Desh)</option><option>Gift - Courier Se Bhejo</option><option>Bank Transfer</option><option>Mobile Recharge</option></select>
+<div id="claimUpiBox"><label class="lbl">UPI ID</label><input id="claimUpi" placeholder="💳 UPI ID Paste Karein *"></div>
 <div id="claimWiseBox" style="display:none;background:#E6F0FF;border:1.5px dashed #2563EB;padding:10px;border-radius:12px;margin-bottom:10px">
 <b>🌍 Wise Details</b>
-<input id="claimWiseName" placeholder="Bank Me Jo Naam Hai *" style="margin-top:8px">
-<input id="claimWiseIban" placeholder="IBAN / Account Number *">
-<input id="claimWiseBank" placeholder="Bank Ka Naam *">
-<input id="claimWiseSwift" placeholder="SWIFT / BIC Code">
-<select id="claimCountry"><option>Pakistan</option><option>Saudi Arabia</option><option>UAE - Dubai</option><option>Qatar</option><option>Bangladesh</option><option>Turkey</option><option>Indonesia</option><option>Malaysia</option><option>USA</option><option>UK</option><option>France</option><option>Canada</option><option>Australia</option><option>Other</option></select>
+<label class="lbl">Bank Me Jo Naam Hai *</label><input id="claimWiseName" placeholder="Bank Me Jo Naam Hai *" style="margin-top:8px">
+<label class="lbl">IBAN / Account Number *</label><input id="claimWiseIban" placeholder="IBAN / Account Number *">
+<label class="lbl">Bank Ka Naam *</label><input id="claimWiseBank" placeholder="Bank Ka Naam *">
+<label class="lbl">SWIFT / BIC</label><input id="claimWiseSwift" placeholder="SWIFT / BIC Code">
+<label class="lbl">Country</label><select id="claimCountry"><option>Pakistan</option><option>Saudi Arabia</option><option>UAE - Dubai</option><option>Qatar</option><option>Bangladesh</option><option>Turkey</option><option>Indonesia</option><option>Malaysia</option><option>USA</option><option>UK</option><option>France</option><option>Canada</option><option>Australia</option><option>Other</option></select>
 </div>
 <button class="btn btnGold" onclick="submitClaim()" id="t_claimBtn">✅ CLAIM SUBMIT KAREIN</button><p id="claimMsg" style="font-size:13px;color:green"></p></div>
-<div class="white"><h3 id="t_proofUploadTitle">📸 Hadiya Milne Ke Baad Proof Dalo</h3><input type="file" id="proofFile" accept="image/*" onchange="previewProof(event)"><img id="proofPreview" style="width:100%;border-radius:12px;display:none;margin-top:8px"><input id="proofName" placeholder="Apna Naam"><input id="proofPrize" placeholder="Kya Mila? Jaise ₹1000"><button class="btn" onclick="uploadProof()" id="t_uploadBtn">📸 PROOF UPLOAD KARO</button><p id="proofMsg" style="font-size:13px;color:green"></p></div>
+<div class="white"><h3 id="t_proofUploadTitle">📸 Hadiya Milne Ke Baad Proof Dalo</h3><p style="font-size:12px;color:#666;margin-bottom:8px">Step 1: Photo chuno • Step 2: Naam + Kya Mila likho • Step 3: Upload dabao</p><input type="file" id="proofFile" accept="image/*" onchange="previewProof(event)"><img id="proofPreview" style="width:100%;border-radius:12px;display:none;margin-top:8px"><input id="proofName" placeholder="Apna Naam"><input id="proofPrize" placeholder="Kya Mila? Jaise ₹1000"><button class="btn" onclick="uploadProof()" id="t_uploadBtn">📸 PROOF UPLOAD KARO</button><p id="proofMsg" style="font-size:13px;color:green"></p></div>
 </div>
 
 <div style="text-align:center;padding:0 16px 20px"><button onclick="openAdmin()" style="background:none;border:none;color:#aaa;font-size:12px;text-decoration:underline;cursor:pointer">🔒 ADMIN</button><p class="small">Way To Jannah • <span id="t_footer">Ilm Seekho, Aage Badho</span><br><a href="https://www.youtube.com/channel/UCAvjCnAlgGxL2DlP_8npcFA" target="_blank" style="color:#0B3D2E;font-weight:800" id="t_yt">▶️ Hamara YouTube Channel</a></p></div>
@@ -216,13 +246,13 @@ input,textarea,select{width:100%;padding:13px;border:1.5px solid #EADFAE;border-
 <script>
 let CURRENT_LANG = localStorage.getItem("jannah_lang") || "en";
 const LANGS = {
-en:{title:'WAY TO <span>JANNAH</span><br>ILM KA SAFAR 📖',subtitle:'Quran • Seerat • Namaz • Jannat<br>Learn a little Ilm every day, strengthen your Deen.',tag:'✨ Learn • Understand • Grow ✨',ilmTitle:'📖 Today\'s Question, Today\'s Ilm',ilmDesc:'Every week a new video, 5 lovely questions on it.<br>Answer correctly, grow your Ilm and get a lovely <b>Hadiya (Gift)</b>.<br>This is not satta / gambling, this is <b>reward for Ilm effort</b>.',step1:'Video<br>Watch',step2:'Quiz<br>Play',step3:'Hadiya<br>Get',inamTitle:'🎁 Hadiya For 3 Hardworking Friends This Week',inamDesc:'Those who show best Ilm will be given Hadiya with love',first:'🥇 First Place - Most Ilm',second:'🥈 Second Place',third:'🥉 Third Place',practiceBtn:'📖 FIRST LEARN - PRACTICE',practiceSub:'Free, No Details Needed',joinBtn:'🎁 JOIN FOR HADIYA',joinSub:'Show Ilm, Get Hadiya',step1Title:'Step 1 - Join Us 🤲',step1Desc:'Support our Deeni videos so they reach more people. It is FREE.',likeBtn:'🤲 Like The Video',subBtn:'🔔 Join Channel - Subscribe',agree:'✅ I Have Supported',step2Title:'Step 2 - Your Details 📝',step2Desc:'To send Hadiya. Only Admin will see this.',upiTitle:'💳 Paste UPI ID Here',upiDesc:'Hadiya will come on this UPI. (India Only)',startQuiz:'▶️ STEP 3 - START QUIZ',startSaved:'▶️ START QUIZ',edit:'✏️ Change Details?',leaderTitle:'Hardworking Friends This Week',leaderNote:'Only Name + City will show.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Your Effort',winnersTitle:'👑 All Hadiya Winners',totalTitle:'📊 Total',weeklyTitle:'📅 Weekly Hadiya Winners',weeklyDesc:'Every Sunday the week ends, Top 3 come here.',practiceTitle:'📖 Daily Practice - Grow Ilm',practiceDesc:'• New Questions Daily<br>• Score Will Not Go To Leaderboard<br>• Unlimited Times, No Details Needed',practiceNow:'📖 Do Today\'s Practice - Free',proofTitle:'📸 Proof Of Getting Hadiya',claimTitle:'🎁 Claim Hadiya',claimDesc:'After getting Hadiya, confirm your Address + UPI / Wise here.',claimBtn:'✅ SUBMIT CLAIM',proofUploadTitle:'📸 Upload Proof After Getting Hadiya',uploadBtn:'📸 UPLOAD PROOF',footer:'Learn Ilm, Move Forward',yt:'▶️ Our YouTube Channel',next:'NEXT →',lockMsg:'Press the 2 buttons above + tick'},
-hi:{title:'WAY TO <span>JANNAH</span><br>ILM KA SAFAR 📖',subtitle:'Quran • Seerat • Namaz • Jannat<br>Roz thoda Ilm seekho, apne Deen ko mazboot karo.',tag:'✨ Seekho • Samjho • Aage Badho ✨',ilmTitle:'📖 Aaj Ka Sawal, Aaj Ka Ilm',ilmDesc:'Har hafte ek nayi video, usi par 5 pyaare sawal.<br>Sahi jawab do, Ilm badhao aur pyaara sa <b>Hadiya (Inam)</b> pao.<br>Ye koi satta / jua nahi hai, ye <b>Ilm ki mehnat ka inaam</b> hai.',step1:'Video<br>Dekho',step2:'Quiz<br>Khelo',step3:'Hadiya<br>Pao',inamTitle:'🎁 Is Hafte Ke 3 Mehnati Sathi Ko Hadiya',inamDesc:'Jo sabse accha Ilm dikhayenge, unko mohabbat se hadiya diya jayega',first:'🥇 Pehla Maqaam - Sabse Zyada Ilm',second:'🥈 Dusra Maqaam',third:'🥉 Teesra Maqaam',practiceBtn:'📖 PEHLE SEEKHO - PRACTICE KARO',practiceSub:'Free Hai, Koi Details Nahi Chahiye',joinBtn:'🎁 HADIYA KE LIYE SHAMIL HO',joinSub:'Ilm Dikhayo, Hadiya Pao',step1Title:'Step 1 - Hamare Sath Judein 🤲',step1Desc:'Hamari Deeni videos zyada logo tak pahunche, isliye support karein. Ye FREE hai.',likeBtn:'🤲 Video Ko Pasand Karein',subBtn:'🔔 Channel Se Judein - Subscribe',agree:'✅ Maine Support Kar Diya Hai',step2Title:'Step 2 - Apni Maloomat 📝',step2Desc:'Hadiya bhejne ke liye. Ye sirf Admin ko dikhega.',upiTitle:'💳 UPI ID Yahan Paste Karein',upiDesc:'Hadiya isi UPI pe aayega. (Sirf India)',startQuiz:'▶️ STEP 3 - QUIZ SHURU KAREIN',startSaved:'▶️ QUIZ SHURU KAREIN',edit:'✏️ Maloomat Badalni Hai?',leaderTitle:'Is Hafte Ke Mehnati Sathi',leaderNote:'Sirf Naam + City dikhega.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Aapki Mehnat',winnersTitle:'👑 Sabhi Hadiya Paane Wale',totalTitle:'📊 Total',weeklyTitle:'📅 Har Hafte Ke Hadiya Paane Wale',weeklyDesc:'Har Sunday hafte ka safar khatam hota hai, Top 3 yahan aa jate hain.',practiceTitle:'📖 Roz Ki Practice - Ilm Badhao',practiceDesc:'• Roz Naye Sawal<br>• Score Leaderboard Me Nahi Jayega<br>• Unlimited Baar, Koi Details Nahi Chahiye',practiceNow:'📖 Aaj Ki Practice Karein - Free',proofTitle:'📸 Hadiya Milne Ka Proof',claimTitle:'🎁 Hadiya Claim Karein',claimDesc:'Hadiya paane ke baad yahan se apna Address + UPI / Wise confirm karein.',claimBtn:'✅ CLAIM SUBMIT KAREIN',proofUploadTitle:'📸 Hadiya Milne Ke Baad Proof Dalo',uploadBtn:'📸 PROOF UPLOAD KARO',footer:'Ilm Seekho, Aage Badho',yt:'▶️ Hamara YouTube Channel',next:'AAGE →',lockMsg:'Pehle upar wale 2 button dabayein + tick karein'},
-ar:{title:'WAY TO <span>JANNAH</span><br>رحلة العلم 📖',subtitle:'قرآن • سيرة • صلاة • جنة<br>تعلم قليلا من العلم كل يوم، وقوّ دينك.',tag:'✨ تعلم • افهم • تقدم ✨',ilmTitle:'📖 سؤال اليوم، علم اليوم',ilmDesc:'كل أسبوع فيديو جديد، و 5 أسئلة جميلة عليه.<br>أجب بشكل صحيح، زد علمك واحصل على <b>هدية</b> جميلة.<br>هذا ليس قمارا، هذا <b>مكافأة على جهد العلم</b>.',step1:'فيديو<br>شاهد',step2:'اختبار<br>العب',step3:'هدية<br>احصل',inamTitle:'🎁 هدية لـ 3 أصدقاء مجتهدين هذا الأسبوع',inamDesc:'من يظهر أفضل علم سيحصل على هدية بمحبة',first:'🥇 المركز الأول - أكثر علم',second:'🥈 المركز الثاني',third:'🥉 المركز الثالث',practiceBtn:'📖 تعلم أولا - تدرب',practiceSub:'مجاني، لا حاجة لأي تفاصيل',joinBtn:'🎁 انضم من أجل الهدية',joinSub:'أظهر علمك، احصل على هدية',step1Title:'الخطوة 1 - انضم إلينا 🤲',step1Desc:'ادعم فيديوهاتنا الدينية لتصل لأكثر ناس. مجاني.',likeBtn:'🤲 أعجب بالفيديو',subBtn:'🔔 انضم للقناة - اشترك',agree:'✅ لقد دعمت',step2Title:'الخطوة 2 - معلوماتك 📝',step2Desc:'لإرسال الهدية. فقط المشرف سيراها.',upiTitle:'💳 الصق معرف UPI هنا',upiDesc:'ستأتي الهدية على هذا UPI.',startQuiz:'▶️ الخطوة 3 - ابدأ الاختبار',startSaved:'▶️ ابدأ الاختبار',edit:'✏️ تغيير المعلومات؟',leaderTitle:'أصدقاء مجتهدون هذا الأسبوع',leaderNote:'سيظهر الاسم + المدينة فقط.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 جهدك',winnersTitle:'👑 كل الفائزين بالهدية',totalTitle:'📊 المجموع',weeklyTitle:'📅 الفائزون الأسبوعيون بالهدية',weeklyDesc:'كل يوم أحد ينتهي الأسبوع، ويأتي أفضل 3 هنا.',practiceTitle:'📖 تدريب يومي - زد علمك',practiceDesc:'• أسئلة جديدة يوميا<br>• النتيجة لن تذهب للوحة الصدارة<br>• مرات غير محدودة، لا حاجة لتفاصيل',practiceNow:'📖 تدرب اليوم - مجاني',proofTitle:'📸 دليل الحصول على الهدية',claimTitle:'🎁 اطلب الهدية',claimDesc:'بعد الحصول على الهدية، أكد عنوانك + UPI / Wise هنا.',claimBtn:'✅ أرسل الطلب',proofUploadTitle:'📸 ارفع الدليل بعد الحصول على الهدية',uploadBtn:'📸 ارفع الدليل',footer:'تعلم العلم، تقدم للأمام',yt:'▶️ قناتنا على يوتيوب',next:'التالي →',lockMsg:'اضغط الزرين أعلاه + ضع علامة'},
-bn:{title:'WAY TO <span>JANNAH</span><br>ইলমের সফর 📖',subtitle:'কুরআন • সীরাত • নামাজ • জান্নাত<br>প্রতিদিন অল্প ইলম শেখো, তোমার দ্বীনকে মজবুত করো.',tag:'✨ শেখো • বোঝো • এগিয়ে যাও ✨',ilmTitle:'📖 আজকের প্রশ্ন, আজকের ইলম',ilmDesc:'প্রতি সপ্তাহে নতুন ভিডিও, তার উপর 5টি সুন্দর প্রশ্ন।<br>সঠিক উত্তর দাও, ইলম বাড়াও এবং সুন্দর <b>হাদিয়া (উপহার)</b> পাও।<br>এটা কোনো জুয়া নয়, এটা <b>ইলমের পরিশ্রমের পুরস্কার</b>।',step1:'ভিডিও<br>দেখো',step2:'কুইজ<br>খেলো',step3:'হাদিয়া<br>পাও',inamTitle:'🎁 এই সপ্তাহের 3 পরিশ্রমী বন্ধুকে হাদিয়া',inamDesc:'যারা সবচেয়ে ভালো ইলম দেখাবে, তাদের ভালোবাসা দিয়ে হাদিয়া দেওয়া হবে',first:'🥇 প্রথম স্থান - সবচেয়ে বেশি ইলম',second:'🥈 দ্বিতীয় স্থান',third:'🥉 তৃতীয় স্থান',practiceBtn:'📖 আগে শেখো - প্র্যাকটিস করো',practiceSub:'ফ্রি, কোনো তথ্য লাগবে না',joinBtn:'🎁 হাদিয়ার জন্য যোগ দাও',joinSub:'ইলম দেখাও, হাদিয়া পাও',step1Title:'ধাপ 1 - আমাদের সাথে যুক্ত হও 🤲',step1Desc:'আমাদের দ্বীনি ভিডিও বেশি মানুষের কাছে পৌঁছাক, তাই সাপোর্ট করো। ফ্রি।',likeBtn:'🤲 ভিডিও পছন্দ করো',subBtn:'🔔 চ্যানেলে যুক্ত হও - সাবস্ক্রাইব',agree:'✅ আমি সাপোর্ট করেছি',step2Title:'ধাপ 2 - তোমার তথ্য 📝',step2Desc:'হাদিয়া পাঠানোর জন্য। শুধু অ্যাডমিন দেখবে।',upiTitle:'💳 UPI ID এখানে পেস্ট করো',upiDesc:'হাদিয়া এই UPI তে আসবে।',startQuiz:'▶️ ধাপ 3 - কুইজ শুরু করো',startSaved:'▶️ কুইজ শুরু করো',edit:'✏️ তথ্য বদলাতে চাও?',leaderTitle:'এই সপ্তাহের পরিশ্রমী বন্ধুরা',leaderNote:'শুধু নাম + শহর দেখা যাবে।<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 তোমার পরিশ্রম',winnersTitle:'👑 সব হাদিয়া পাওয়া বন্ধুরা',totalTitle:'📊 মোট',weeklyTitle:'📅 প্রতি সপ্তাহের হাদিয়া পাওয়া বন্ধুরা',weeklyDesc:'প্রতি রবিবার সপ্তাহ শেষ হয়, সেরা 3 এখানে আসে।',practiceTitle:'📖 প্রতিদিন প্র্যাকটিস - ইলম বাড়াও',practiceDesc:'• প্রতিদিন নতুন প্রশ্ন<br>• স্কোর লিডারবোর্ডে যাবে না<br>• আনলিমিটেড বার, কোনো তথ্য লাগবে না',practiceNow:'📖 আজকের প্র্যাকটিস করো - ফ্রি',proofTitle:'📸 হাদিয়া পাওয়ার প্রমাণ',claimTitle:'🎁 হাদিয়া দাবি করো',claimDesc:'হাদিয়া পাওয়ার পর এখান থেকে ঠিকানা + UPI / Wise নিশ্চিত করো।',claimBtn:'✅ দাবি জমা দাও',proofUploadTitle:'📸 হাদিয়া পাওয়ার পর প্রমাণ দাও',uploadBtn:'📸 প্রমাণ আপলোড করো',footer:'ইলম শেখো, এগিয়ে যাও',yt:'▶️ আমাদের ইউটিউব চ্যানেল',next:'এগিয়ে →',lockMsg:'উপরের 2টি বাটন চাপো + টিক দাও'},
-id:{title:'WAY TO <span>JANNAH</span><br>PERJALANAN ILMU 📖',subtitle:'Quran • Sirah • Sholat • Surga<br>Belajar sedikit ilmu setiap hari, kuatkan agamamu.',tag:'✨ Belajar • Pahami • Maju ✨',ilmTitle:'📖 Pertanyaan Hari Ini, Ilmu Hari Ini',ilmDesc:'Setiap minggu video baru, 5 pertanyaan indah tentangnya.<br>Jawab benar, tambah ilmumu dan dapatkan <b>Hadiah</b> yang indah.<br>Ini bukan judi, ini <b>hadiah untuk usaha ilmu</b>.',step1:'Video<br>Tonton',step2:'Kuis<br>Main',step3:'Hadiah<br>Dapat',inamTitle:'🎁 Hadiah Untuk 3 Teman Rajin Minggu Ini',inamDesc:'Yang menunjukkan ilmu terbaik akan diberi hadiah dengan cinta',first:'🥇 Tempat Pertama - Ilmu Terbanyak',second:'🥈 Tempat Kedua',third:'🥉 Tempat Ketiga',practiceBtn:'📖 BELAJAR DULU - LATIHAN',practiceSub:'Gratis, Tanpa Detail',joinBtn:'🎁 IKUT UNTUK HADIAH',joinSub:'Tunjukkan Ilmu, Dapat Hadiah',step1Title:'Langkah 1 - Bergabunglah 🤲',step1Desc:'Dukung video dakwah kami agar sampai ke lebih banyak orang. GRATIS.',likeBtn:'🤲 Sukai Videonya',subBtn:'🔔 Gabung Channel - Subscribe',agree:'✅ Saya Sudah Mendukung',step2Title:'Langkah 2 - Detail Kamu 📝',step2Desc:'Untuk mengirim hadiah. Hanya Admin yang melihat.',upiTitle:'💳 Tempel ID UPI Di Sini',upiDesc:'Hadiah akan datang ke UPI ini.',startQuiz:'▶️ LANGKAH 3 - MULAI KUIS',startSaved:'▶️ MULAI KUIS',edit:'✏️ Ubah Detail?',leaderTitle:'Teman Rajin Minggu Ini',leaderNote:'Hanya Nama + Kota yang tampil.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Usahamu',winnersTitle:'👑 Semua Pemenang Hadiah',totalTitle:'📊 Total',weeklyTitle:'📅 Pemenang Hadiah Mingguan',weeklyDesc:'Setiap Minggu minggu berakhir, Top 3 datang ke sini.',practiceTitle:'📖 Latihan Harian - Tambah Ilmu',practiceDesc:'• Pertanyaan Baru Setiap Hari<br>• Skor Tidak Masuk Leaderboard<br>• Tanpa Batas, Tanpa Detail',practiceNow:'📖 Latihan Hari Ini - Gratis',proofTitle:'📸 Bukti Mendapatkan Hadiah',claimTitle:'🎁 Klaim Hadiah',claimDesc:'Setelah dapat hadiah, konfirmasi Alamat + UPI / Wise di sini.',claimBtn:'✅ KIRIM KLAIM',proofUploadTitle:'📸 Upload Bukti Setelah Dapat Hadiah',uploadBtn:'📸 UPLOAD BUKTI',footer:'Belajar Ilmu, Maju Terus',yt:'▶️ Channel YouTube Kami',next:'LANJUT →',lockMsg:'Tekan 2 tombol di atas + centang'},
-tr:{title:'WAY TO <span>JANNAH</span><br>İLM YOLCULUĞU 📖',subtitle:'Kuran • Siyer • Namaz • Cennet<br>Her gün biraz ilim öğren, dinini güçlendir.',tag:'✨ Öğren • Anla • İlerle ✨',ilmTitle:'📖 Bugünün Sorusu, Bugünün İlmi',ilmDesc:'Her hafta yeni video, onun üzerine 5 güzel soru.<br>Doğru cevapla, ilmini artır ve güzel bir <b>Hediye</b> kazan.<br>Bu kumar değil, bu <b>ilim çabasının ödülüdür</b>.',step1:'Video<br>İzle',step2:'Quiz<br>Oyna',step3:'Hediye<br>Al',inamTitle:'🎁 Bu Hafta 3 Çalışkan Arkadaşa Hediye',inamDesc:'En iyi ilmi gösterenlere sevgiyle hediye verilecek',first:'🥇 Birinci - En Çok İlim',second:'🥈 İkinci',third:'🥉 Üçüncü',practiceBtn:'📖 ÖNCE ÖĞREN - PRATİK YAP',practiceSub:'Ücretsiz, Detay Gerekmez',joinBtn:'🎁 HEDİYE İÇİN KATIL',joinSub:'İlmini Göster, Hediye Al',step1Title:'Adım 1 - Bize Katıl 🤲',step1Desc:'Dini videolarımız daha çok kişiye ulaşsın diye destek ol. ÜCRETSİZ.',likeBtn:'🤲 Videoyu Beğen',subBtn:'🔔 Kanala Katıl - Abone Ol',agree:'✅ Destek Oldum',step2Title:'Adım 2 - Bilgilerin 📝',step2Desc:'Hediyeyi göndermek için. Sadece Yönetici görecek.',upiTitle:'💳 UPI ID Buraya Yapıştır',upiDesc:'Hediye bu UPI\'ye gelecek.',startQuiz:'▶️ ADIM 3 - QUIZ BAŞLAT',startSaved:'▶️ QUIZ BAŞLAT',edit:'✏️ Bilgileri Değiştir?',leaderTitle:'Bu Haftanın Çalışkan Arkadaşları',leaderNote:'Sadece İsim + Şehir görünecek.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Çaban',winnersTitle:'👑 Tüm Hediye Kazananlar',totalTitle:'📊 Toplam',weeklyTitle:'📅 Haftalık Hediye Kazananlar',weeklyDesc:'Her Pazar hafta biter, En İyi 3 buraya gelir.',practiceTitle:'📖 Günlük Pratik - İlmini Artır',practiceDesc:'• Her Gün Yeni Sorular<br>• Skor Liderlik Tablosuna Gitmez<br>• Sınırsız, Detay Gerekmez',practiceNow:'📖 Bugünün Pratiğini Yap - Ücretsiz',proofTitle:'📸 Hediye Aldığına Dair Kanıt',claimTitle:'🎁 Hediyeyi Talep Et',claimDesc:'Hediyeyi aldıktan sonra Adres + UPI / Wise buradan onayla.',claimBtn:'✅ TALEBİ GÖNDER',proofUploadTitle:'📸 Hediyeyi Aldıktan Sonra Kanıt Yükle',uploadBtn:'📸 KANIT YÜKLE',footer:'İlim Öğren, İlerle',yt:'▶️ YouTube Kanalımız',next:'İLERİ →',lockMsg:'Yukarıdaki 2 butona bas + işaretle'},
-fr:{title:'WAY TO <span>JANNAH</span><br>VOYAGE DU SAVOIR 📖',subtitle:'Coran • Sira • Prière • Paradis<br>Apprends un peu de savoir chaque jour, renforce ta religion.',tag:'✨ Apprends • Comprends • Avance ✨',ilmTitle:'📖 Question du Jour, Savoir du Jour',ilmDesc:'Chaque semaine une nouvelle vidéo, 5 belles questions dessus.<br>Réponds juste, augmente ton savoir et reçois un beau <b>Cadeau (Hadiya)</b>.<br>Ce n\'est pas du jeu d\'argent, c\'est <b>la récompense de l\'effort du savoir</b>.',step1:'Vidéo<br>Regarder',step2:'Quiz<br>Jouer',step3:'Cadeau<br>Recevoir',inamTitle:'🎁 Cadeau Pour 3 Amis Travailleurs Cette Semaine',inamDesc:'Ceux qui montrent le meilleur savoir recevront un cadeau avec amour',first:'🥇 Première Place - Plus De Savoir',second:'🥈 Deuxième Place',third:'🥉 Troisième Place',practiceBtn:'📖 D\'ABORD APPRENDS - PRATIQUE',practiceSub:'Gratuit, Aucun Détail Requis',joinBtn:'🎁 REJOINS POUR LE CADEAU',joinSub:'Montre Ton Savoir, Reçois Cadeau',step1Title:'Étape 1 - Rejoins-Nous 🤲',step1Desc:'Soutiens nos vidéos religieuses pour qu\'elles touchent plus de gens. GRATUIT.',likeBtn:'🤲 Aimer La Vidéo',subBtn:'🔔 Rejoindre La Chaîne - S\'abonner',agree:'✅ J\'ai Soutenu',step2Title:'Étape 2 - Tes Infos 📝',step2Desc:'Pour envoyer le cadeau. Seul l\'Admin verra.',upiTitle:'💳 Colle Ton ID UPI Ici',upiDesc:'Le cadeau viendra sur cet UPI.',startQuiz:'▶️ ÉTAPE 3 - COMMENCER LE QUIZ',startSaved:'▶️ COMMENCER LE QUIZ',edit:'✏️ Changer Les Infos?',leaderTitle:'Amis Travailleurs De Cette Semaine',leaderNote:'Seul Nom + Ville s\'afficheront.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Ton Effort',winnersTitle:'👑 Tous Les Gagnants Du Cadeau',totalTitle:'📊 Total',weeklyTitle:'📅 Gagnants Hebdomadaires Du Cadeau',weeklyDesc:'Chaque Dimanche la semaine se termine, Top 3 vient ici.',practiceTitle:'📖 Pratique Quotidienne - Augmente Ton Savoir',practiceDesc:'• Nouvelles Questions Chaque Jour<br>• Le Score N\'ira Pas Au Classement<br>• Illimité, Aucun Détail Requis',practiceNow:'📖 Fais La Pratique D\'Aujourd\'hui - Gratuit',proofTitle:'📸 Preuve D\'Avoir Reçu Le Cadeau',claimTitle:'🎁 Réclamer Le Cadeau',claimDesc:'Après avoir reçu le cadeau, confirme ton Adresse + UPI / Wise ici.',claimBtn:'✅ ENVOYER LA DEMANDE',proofUploadTitle:'📸 Upload Preuve Après Avoir Reçu Le Cadeau',uploadBtn:'📸 UPLOAD PREUVE',footer:'Apprends Le Savoir, Avance',yt:'▶️ Notre Chaîne YouTube',next:'SUIVANT →',lockMsg:'Appuie sur les 2 boutons + coche'}
+en:{title:'WAY TO <span>JANNAH</span><br>ILM KA SAFAR 📖',subtitle:'Quran • Seerat • Namaz • Jannat<br>Learn a little Ilm every day, strengthen your Deen.',tag:'✨ Learn • Understand • Grow ✨',ilmTitle:'📖 Today\'s Question, Today\'s Ilm',ilmDesc:'Every week a new video, 5 lovely questions on it. Answer correctly, grow your Ilm and get a lovely <b>Hadiya</b>. This is not satta / gambling, this is <b>reward for Ilm effort</b>.',step1:'Video<br>Watch',step2:'Quiz<br>Play',step3:'Hadiya<br>Get',inamTitle:'🎁 Hadiya For 3 Hardworking Friends This Week',inamDesc:'Those who show best Ilm will be given Hadiya with love',first:'🥇 First Place - Most Ilm',second:'🥈 Second Place',third:'🥉 Third Place',practiceBtn:'📖 FIRST LEARN - PRACTICE',practiceSub:'Free, No Details Needed',joinBtn:'🎁 JOIN FOR HADIYA',joinSub:'Show Ilm, Get Hadiya',step1Title:'Step 1 - Join Us 🤲',step1Desc:'Support our Deeni videos so they reach more people. It is FREE.',likeBtn:'👍 1. Like The Video',subBtn:'🔔 2. Join Channel - Subscribe',agree:'✅ 3. I Have Done Both Above',step2Title:'Step 2 - Your Details 📝',step2Desc:'To send Hadiya. Only Admin will see this, not everyone.',upiTitle:'💳 Paste UPI ID Here',upiDesc:'Hadiya will come on this UPI. (India Only)',startQuiz:'▶️ STEP 3 - START QUIZ',startSaved:'▶️ START QUIZ',edit:'✏️ Change Details?',leaderTitle:'Hardworking Friends This Week',leaderNote:'Only Name + City will show.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Your Effort',winnersTitle:'👑 All Hadiya Winners',totalTitle:'📊 Total',weeklyTitle:'📅 Weekly Hadiya Winners',weeklyDesc:'Every Sunday the week ends, Top 3 come here.',practiceTitle:'📖 Daily Practice - Grow Ilm',practiceDesc:'• New Questions Daily<br>• Score Will Not Go To Leaderboard<br>• Unlimited Times, No Details Needed',practiceNow:'📖 Do Today\'s Practice - Free',proofTitle:'📸 Proof Of Getting Hadiya',claimTitle:'🎁 Claim Hadiya',claimDesc:'After getting Hadiya, confirm your Address + UPI / Wise here.',claimBtn:'✅ SUBMIT CLAIM',proofUploadTitle:'📸 Upload Proof After Getting Hadiya',uploadBtn:'📸 UPLOAD PROOF',footer:'Learn Ilm, Move Forward',yt:'▶️ Our YouTube Channel',next:'NEXT →',lockMsg:'Press the 2 buttons above + tick'},
+hi:{title:'WAY TO <span>JANNAH</span><br>ILM KA SAFAR 📖',subtitle:'Quran • Seerat • Namaz • Jannat<br>Roz thoda Ilm seekho, apne Deen ko mazboot karo.',tag:'✨ Seekho • Samjho • Aage Badho ✨',ilmTitle:'📖 Aaj Ka Sawal, Aaj Ka Ilm',ilmDesc:'Har hafte ek nayi video, usi par 5 pyaare sawal. Sahi jawab do, Ilm badhao aur pyaara sa <b>Hadiya</b> pao. Ye koi satta / jua nahi hai, ye <b>Ilm ki mehnat ka inaam</b> hai.',step1:'Video<br>Dekho',step2:'Quiz<br>Khelo',step3:'Hadiya<br>Pao',inamTitle:'🎁 Is Hafte Ke 3 Mehnati Sathi Ko Hadiya',inamDesc:'Jo sabse accha Ilm dikhayenge, unko mohabbat se hadiya diya jayega',first:'🥇 Pehla Maqaam - Sabse Zyada Ilm',second:'🥈 Dusra Maqaam',third:'🥉 Teesra Maqaam',practiceBtn:'📖 PEHLE SEEKHO - PRACTICE KARO',practiceSub:'Free Hai, Koi Details Nahi Chahiye',joinBtn:'🎁 HADIYA KE LIYE SHAMIL HO',joinSub:'Ilm Dikhayo, Hadiya Pao',step1Title:'Step 1 - Hamare Sath Judein 🤲',step1Desc:'Hamari Deeni videos zyada logo tak pahunche, isliye support karein. Ye FREE hai.',likeBtn:'👍 1. Video Ko Pasand Karein - Like',subBtn:'🔔 2. Channel Se Judein - Subscribe',agree:'✅ 3. Maine Upar Wale Dono Kaam Kar Diye Hain',step2Title:'Step 2 - Apni Maloomat 📝',step2Desc:'Hadiya bhejne ke liye. Ye sirf Admin ko dikhega, sabko nahi.',upiTitle:'💳 UPI ID Yahan Paste Karein',upiDesc:'Hadiya isi UPI pe aayega. (Sirf India)',startQuiz:'▶️ STEP 3 - QUIZ SHURU KAREIN',startSaved:'▶️ QUIZ SHURU KAREIN',edit:'✏️ Maloomat Badalni Hai?',leaderTitle:'Is Hafte Ke Mehnati Sathi',leaderNote:'Sirf Naam + City dikhega.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Aapki Mehnat',winnersTitle:'👑 Sabhi Hadiya Paane Wale',totalTitle:'📊 Total',weeklyTitle:'📅 Har Hafte Ke Hadiya Paane Wale',weeklyDesc:'Har Sunday hafte ka safar khatam hota hai, Top 3 yahan aa jate hain.',practiceTitle:'📖 Roz Ki Practice - Ilm Badhao',practiceDesc:'• Roz Naye Sawal<br>• Score Leaderboard Me Nahi Jayega<br>• Unlimited Baar, Koi Details Nahi Chahiye',practiceNow:'📖 Aaj Ki Practice Karein - Free',proofTitle:'📸 Hadiya Milne Ka Proof',claimTitle:'🎁 Hadiya Claim Karein',claimDesc:'Hadiya paane ke baad yahan se apna Address + UPI / Wise confirm karein.',claimBtn:'✅ CLAIM SUBMIT KAREIN',proofUploadTitle:'📸 Hadiya Milne Ke Baad Proof Dalo',uploadBtn:'📸 PROOF UPLOAD KARO',footer:'Ilm Seekho, Aage Badho',yt:'▶️ Hamara YouTube Channel',next:'AAGE →',lockMsg:'Pehle upar wale 2 button dabayein + tick karein'},
+ar:{title:'WAY TO <span>JANNAH</span><br>رحلة العلم 📖',subtitle:'قرآن • سيرة • صلاة • جنة<br>تعلم قليلا من العلم كل يوم، وقوّ دينك.',tag:'✨ تعلم • افهم • تقدم ✨',ilmTitle:'📖 سؤال اليوم، علم اليوم',ilmDesc:'كل أسبوع فيديو جديد، و 5 أسئلة جميلة عليه. أجب بشكل صحيح، زد علمك واحصل على <b>هدية</b> جميلة. هذا ليس قمارا، هذا <b>مكافأة على جهد العلم</b>.',step1:'فيديو<br>شاهد',step2:'اختبار<br>العب',step3:'هدية<br>احصل',inamTitle:'🎁 هدية لـ 3 أصدقاء مجتهدين هذا الأسبوع',inamDesc:'من يظهر أفضل علم سيحصل على هدية بمحبة',first:'🥇 المركز الأول - أكثر علم',second:'🥈 المركز الثاني',third:'🥉 المركز الثالث',practiceBtn:'📖 تعلم أولا - تدرب',practiceSub:'مجاني، لا حاجة لأي تفاصيل',joinBtn:'🎁 انضم من أجل الهدية',joinSub:'أظهر علمك، احصل على هدية',step1Title:'الخطوة 1 - انضم إلينا 🤲',step1Desc:'ادعم فيديوهاتنا الدينية لتصل لأكثر ناس. مجاني.',likeBtn:'👍 1. أعجب بالفيديو',subBtn:'🔔 2. انضم للقناة - اشترك',agree:'✅ 3. لقد فعلت الاثنين أعلاه',step2Title:'الخطوة 2 - معلوماتك 📝',step2Desc:'لإرسال الهدية. فقط المشرف سيراها.',upiTitle:'💳 الصق معرف UPI هنا',upiDesc:'ستأتي الهدية على هذا UPI.',startQuiz:'▶️ الخطوة 3 - ابدأ الاختبار',startSaved:'▶️ ابدأ الاختبار',edit:'✏️ تغيير المعلومات؟',leaderTitle:'أصدقاء مجتهدون هذا الأسبوع',leaderNote:'سيظهر الاسم + المدينة فقط.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 جهدك',winnersTitle:'👑 كل الفائزين بالهدية',totalTitle:'📊 المجموع',weeklyTitle:'📅 الفائزون الأسبوعيون بالهدية',weeklyDesc:'كل يوم أحد ينتهي الأسبوع، ويأتي أفضل 3 هنا.',practiceTitle:'📖 تدريب يومي - زد علمك',practiceDesc:'• أسئلة جديدة يوميا<br>• النتيجة لن تذهب للوحة الصدارة<br>• مرات غير محدودة، لا حاجة لتفاصيل',practiceNow:'📖 تدرب اليوم - مجاني',proofTitle:'📸 دليل الحصول على الهدية',claimTitle:'🎁 اطلب الهدية',claimDesc:'بعد الحصول على الهدية، أكد عنوانك + UPI / Wise هنا.',claimBtn:'✅ أرسل الطلب',proofUploadTitle:'📸 ارفع الدليل بعد الحصول على الهدية',uploadBtn:'📸 ارفع الدليل',footer:'تعلم العلم، تقدم للأمام',yt:'▶️ قناتنا على يوتيوب',next:'التالي →',lockMsg:'اضغط الزرين أعلاه + ضع علامة'},
+bn:{title:'WAY TO <span>JANNAH</span><br>ইলমের সফর 📖',subtitle:'কুরআন • সীরাত • নামাজ • জান্নাত<br>প্রতিদিন অল্প ইলম শেখো, তোমার দ্বীনকে মজবুত করো.',tag:'✨ শেখো • বোঝো • এগিয়ে যাও ✨',ilmTitle:'📖 আজকের প্রশ্ন, আজকের ইলম',ilmDesc:'প্রতি সপ্তাহে নতুন ভিডিও, তার উপর 5টি সুন্দর প্রশ্ন। সঠিক উত্তর দাও, ইলম বাড়াও এবং সুন্দর <b>হাদিয়া</b> পাও। এটা কোনো জুয়া নয়, এটা <b>ইলমের পরিশ্রমের পুরস্কার</b>।',step1:'ভিডিও<br>দেখো',step2:'কুইজ<br>খেলো',step3:'হাদিয়া<br>পাও',inamTitle:'🎁 এই সপ্তাহের 3 পরিশ্রমী বন্ধুকে হাদিয়া',inamDesc:'যারা সবচেয়ে ভালো ইলম দেখাবে, তাদের ভালোবাসা দিয়ে হাদিয়া দেওয়া হবে',first:'🥇 প্রথম স্থান - সবচেয়ে বেশি ইলম',second:'🥈 দ্বিতীয় স্থান',third:'🥉 তৃতীয় স্থান',practiceBtn:'📖 আগে শেখো - প্র্যাকটিস করো',practiceSub:'ফ্রি, কোনো তথ্য লাগবে না',joinBtn:'🎁 হাদিয়ার জন্য যোগ দাও',joinSub:'ইলম দেখাও, হাদিয়া পাও',step1Title:'ধাপ 1 - আমাদের সাথে যুক্ত হও 🤲',step1Desc:'আমাদের দ্বীনি ভিডিও বেশি মানুষের কাছে পৌঁছাক, তাই সাপোর্ট করো। ফ্রি।',likeBtn:'👍 1. ভিডিও পছন্দ করো',subBtn:'🔔 2. চ্যানেলে যুক্ত হও - সাবস্ক্রাইব',agree:'✅ 3. আমি উপরের দুটো করেছি',step2Title:'ধাপ 2 - তোমার তথ্য 📝',step2Desc:'হাদিয়া পাঠানোর জন্য। শুধু অ্যাডমিন দেখবে।',upiTitle:'💳 UPI ID এখানে পেস্ট করো',upiDesc:'হাদিয়া এই UPI তে আসবে।',startQuiz:'▶️ ধাপ 3 - কুইজ শুরু করো',startSaved:'▶️ কুইজ শুরু করো',edit:'✏️ তথ্য বদলাতে চাও?',leaderTitle:'এই সপ্তাহের পরিশ্রমী বন্ধুরা',leaderNote:'শুধু নাম + শহর দেখা যাবে।<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 তোমার পরিশ্রম',winnersTitle:'👑 সব হাদিয়া পাওয়া বন্ধুরা',totalTitle:'📊 মোট',weeklyTitle:'📅 প্রতি সপ্তাহের হাদিয়া পাওয়া বন্ধুরা',weeklyDesc:'প্রতি রবিবার সপ্তাহ শেষ হয়, সেরা 3 এখানে আসে।',practiceTitle:'📖 প্রতিদিন প্র্যাকটিস - ইলম বাড়াও',practiceDesc:'• প্রতিদিন নতুন প্রশ্ন<br>• স্কোর লিডারবোর্ডে যাবে না<br>• আনলিমিটেড বার, কোনো তথ্য লাগবে না',practiceNow:'📖 আজকের প্র্যাকটিস করো - ফ্রি',proofTitle:'📸 হাদিয়া পাওয়ার প্রমাণ',claimTitle:'🎁 হাদিয়া দাবি করো',claimDesc:'হাদিয়া পাওয়ার পর এখান থেকে ঠিকানা + UPI / Wise নিশ্চিত করো।',claimBtn:'✅ দাবি জমা দাও',proofUploadTitle:'📸 হাদিয়া পাওয়ার পর প্রমাণ দাও',uploadBtn:'📸 প্রমাণ আপলোড করো',footer:'ইলম শেখো, এগিয়ে যাও',yt:'▶️ আমাদের ইউটিউব চ্যানেল',next:'এগিয়ে →',lockMsg:'উপরের 2টি বাটন চাপো + টিক দাও'},
+id:{title:'WAY TO <span>JANNAH</span><br>PERJALANAN ILMU 📖',subtitle:'Quran • Sirah • Sholat • Surga<br>Belajar sedikit ilmu setiap hari, kuatkan agamamu.',tag:'✨ Belajar • Pahami • Maju ✨',ilmTitle:'📖 Pertanyaan Hari Ini, Ilmu Hari Ini',ilmDesc:'Setiap minggu video baru, 5 pertanyaan indah tentangnya. Jawab benar, tambah ilmumu dan dapatkan <b>Hadiah</b> yang indah. Ini bukan judi, ini <b>hadiah untuk usaha ilmu</b>.',step1:'Video<br>Tonton',step2:'Kuis<br>Main',step3:'Hadiah<br>Dapat',inamTitle:'🎁 Hadiah Untuk 3 Teman Rajin Minggu Ini',inamDesc:'Yang menunjukkan ilmu terbaik akan diberi hadiah dengan cinta',first:'🥇 Tempat Pertama - Ilmu Terbanyak',second:'🥈 Tempat Kedua',third:'🥉 Tempat Ketiga',practiceBtn:'📖 BELAJAR DULU - LATIHAN',practiceSub:'Gratis, Tanpa Detail',joinBtn:'🎁 IKUT UNTUK HADIAH',joinSub:'Tunjukkan Ilmu, Dapat Hadiah',step1Title:'Langkah 1 - Bergabunglah 🤲',step1Desc:'Dukung video dakwah kami agar sampai ke lebih banyak orang. GRATIS.',likeBtn:'👍 1. Sukai Videonya',subBtn:'🔔 2. Gabung Channel - Subscribe',agree:'✅ 3. Saya Sudah Lakukan Keduanya',step2Title:'Langkah 2 - Detail Kamu 📝',step2Desc:'Untuk mengirim hadiah. Hanya Admin yang melihat.',upiTitle:'💳 Tempel ID UPI Di Sini',upiDesc:'Hadiah akan datang ke UPI ini.',startQuiz:'▶️ LANGKAH 3 - MULAI KUIS',startSaved:'▶️ MULAI KUIS',edit:'✏️ Ubah Detail?',leaderTitle:'Teman Rajin Minggu Ini',leaderNote:'Hanya Nama + Kota yang tampil.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Usahamu',winnersTitle:'👑 Semua Pemenang Hadiah',totalTitle:'📊 Total',weeklyTitle:'📅 Pemenang Hadiah Mingguan',weeklyDesc:'Setiap Minggu minggu berakhir, Top 3 datang ke sini.',practiceTitle:'📖 Latihan Harian - Tambah Ilmu',practiceDesc:'• Pertanyaan Baru Setiap Hari<br>• Skor Tidak Masuk Leaderboard<br>• Tanpa Batas, Tanpa Detail',practiceNow:'📖 Latihan Hari Ini - Gratis',proofTitle:'📸 Bukti Mendapatkan Hadiah',claimTitle:'🎁 Klaim Hadiah',claimDesc:'Setelah dapat hadiah, konfirmasi Alamat + UPI / Wise di sini.',claimBtn:'✅ KIRIM KLAIM',proofUploadTitle:'📸 Upload Bukti Setelah Dapat Hadiah',uploadBtn:'📸 UPLOAD BUKTI',footer:'Belajar Ilmu, Maju Terus',yt:'▶️ Channel YouTube Kami',next:'LANJUT →',lockMsg:'Tekan 2 tombol di atas + centang'},
+tr:{title:'WAY TO <span>JANNAH</span><br>İLM YOLCULUĞU 📖',subtitle:'Kuran • Siyer • Namaz • Cennet<br>Her gün biraz ilim öğren, dinini güçlendir.',tag:'✨ Öğren • Anla • İlerle ✨',ilmTitle:'📖 Bugünün Sorusu, Bugünün İlmi',ilmDesc:'Her hafta yeni video, onun üzerine 5 güzel soru. Doğru cevapla, ilmini artır ve güzel bir <b>Hediye</b> kazan. Bu kumar değil, bu <b>ilim çabasının ödülüdür</b>.',step1:'Video<br>İzle',step2:'Quiz<br>Oyna',step3:'Hediye<br>Al',inamTitle:'🎁 Bu Hafta 3 Çalışkan Arkadaşa Hediye',inamDesc:'En iyi ilmi gösterenlere sevgiyle hediye verilecek',first:'🥇 Birinci - En Çok İlim',second:'🥈 İkinci',third:'🥉 Üçüncü',practiceBtn:'📖 ÖNCE ÖĞREN - PRATİK YAP',practiceSub:'Ücretsiz, Detay Gerekmez',joinBtn:'🎁 HEDİYE İÇİN KATIL',joinSub:'İlmini Göster, Hediye Al',step1Title:'Adım 1 - Bize Katıl 🤲',step1Desc:'Dini videolarımız daha çok kişiye ulaşsın diye destek ol. ÜCRETSİZ.',likeBtn:'👍 1. Videoyu Beğen',subBtn:'🔔 2. Kanala Katıl - Abone Ol',agree:'✅ 3. İkisini De Yaptım',step2Title:'Adım 2 - Bilgilerin 📝',step2Desc:'Hediyeyi göndermek için. Sadece Yönetici görecek.',upiTitle:'💳 UPI ID Buraya Yapıştır',upiDesc:'Hediye bu UPI\'ye gelecek.',startQuiz:'▶️ ADIM 3 - QUIZ BAŞLAT',startSaved:'▶️ QUIZ BAŞLAT',edit:'✏️ Bilgileri Değiştir?',leaderTitle:'Bu Haftanın Çalışkan Arkadaşları',leaderNote:'Sadece İsim + Şehir görünecek.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Çaban',winnersTitle:'👑 Tüm Hediye Kazananlar',totalTitle:'📊 Toplam',weeklyTitle:'📅 Haftalık Hediye Kazananlar',weeklyDesc:'Her Pazar hafta biter, En İyi 3 buraya gelir.',practiceTitle:'📖 Günlük Pratik - İlmini Artır',practiceDesc:'• Her Gün Yeni Sorular<br>• Skor Liderlik Tablosuna Gitmez<br>• Sınırsız, Detay Gerekmez',practiceNow:'📖 Bugünün Pratiğini Yap - Ücretsiz',proofTitle:'📸 Hediye Aldığına Dair Kanıt',claimTitle:'🎁 Hediyeyi Talep Et',claimDesc:'Hediyeyi aldıktan sonra Adres + UPI / Wise buradan onayla.',claimBtn:'✅ TALEBİ GÖNDER',proofUploadTitle:'📸 Hediyeyi Aldıktan Sonra Kanıt Yükle',uploadBtn:'📸 KANIT YÜKLE',footer:'İlim Öğren, İlerle',yt:'▶️ YouTube Kanalımız',next:'İLERİ →',lockMsg:'Yukarıdaki 2 butona bas + işaretle'},
+fr:{title:'WAY TO <span>JANNAH</span><br>VOYAGE DU SAVOIR 📖',subtitle:'Coran • Sira • Prière • Paradis<br>Apprends un peu de savoir chaque jour, renforce ta religion.',tag:'✨ Apprends • Comprends • Avance ✨',ilmTitle:'📖 Question du Jour, Savoir du Jour',ilmDesc:'Chaque semaine une nouvelle vidéo, 5 belles questions dessus. Réponds juste, augmente ton savoir et reçois un beau <b>Cadeau</b>. Ce n\'est pas du jeu d\'argent, c\'est <b>la récompense de l\'effort du savoir</b>.',step1:'Vidéo<br>Regarder',step2:'Quiz<br>Jouer',step3:'Cadeau<br>Recevoir',inamTitle:'🎁 Cadeau Pour 3 Amis Travailleurs Cette Semaine',inamDesc:'Ceux qui montrent le meilleur savoir recevront un cadeau avec amour',first:'🥇 Première Place - Plus De Savoir',second:'🥈 Deuxième Place',third:'🥉 Troisième Place',practiceBtn:'📖 D\'ABORD APPRENDS - PRATIQUE',practiceSub:'Gratuit, Aucun Détail Requis',joinBtn:'🎁 REJOINS POUR LE CADEAU',joinSub:'Montre Ton Savoir, Reçois Cadeau',step1Title:'Étape 1 - Rejoins-Nous 🤲',step1Desc:'Soutiens nos vidéos religieuses pour qu\'elles touchent plus de gens. GRATUIT.',likeBtn:'👍 1. Aimer La Vidéo',subBtn:'🔔 2. Rejoindre La Chaîne - S\'abonner',agree:'✅ 3. J\'ai Fait Les Deux',step2Title:'Étape 2 - Tes Infos 📝',step2Desc:'Pour envoyer le cadeau. Seul l\'Admin verra.',upiTitle:'💳 Colle Ton ID UPI Ici',upiDesc:'Le cadeau viendra sur cet UPI.',startQuiz:'▶️ ÉTAPE 3 - COMMENCER LE QUIZ',startSaved:'▶️ COMMENCER LE QUIZ',edit:'✏️ Changer Les Infos?',leaderTitle:'Amis Travailleurs De Cette Semaine',leaderNote:'Seul Nom + Ville s\'afficheront.<br>🥇 ₹1000 | 🥈 ₹500 | 🥉 ₹300',myEffort:'📊 Ton Effort',winnersTitle:'👑 Tous Les Gagnants Du Cadeau',totalTitle:'📊 Total',weeklyTitle:'📅 Gagnants Hebdomadaires Du Cadeau',weeklyDesc:'Chaque Dimanche la semaine se termine, Top 3 vient ici.',practiceTitle:'📖 Pratique Quotidienne - Augmente Ton Savoir',practiceDesc:'• Nouvelles Questions Chaque Jour<br>• Le Score N\'ira Pas Au Classement<br>• Illimité, Aucun Détail Requis',practiceNow:'📖 Fais La Pratique D\'Aujourd\'hui - Gratuit',proofTitle:'📸 Preuve D\'Avoir Reçu Le Cadeau',claimTitle:'🎁 Réclamer Le Cadeau',claimDesc:'Après avoir reçu le cadeau, confirme ton Adresse + UPI / Wise ici.',claimBtn:'✅ ENVOYER LA DEMANDE',proofUploadTitle:'📸 Upload Preuve Après Avoir Reçu Le Cadeau',uploadBtn:'📸 UPLOAD PREUVE',footer:'Apprends Le Savoir, Avance',yt:'▶️ Notre Chaîne YouTube',next:'SUIVANT →',lockMsg:'Appuie sur les 2 boutons + coche'}
 };
 function setLang(l){
  CURRENT_LANG=l; localStorage.setItem("jannah_lang",l);
@@ -238,19 +268,10 @@ function togglePayment(){
  let country=document.getElementById("playerCountry").value;
  let upiBox=document.getElementById("upiBox");
  let wiseBox=document.getElementById("wiseBox");
- if(choice.includes("Wise") || country!=="India"){
-   wiseBox.style.display="block";
-   if(choice.includes("Wise")) upiBox.style.display="none";
-   if(country!=="India" && choice.includes("UPI")){
-     // Agar country bahar ka hai aur UPI chuna hai to Wise dikhao
-     wiseBox.style.display="block";
-   }
- } else {
-   wiseBox.style.display="none";
-   upiBox.style.display="block";
- }
  if(choice.includes("Wise")){ wiseBox.style.display="block"; upiBox.style.display="none"; }
- if(choice.includes("UPI") && country==="India"){ wiseBox.style.display="none"; upiBox.style.display="block"; }
+ else if(choice.includes("UPI") && country==="India"){ wiseBox.style.display="none"; upiBox.style.display="block"; }
+ else if(country!=="India" && choice.includes("UPI")){ wiseBox.style.display="block"; upiBox.style.display="block"; }
+ else { wiseBox.style.display="none"; upiBox.style.display="none"; }
 }
 function toggleClaimPayment(){
  let m=document.getElementById("claimMethod").value;
@@ -302,7 +323,7 @@ function checkLock(){
   let lockMsg=document.getElementById("lockMsg");
   let subStatus=document.getElementById("subStatus");
   let t=LANGS[CURRENT_LANG]||LANGS.en;
-  if(liked&&subbed&&agree){ lockMsg.innerHTML="✅ Shukriya! / Thank You!"; lockMsg.style.color="#0B7A55"; if(subStatus) subStatus.innerText="✅ Haan"; localStorage.setItem("jannah_subscribed","yes"); }
+  if(liked&&subbed&&agree){ lockMsg.innerHTML="✅ Shukriya! Ab Step 2 bharo 👇"; lockMsg.style.color="#0B7A55"; if(subStatus) subStatus.innerText="✅ Haan"; localStorage.setItem("jannah_subscribed","yes"); }
   else { lockMsg.innerHTML=t.lockMsg; lockMsg.style.color="#B42318"; if(subStatus) subStatus.innerText="❌ Nahi"; }
 }
 if(localStorage.getItem("jannah_subscribed")==="yes"){ liked=true; subbed=true; setTimeout(()=>{let a=document.getElementById("agree"); if(a){a.checked=true; checkLock();}},600); }
@@ -373,21 +394,21 @@ function startPractice(){
   load();
 }
 function startGameSaved(){
-  if(!liked||!subbed||!document.getElementById("agree").checked){alert("Pehle Support karein - Like + Subscribe!");return;}
+  if(!liked||!subbed||!document.getElementById("agree").checked){alert("Pehle Step 1 poora karein - Like + Subscribe!");return;}
   isPractice=false; quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
   document.getElementById("quizArea").classList.remove("hidden"); document.getElementById("quizArea").scrollIntoView({behavior:"smooth"}); load();
 }
 function startGame(){
-  if(!liked||!subbed){alert("Pehle Like + Subscribe karein!");return;}
-  if(!document.getElementById("agree").checked){alert("Pehle Tick karein!");return;}
+  if(!liked||!subbed){alert("Pehle Step 1 poora karein - Like + Subscribe!");return;}
+  if(!document.getElementById("agree").checked){alert("Pehle Step 1 me Tick karein!");return;}
   isPractice=false;
   player=document.getElementById("playerName").value.trim();city=document.getElementById("playerCity").value.trim();phone=document.getElementById("playerPhone").value.trim();address=document.getElementById("playerAddress").value.trim();pincode=document.getElementById("playerPincode").value.trim();prizeChoice=document.getElementById("playerPrizeChoice").value;upiId=document.getElementById("playerUpi").value.trim();country=document.getElementById("playerCountry").value;wiseName=document.getElementById("playerWiseName").value.trim();wiseIban=document.getElementById("playerWiseIban").value.trim();wiseBank=document.getElementById("playerWiseBank").value.trim();wiseSwift=document.getElementById("playerWiseSwift").value.trim();
-  if(!player){alert("Pehle Naam likhein!");return;}
-  if(!city){alert("City likhein!");return;}
-  if(!phone||phone.length<10){alert("Sahi Mobile likhein!");return;}
-  if(!address||address.length<10){alert("Poora Address likhein!");return;}
-  if(!pincode||pincode.length<4){alert("Sahi Pincode / Zip likhein!");return;}
-  if(prizeChoice.includes("Wise") && !wiseIban){alert("Wise ke liye IBAN / Account Number likhein!");return;}
+  if(!player){alert("Step 2: Pehle Naam likhein!");return;}
+  if(!city){alert("Step 2: City likhein!");return;}
+  if(!phone||phone.length<10){alert("Step 2: Sahi Mobile likhein!");return;}
+  if(!address||address.length<10){alert("Step 2: Poora Address likhein!");return;}
+  if(!pincode||pincode.length<4){alert("Step 2: Sahi Pincode / Zip likhein!");return;}
+  if(prizeChoice.includes("Wise") && !wiseIban){alert("Step 2: Wise ke liye IBAN / Account Number likhein!");return;}
   if(prizeChoice.includes("UPI") && country!=="India"){ if(!confirm("Aapka Country India nahi hai, UPI se nahi hoga. Wise se lena hai?")) return; }
   if(prizeChoice.includes("Cash - UPI") && !upiId && country==="India"){ if(!confirm("UPI ID nahi dala! Hadiya UPI pe hi aayega. Aage badhna hai?")) return; }
   saveProfile(); quiz=[...WEEKLY_QUESTIONS];idx=0;score=0;startTime=Date.now();
